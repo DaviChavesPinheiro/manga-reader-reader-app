@@ -1,1 +1,1 @@
-web: node build/index.html
+web: build/index.html
