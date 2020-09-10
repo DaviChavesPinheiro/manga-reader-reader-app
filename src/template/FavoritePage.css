@@ -1,0 +1,25 @@
+.favorite-page {
+    width: 100%;
+    margin: 0px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.favorite-page .manga-list-wrapper{
+    max-width: 1000px;
+
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.favorite-page .manga-list {
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0px;
+    margin: 0px;
+}

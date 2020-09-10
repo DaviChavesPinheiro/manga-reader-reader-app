@@ -1,0 +1,18 @@
+.manga-profile {
+  width: 100%;
+  padding: 5px 10px;
+}
+
+.manga-profile .header {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.manga-profile img {
+  width: 180px;
+}
+.manga-profile .info {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}

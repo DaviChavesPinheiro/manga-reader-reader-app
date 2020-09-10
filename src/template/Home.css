@@ -1,0 +1,32 @@
+.home {
+    width: 100%;
+
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+
+}
+
+
+.home .manga-list-container {
+    max-width: 1000px;
+    width: 70%;
+}
+
+.home .manga-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0px;
+    margin: 0px;
+}
+
+.home .manga-preview-container {
+    width: 30%;
+    position: relative;
+}
+.home .manga-preview-wrapper {
+    position: fixed;
+    width: calc((100% - 100px) * 0.3);
+}

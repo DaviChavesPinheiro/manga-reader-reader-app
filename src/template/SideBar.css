@@ -1,0 +1,22 @@
+.side-bar {
+    width: 50px;
+    height: 100%;
+
+    background-color: #111111;
+
+    position: fixed;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    
+}
+.side-bar.right {
+    right: 0px;
+    grid-area: rightBar;
+}
+.side-bar.left {
+    left: 0px;
+    grid-area: leftBar;
+}

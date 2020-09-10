@@ -1,0 +1,20 @@
+.manga-preview {
+  padding: 5px 10px;
+  overflow: hidden;
+}
+
+.manga-preview .header {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.manga-preview img {
+  width: 180px;
+}
+.manga-preview .info {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+
