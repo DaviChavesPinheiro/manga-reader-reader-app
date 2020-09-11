@@ -10,9 +10,11 @@ const FavoritePage = props => {
     const { favoritedMangas } = useFavoriteManga()
     const [favoritedMangasList, setFavoritedsMangasList] = useState([])
     useEffect(() => {
-        axios.get(`https://charlotte-services.herokuapp.com/mangas/${favoritedMangas.toString()}/?select=-chapters,-description`).then(res => {
-            setFavoritedsMangasList(res.data)
-        })
+        if (favoritedMangas.lenght) {
+            axios.get(`https://charlotte-services.herokuapp.com/mangas/${favoritedMangas.toString()}/?select=-chapters,-description`).then(res => {
+                setFavoritedsMangasList(res.data)
+            })
+        } 
     }, [])
 
     return (
