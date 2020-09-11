@@ -9,6 +9,7 @@
     "antd": "^4.6.2",
     "axios": "^0.20.0",
     "font-awesome": "^4.7.0",
+    "http-server": "^0.12.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-lazyload": "^3.0.0",
