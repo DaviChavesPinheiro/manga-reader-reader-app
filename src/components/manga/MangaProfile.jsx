@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./MangaProfile.css";
 
+import If from "../../operator/If";
+
 const MangaProfile = props => {
     const manga = props.manga
     return (
@@ -16,9 +18,11 @@ const MangaProfile = props => {
                 </div>
             </div>
             <div className="body">
-                <div className="description">
-                    <p>Description: {manga.description}</p>
-                </div>
+                <If test={manga.description !== undefined}>
+                    <div className="description">
+                        <p>Description: {manga.description}</p>
+                    </div>
+                </If>
                 <div className="episodes">
                     <ul>
                         {manga.chapters ? manga.chapters.map((chapter, index) => (

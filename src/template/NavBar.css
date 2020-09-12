@@ -1,8 +1,6 @@
 .nav-bar {
     height: 50px;
-
     background-color: #151818;
-
     position: fixed;
 
     display: flex;
@@ -10,10 +8,10 @@
     flex-wrap: nowrap;
     justify-content: space-between;
 
-    grid-area: navBar;
-    
     left: 0;
     right: 0;
+
+    transition: bottom 0.3s;
 }
 
 .nav-bar.bottom {

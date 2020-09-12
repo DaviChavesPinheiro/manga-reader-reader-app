@@ -19,9 +19,9 @@ html, body, .App {
 }
 
 .App {
-  display: grid;
-  grid-template-rows: 1fr 50px;
+  /* display: grid;
+  grid-template-rows: 1fr;
   grid-template-columns: 1fr;
   grid-template-areas: 
-    'content navBar';
+    'content'; */
 }

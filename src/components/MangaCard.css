@@ -1,5 +1,6 @@
 .manga-card {
     color: black;
+    max-width: 48vw;
     width: 180px;
     height: 280px;
     
