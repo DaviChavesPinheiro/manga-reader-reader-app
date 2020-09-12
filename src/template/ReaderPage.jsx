@@ -26,7 +26,7 @@ const ReaderPage = props => {
         <div className="reader-page">
             <div className="reader-pages-container">
                 {pages.map((page, index) => (
-                    <LazyLoad key={index} height={900} unmountIfInvisible={true}>
+                    <LazyLoad key={index} height={900}>
                         <img src={page}></img>
                     </LazyLoad>
                 ))}

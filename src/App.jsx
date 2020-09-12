@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import SearchBar from "./components/SearchBar";
 import axios from "axios";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import Home from "./template/Home";
 import MangaPage from "./template/MangaPage";
@@ -37,6 +37,7 @@ const App = props => {
                     <Route path="/manga/:idManga/chapters/:idChapter" component={ReaderPage}></Route>
                     <Route path="/manga/:idManga" component={MangaPage}></Route>
                     <Route path="/" component={Home}></Route>
+                    <Redirect from="*" to="/"></Redirect>
                 </Switch>
             </Content>
             <NavBar position="bottom">

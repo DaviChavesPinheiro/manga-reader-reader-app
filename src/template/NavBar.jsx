@@ -2,12 +2,12 @@ import React, { useState, useEffect, useRef } from "react";
 import "./NavBar.css";
 
 const NavBar = props => {
-
+    // Colocar o hideOnScroll so no readerPage
     var prevScrollpos = window.pageYOffset
     const navBarRef = useRef()
     
     useEffect(() => {
-        window.addEventListener("scroll", () => {
+        const hideOnScroll = () => {
             const currentScrollpos = window.pageYOffset
             
             if (prevScrollpos < currentScrollpos) {
@@ -17,10 +17,11 @@ const NavBar = props => {
             }
 
             prevScrollpos = currentScrollpos
-        })
+        }
+        window.addEventListener("scroll", hideOnScroll)
 
         return () => {
-            window.removeEventListener("scroll")
+            window.removeEventListener("scroll", hideOnScroll)
         }
     }, [])
 
