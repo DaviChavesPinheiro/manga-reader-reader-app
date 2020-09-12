@@ -1,0 +1,24 @@
+.nav-bar {
+    height: 50px;
+
+    background-color: #151818;
+
+    position: fixed;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+    grid-area: navBar;
+    
+    left: 0;
+    right: 0;
+}
+
+.nav-bar.bottom {
+    bottom: 0px;
+}
+.nav-bar.top {
+    top: 0px;
+}

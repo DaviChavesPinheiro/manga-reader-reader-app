@@ -7,14 +7,14 @@ import { Switch, Route } from "react-router-dom";
 import Home from "./template/Home";
 import MangaPage from "./template/MangaPage";
 import FavoritePage from "./template/FavoritePage";
-import SideBar from "./template/SideBar";
+import NavBar from "./template/NavBar";
 import Content from "./template/Content";
 import ReaderPage from "./template/ReaderPage";
 
 import IconButton from './components/IconButton'
-import HomePageButton from "./components/sideBar/HomePageButton";
-import FavoriteButton from "./components/sideBar/FavoriteButton";
-import FavoritePageButton from "./components/sideBar/FavoritePageButton";
+import HomePageButton from "./components/NavBar/HomePageButton";
+import FavoriteButton from "./components/NavBar/FavoriteButton";
+import FavoritePageButton from "./components/NavBar/FavoritePageButton";
 
 const App = props => {
 
@@ -28,15 +28,6 @@ const App = props => {
         <div className="App">
             {/* <SearchBar onSearch={onSearch}></SearchBar>
              */}
-            <SideBar side="left">
-                <IconButton icon="search"></IconButton>
-                <IconButton icon="bell-o"></IconButton>
-                <IconButton icon="bell-o"></IconButton>
-                <IconButton icon="bell-o"></IconButton>
-                <IconButton icon="bell-o"></IconButton>
-                <FavoriteButton manga={props.mangaSelected}></FavoriteButton>
-                <IconButton icon="arrow-left"></IconButton>
-            </SideBar>
             <Content>
                 <Switch>
                     <Route path="/mangas/favorites" component={FavoritePage}></Route>
@@ -45,15 +36,15 @@ const App = props => {
                     <Route path="/" component={Home}></Route>
                 </Switch>
             </Content>
-            <SideBar side="right">
+            <NavBar position="bottom">
+                <IconButton icon="search"></IconButton>
                 <HomePageButton></HomePageButton>
                 <IconButton icon="history"></IconButton>
-                <FavoritePageButton></FavoritePageButton>
-                <IconButton icon="bell-o"></IconButton>
-                <IconButton icon="bell-o"></IconButton>
+                <FavoriteButton manga={props.mangaSelected}></FavoriteButton>
                 <IconButton icon="gear"></IconButton>
-                <IconButton icon="arrow-right"></IconButton>
-            </SideBar>
+                <FavoritePageButton></FavoritePageButton>
+                <IconButton icon="navicon"></IconButton>
+            </NavBar>
         </div>
     )
 }

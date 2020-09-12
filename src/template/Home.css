@@ -10,7 +10,6 @@
 
 .home .manga-list-container {
     max-width: 1000px;
-    width: 70%;
 }
 
 .home .manga-list {
@@ -22,11 +21,3 @@
     margin: 0px;
 }
 
-.home .manga-preview-container {
-    width: 30%;
-    position: relative;
-}
-.home .manga-preview-wrapper {
-    position: fixed;
-    width: calc((100% - 100px) * 0.3);
-}

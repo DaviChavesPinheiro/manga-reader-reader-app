@@ -5,8 +5,6 @@ import { selectManga } from "../store/actions/mangaActions";
 import axios from "axios";
 import "./Home.css";
 
-import If from "../operator/If";
-import MangaPreview from "../components/MangaPreview";
 
 
 import MangaCard from '../components/MangaCard'
@@ -23,14 +21,7 @@ const Home = props => {
 
     return (
         <div className="home">
-            <div className="manga-preview-container">
-                <div className="manga-preview-wrapper">
-                    <If test={Object.keys(props.selected).length}>
-                        <MangaPreview manga={props.selected}></MangaPreview>
-
-                    </If>
-                </div>
-            </div>
+            
             <div className="manga-list-container">
                 <ul className="manga-list">
                     {mangas.map((manga, index) => <MangaCard key={manga._id} manga={manga} rank={index + 1}></MangaCard>)}

@@ -9,11 +9,7 @@ import "./MangaCard.css";
 const MangaCard = props => {
     const manga = props.manga
     function onClick(event) {
-        if(props.selected._id !== manga._id) event.preventDefault()
         props.selectManga(manga)
-        axios.get(`https://charlotte-services.herokuapp.com/mangas/${manga._id}/?select=-chapters`).then(res => {
-            props.selectManga(res.data)
-        })
     }
 
     return (
