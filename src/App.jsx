@@ -12,6 +12,9 @@ import Content from "./template/Content";
 import ReaderPage from "./template/ReaderPage";
 
 import IconButton from './components/IconButton'
+import MoreButton from "./components/NavBar/MoreButton";
+import PlayButton from "./components/NavBar/PlayButton";
+import SearchButton from "./components/NavBar/SearchButton";
 import HomePageButton from "./components/NavBar/HomePageButton";
 import FavoriteButton from "./components/NavBar/FavoriteButton";
 import FavoritePageButton from "./components/NavBar/FavoritePageButton";
@@ -37,13 +40,12 @@ const App = props => {
                 </Switch>
             </Content>
             <NavBar position="bottom">
-                <IconButton icon="search"></IconButton>
-                <HomePageButton></HomePageButton>
-                <IconButton icon="history"></IconButton>
-                <FavoriteButton manga={props.mangaSelected}></FavoriteButton>
-                <IconButton icon="gear"></IconButton>
-                <FavoritePageButton></FavoritePageButton>
-                <IconButton icon="navicon"></IconButton>
+                <SearchButton target="search"></SearchButton>
+                <HomePageButton target="home"></HomePageButton>
+                <PlayButton target="play"></PlayButton>
+                <FavoriteButton manga={props.mangaSelected} target="favorite"></FavoriteButton>
+                <FavoritePageButton target="favoritePages"></FavoritePageButton>
+                <MoreButton target="more"></MoreButton>
             </NavBar>
         </div>
     )

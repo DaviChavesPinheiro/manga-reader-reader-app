@@ -1,17 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 import IconButton from "../IconButton";
+import If from "../../operator/If";
 
 const FavoritePageButton = props => {
+    const visible = props.tabsVisible[props.target] === true
 
     return (
-        <Link to="/mangas/favorites">
-            <div className="favorite-page-button">
-                <IconButton icon="heart-o"></IconButton>
-            </div>
-        </Link>
+        <If test={visible}>
+            <Link to="/mangas/favorites">
+                <div className="favorite-page-button">
+                    <IconButton icon="heart-o"></IconButton>
+                </div>
+            </Link>
+        </If>
     )
 }
 
-export default FavoritePageButton;
+const mapStateToProps = state => ({ tabsVisible: state.navBar.tabsVisible })
+
+export default connect(mapStateToProps)(FavoritePageButton);

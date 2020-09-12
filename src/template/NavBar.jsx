@@ -5,7 +5,7 @@ const NavBar = props => {
 
     var prevScrollpos = window.pageYOffset
     const navBarRef = useRef()
-    console.log("NavBar", navBarRef)
+    
     useEffect(() => {
         window.addEventListener("scroll", () => {
             const currentScrollpos = window.pageYOffset
