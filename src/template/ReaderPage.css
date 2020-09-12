@@ -9,3 +9,12 @@
 .reader-pages-container img {
     max-width: 100%;
 }
+
+.reader-page .next-chapter-area{
+    height: 90vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #111111;
+}
