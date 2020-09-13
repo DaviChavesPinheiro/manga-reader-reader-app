@@ -37,7 +37,6 @@ const App = props => {
                     <Route path="/manga/:idManga/chapters/:idChapter" component={ReaderPage}></Route>
                     <Route path="/manga/:idManga" component={MangaPage}></Route>
                     <Route path="/" component={Home}></Route>
-                    <Redirect from="*" to="/"></Redirect>
                 </Switch>
             </Content>
             <NavBar position="bottom">
