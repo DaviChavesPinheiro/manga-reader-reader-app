@@ -1,17 +1,38 @@
 .nav-bar {
-    height: 50px;
-    background-color: #151818;
     position: fixed;
-
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-around;
 
     left: 0;
     right: 0;
 
     transition: bottom 0.3s;
+}
+
+.nav-bar .display {
+    height: 1.4em;
+    font-size: 0.7em;
+    color: #979797;
+    display: flex;
+    justify-content: center;
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+    background-color: #1d2020;
+
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+
+}
+
+.nav-bar .buttons-container{
+    height: 50px;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    background-color: #1d2020;
+    
 }
 
 .nav-bar.bottom {

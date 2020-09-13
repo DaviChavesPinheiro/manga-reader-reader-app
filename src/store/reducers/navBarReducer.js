@@ -1,4 +1,4 @@
-const INITIAL_STATE = { tabsVisible: {} }
+const INITIAL_STATE = { tabsVisible: {}, displayLabel: '' }
 
 export default (state = INITIAL_STATE, action) => {
     
@@ -6,6 +6,9 @@ export default (state = INITIAL_STATE, action) => {
         case 'TAB_SHOWED':
             console.log('TAB_SHOWED', action.payload)
             return { ...state, tabsVisible: action.payload }
+        case 'DISPLAY_LABEL_SETTED':
+            console.log('DISPLAY_LABEL_SETTED', action.payload)
+            return { ...state, displayLabel: action.payload }
         default:
             return state
     }

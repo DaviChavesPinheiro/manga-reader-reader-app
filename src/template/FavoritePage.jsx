@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useFavoriteManga from "../hooks/useFavoriteManga";
-import { showTabs } from "../store/actions/navBarActions";
+import { showTabs, setDisplayLabel } from "../store/actions/navBarActions";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import axios from 'axios'
@@ -14,10 +14,13 @@ const FavoritePage = props => {
     const [favoritedMangasList, setFavoritedsMangasList] = useState([])
     useEffect(() => {
         props.showTabs('search', 'home')
+        
 
         if (favoritedMangas.length) {
             axios.get(`https://charlotte-services.herokuapp.com/mangas/${favoritedMangas.toString()}/?select=-chapters,-description`).then(res => {
-                setFavoritedsMangasList(Array.isArray(res.data) ? res.data : [res.data])
+                const favMangas = Array.isArray(res.data) ? res.data : [res.data]
+                setFavoritedsMangasList(favMangas)
+                props.setDisplayLabel(`${favMangas.length} Favorites`)
             })
         } 
     }, [])
@@ -34,6 +37,6 @@ const FavoritePage = props => {
     )
 }
 
-const mapDispatchToPros = dispatch => bindActionCreators({showTabs}, dispatch)
+const mapDispatchToPros = dispatch => bindActionCreators({showTabs, setDisplayLabel}, dispatch)
 
 export default connect(null, mapDispatchToPros)(FavoritePage);

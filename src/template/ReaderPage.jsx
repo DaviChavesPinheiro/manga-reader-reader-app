@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { selectManga } from "../store/actions/mangaActions";
-import { showTabs } from "../store/actions/navBarActions";
+import { showTabs, setDisplayLabel } from "../store/actions/navBarActions";
 import axios from "axios";
 
 import "./ReaderPage.css";
@@ -15,8 +15,8 @@ const ReaderPage = props => {
     const { idManga, idChapter } = useParams()
     const [pages, setPages] = useState([])
     const [chapterIndex, setChapterIndex] = useState(parseInt(idChapter))
-    
-    
+
+
     useEffect(() => {
         props.showTabs('search', 'home', 'manga', 'favorite')
 
@@ -26,10 +26,11 @@ const ReaderPage = props => {
     function loadChapter(index) {
         axios.get(`https://charlotte-services.herokuapp.com/mangas/${idManga}/chapters/${index}`).then(res => {
             const chapter = res.data.chapters[0]
-            if(chapter && chapter.pages){
+            if (chapter && chapter.pages) {
                 setPages(chapter.pages)
             }
-            props.selectManga({...res.data, chapters: []})
+            props.setDisplayLabel(chapter ? chapter.title : '')
+            props.selectManga({ ...res.data, chapters: [] })
         })
     }
 
@@ -53,15 +54,16 @@ const ReaderPage = props => {
                     </LazyLoad>
                 ))}
                 <div className="next-chapter-area">
-                    <button onClick={() => goToChapter(chapterIndex + 1)}>Next Chapter</button>
+                    <h3>End Of Chapter {chapterIndex + 1}</h3>
+                    <button onClick={() => goToChapter(chapterIndex + 1)}>Load Next Chapter</button>
                 </div>
             </div>
         </div>
     )
 }
 
-const mapStateToProps = state => ({selected: state.manga.selected})
+const mapStateToProps = state => ({ selected: state.manga.selected })
 
-const mapDispatchToPros = dispatch => bindActionCreators({selectManga, showTabs}, dispatch)
+const mapDispatchToPros = dispatch => bindActionCreators({ selectManga, showTabs, setDisplayLabel }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToPros)(ReaderPage);

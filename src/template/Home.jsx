@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { selectManga } from "../store/actions/mangaActions";
-import { showTabs } from "../store/actions/navBarActions";
+import { showTabs, setDisplayLabel } from "../store/actions/navBarActions";
 import axios from "axios";
 import LazyLoad from 'react-lazyload';
 import "./Home.css";
@@ -15,6 +15,7 @@ const Home = props => {
 
     useEffect(() => {
         props.showTabs('search', 'favoritePages', 'more')
+        props.setDisplayLabel('Home')
 
         axios.get(`https://charlotte-services.herokuapp.com/mangas`).then(res => {
             setMangas(res.data)
@@ -40,6 +41,6 @@ const Home = props => {
 }
 
 const mapStateToProps = state => ({ selected: state.manga.selected })
-const mapDispatchToProps = dispatch => bindActionCreators({ selectManga, showTabs }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ selectManga, showTabs, setDisplayLabel }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

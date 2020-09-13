@@ -6,3 +6,9 @@ export function showTabs(...tabsIds){
         payload: tabsToShow
     }
 }
+export function setDisplayLabel(label){
+    return {
+        type: 'DISPLAY_LABEL_SETTED',
+        payload: label
+    }
+}
