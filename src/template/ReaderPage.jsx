@@ -18,7 +18,7 @@ const ReaderPage = props => {
     
     
     useEffect(() => {
-        props.showTabs('search', 'home', 'favorite')
+        props.showTabs('search', 'home', 'manga', 'favorite')
 
         loadChapter(chapterIndex)
     }, [])

@@ -17,6 +17,7 @@ import PlayButton from "./components/NavBar/PlayButton";
 import SearchButton from "./components/NavBar/SearchButton";
 import HomePageButton from "./components/NavBar/HomePageButton";
 import FavoriteButton from "./components/NavBar/FavoriteButton";
+import MangaPageButton from "./components/NavBar/MangaPageButton";
 import FavoritePageButton from "./components/NavBar/FavoritePageButton";
 
 const App = props => {
@@ -42,6 +43,7 @@ const App = props => {
             <NavBar position="bottom">
                 <SearchButton target="search" label="Search"></SearchButton>
                 <HomePageButton target="home" label="Home"></HomePageButton>
+                <MangaPageButton target="manga" label="Manga"></MangaPageButton>
                 <PlayButton target="play" label="Read"></PlayButton>
                 <FavoriteButton manga={props.mangaSelected} target="favorite" label="Favorite"></FavoriteButton>
                 <FavoritePageButton target="favoritePages" label="Favorites"></FavoritePageButton>
