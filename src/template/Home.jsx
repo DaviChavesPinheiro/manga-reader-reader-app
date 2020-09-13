@@ -27,7 +27,7 @@ const Home = props => {
 
     return (
         <div className="home">
-            
+            <header></header>
             <div className="manga-list-container">
                 <ul className="manga-list">
                     {mangas.map((manga, index) => (

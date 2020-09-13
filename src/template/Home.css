@@ -2,14 +2,20 @@
     width: 100%;
 
     display: flex;
+    flex-direction: column;
     flex-wrap: nowrap;
     justify-content: center;
-
 }
 
+.home header {
+    width: 100%;
+    height: 20px;
+    background-color: #1E1E1E;
+}
 
 .home .manga-list-container {
     max-width: 1000px;
+    margin-top: 5px;
 }
 
 .home .manga-list {

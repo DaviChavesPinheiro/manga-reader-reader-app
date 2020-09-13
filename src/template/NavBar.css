@@ -16,7 +16,7 @@
 
     text-overflow: ellipsis;
     overflow: hidden;
-    background-color: #1d2020;
+    background-color: #1E1E1E;
 
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
@@ -31,7 +31,7 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-around;
-    background-color: #1d2020;
+    background-color: #1E1E1E;
     
 }
 

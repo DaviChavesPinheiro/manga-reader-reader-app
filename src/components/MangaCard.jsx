@@ -17,7 +17,7 @@ const MangaCard = props => {
             <div className="manga-card">
                 <img src={manga.image_url} alt="Manga"/>
                 <div className="info">
-                    <span className="title">{manga.title}</span>
+                    <h3 className="title">{manga.title}</h3>
                     <span className="chapters-score">Chapters: {manga.chapters} | Score: {manga.score}</span>
                 </div>
             </div>
