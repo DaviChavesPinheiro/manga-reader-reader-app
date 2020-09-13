@@ -6,7 +6,7 @@ const IconButton = props => {
     return (
         <button className="icon-button">
             <i className={`fa fa-${props.icon}`}></i>
-            {props.children}
+            <p className="label">{props.label}</p>
         </button>
     )
 }

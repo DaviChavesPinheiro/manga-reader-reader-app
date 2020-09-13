@@ -9,7 +9,7 @@ const PlayButton = props => {
     return (
         <If test={visible}>
                 <div className="play-button">
-                    <IconButton icon="play"></IconButton>
+                    <IconButton icon="play" label={props.label}></IconButton>
                 </div>
         </If>
     )

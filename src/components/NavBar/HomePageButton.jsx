@@ -11,7 +11,7 @@ const HomePageButton = props => {
         <If test={visible}>
             <Link to="/">
                 <div className="home-page-button">
-                    <IconButton icon="home"></IconButton>
+                    <IconButton icon="home" label={props.label}></IconButton>
                 </div>
             </Link>
         </If>

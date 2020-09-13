@@ -40,12 +40,12 @@ const App = props => {
                 </Switch>
             </Content>
             <NavBar position="bottom">
-                <SearchButton target="search"></SearchButton>
-                <HomePageButton target="home"></HomePageButton>
-                <PlayButton target="play"></PlayButton>
-                <FavoriteButton manga={props.mangaSelected} target="favorite"></FavoriteButton>
-                <FavoritePageButton target="favoritePages"></FavoritePageButton>
-                <MoreButton target="more"></MoreButton>
+                <SearchButton target="search" label="Search"></SearchButton>
+                <HomePageButton target="home" label="Home"></HomePageButton>
+                <PlayButton target="play" label="Read"></PlayButton>
+                <FavoriteButton manga={props.mangaSelected} target="favorite" label="Favorite"></FavoriteButton>
+                <FavoritePageButton target="favoritePages" label="Favorites"></FavoritePageButton>
+                <MoreButton target="more" label="More"></MoreButton>
             </NavBar>
         </div>
     )

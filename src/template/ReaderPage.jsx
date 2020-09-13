@@ -20,25 +20,28 @@ const ReaderPage = props => {
     useEffect(() => {
         props.showTabs('search', 'home', 'favorite')
 
-        axios.get(`https://charlotte-services.herokuapp.com/mangas/${idManga}/chapters/${idChapter}`).then(res => {
-            setPages(res.data.chapters[0].pages)
-            props.selectManga({...res.data, chapters: []})
-        })
+        loadChapter(chapterIndex)
     }, [])
 
-    function loadChapter(id = chapterIndex + 1) {
+    function loadChapter(index) {
+        axios.get(`https://charlotte-services.herokuapp.com/mangas/${idManga}/chapters/${index}`).then(res => {
+            const chapter = res.data.chapters[0]
+            if(chapter && chapter.pages){
+                setPages(chapter.pages)
+            }
+            props.selectManga({...res.data, chapters: []})
+        })
+    }
+
+    function goToChapter(index) {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
-        
-        window.history.pushState('', '', `/#/manga/${idManga}/chapters/${id}`);
 
-        axios.get(`https://charlotte-services.herokuapp.com/mangas/${idManga}/chapters/${id}`).then(res => {
-            setPages(res.data.chapters[0].pages)
-            // props.selectManga({...res.data, chapters: []})
-        })
+        window.history.pushState('', '', `/#/manga/${idManga}/chapters/${index}`);
 
-        setChapterIndex(id)
+        loadChapter(index)
 
+        setChapterIndex(index)
     }
 
     return (
@@ -50,7 +53,7 @@ const ReaderPage = props => {
                     </LazyLoad>
                 ))}
                 <div className="next-chapter-area">
-                    <button onClick={() => loadChapter(chapterIndex + 1)}>Next Chapter</button>
+                    <button onClick={() => goToChapter(chapterIndex + 1)}>Next Chapter</button>
                 </div>
             </div>
         </div>

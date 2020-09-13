@@ -5,18 +5,26 @@
   border: none;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
   background-color: #151818;
+  color: #c5c5c5;
 }
 
 .icon-button i {
-  color: #fafafa;
-  font-size: 1.3em;
+  font-size: 1.5em;
+  margin-top: 3px;
 }
 .icon-button i.fa-heart {
   color: #ff3434;
+}
+
+.icon-button .label {
+  font-size: 0.75em;
+  margin: 0px;
+  margin-top: 3px;
 }
 
 .icon-button:active {
@@ -27,3 +35,4 @@
 .icon-button:focus {
   outline: none;
 }
+
