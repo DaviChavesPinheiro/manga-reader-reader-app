@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { selectManga } from "../store/actions/mangaActions";
-import { showTabs, setDisplayLabel } from "../store/actions/navBarActions";
+import { showTabs, setDisplayLabel, setHideOnScrool } from "../store/actions/navBarActions";
 import axios from "axios";
 
 import "./ReaderPage.css";
@@ -19,6 +19,7 @@ const ReaderPage = props => {
 
     useEffect(() => {
         props.showTabs('search', 'home', 'manga', 'favorite')
+        props.setHideOnScrool(true)
 
         loadChapter(chapterIndex)
     }, [])
@@ -64,6 +65,6 @@ const ReaderPage = props => {
 
 const mapStateToProps = state => ({ selected: state.manga.selected })
 
-const mapDispatchToPros = dispatch => bindActionCreators({ selectManga, showTabs, setDisplayLabel }, dispatch)
+const mapDispatchToPros = dispatch => bindActionCreators({ selectManga, showTabs, setDisplayLabel, setHideOnScrool }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToPros)(ReaderPage);

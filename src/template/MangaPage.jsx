@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { selectManga } from "../store/actions/mangaActions";
-import { showTabs, setDisplayLabel } from "../store/actions/navBarActions";
+import { showTabs, setDisplayLabel, setHideOnScrool } from "../store/actions/navBarActions";
 import "./MangaPage.css";
 
 import MangaProfile from "../components/manga/MangaProfile";
@@ -14,9 +14,11 @@ const MangaPage = props => {
     useEffect(() => {
         props.showTabs('search', 'home', 'play', 'favorite')
         props.setDisplayLabel(props.mangaSelected.title)
+        props.setHideOnScrool(false)
 
         axios.get(`https://charlotte-services.herokuapp.com/mangas/${idManga}`).then(res => {
             props.selectManga(res.data)
+            props.setDisplayLabel(res.data.title)
         })
     }, [])
 
@@ -29,6 +31,6 @@ const MangaPage = props => {
 
 
 const mapStateToProps = state => ({ mangaSelected: state.manga.selected })
-const mapDispatchToProps = dispatch => bindActionCreators({selectManga, showTabs, setDisplayLabel}, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({selectManga, showTabs, setDisplayLabel, setHideOnScrool}, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(MangaPage);

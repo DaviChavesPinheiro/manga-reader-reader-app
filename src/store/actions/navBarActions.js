@@ -12,3 +12,9 @@ export function setDisplayLabel(label){
         payload: label
     }
 }
+export function setHideOnScrool(value){
+    return {
+        type: 'HIDE_ON_SCROLL_SETTED',
+        payload: value
+    }
+}
