@@ -30,7 +30,7 @@ const NavBar = props => {
     }, [props.hideOnScroll])
 
     return (
-        <div className={`nav-bar ${props.position}`} ref={navBarRef}>
+        <div className={`nav-bar`} ref={navBarRef}>
             <Display></Display>
             <div className="buttons-container">
                 {props.children}

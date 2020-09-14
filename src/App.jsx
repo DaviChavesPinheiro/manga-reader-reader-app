@@ -40,7 +40,7 @@ const App = props => {
                     <Route path="/" component={Home}></Route>
                 </Switch>
             </Content>
-            <NavBar position="bottom">
+            <NavBar>
                 <SearchButton target="search" label="Search"></SearchButton>
                 <HomePageButton target="home" label="Home"></HomePageButton>
                 <MangaPageButton target="manga" label="Manga"></MangaPageButton>

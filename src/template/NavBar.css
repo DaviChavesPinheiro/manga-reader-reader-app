@@ -4,7 +4,7 @@
     left: 0;
     right: 0;
 
-    transition: bottom 0.3s;
+    /* transition: bottom 0.3s; */
 }
 
 .nav-bar .display {
@@ -21,6 +21,8 @@
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
 
+    bottom: 0px;
+
 }
 
 .nav-bar .buttons-container{
@@ -33,11 +35,4 @@
     justify-content: space-around;
     background-color: #1E1E1E;
     
-}
-
-.nav-bar.bottom {
-    bottom: 0px;
-}
-.nav-bar.top {
-    top: 0px;
 }
