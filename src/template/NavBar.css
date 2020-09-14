@@ -5,6 +5,7 @@
     right: 0;
 
     /* transition: bottom 0.3s; */
+    bottom: 0px;
 }
 
 .nav-bar .display {
@@ -21,7 +22,7 @@
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
 
-    bottom: 0px;
+    
 
 }
 
