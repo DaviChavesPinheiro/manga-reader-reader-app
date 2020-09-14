@@ -8,7 +8,7 @@ const HomeHeader = props => {
             <div className="tabs-container">
                 <button className={`tab-links ${props.activeTab === 'All' ? 'active' : ''}`} onClick={() => props.setActiveTab('All')}>ALL</button>
                 <button className={`tab-links ${props.activeTab === 'For You' ? 'active' : ''}`} onClick={() => props.setActiveTab('For You')}>FOR YOU</button>
-                <button className={`tab-links ${props.activeTab === 'Latest' ? 'active' : ''}`} onClick={() => props.setActiveTab('Latest')}>LATEST</button>
+                <button className={`tab-links ${props.activeTab === 'Popular' ? 'active' : ''}`} onClick={() => props.setActiveTab('Popular')}>POPULAR</button>
             </div>
         </header>
     )
