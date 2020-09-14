@@ -4,6 +4,8 @@ import "./MangaProfile.css";
 
 import If from "../../operator/If";
 import IconButton from '../IconButton'
+import FavoriteButton from '../NavBar/FavoriteButton'
+import ReadButton from '../NavBar/ReadButton'
 
 
 const MangaProfile = props => {
@@ -23,9 +25,9 @@ const MangaProfile = props => {
                     <span>{manga.score}</span>
                 </div>
                 <div className="buttons-container">
-                    <IconButton icon="play" label="Resume"></IconButton>
+                    <ReadButton target="read" label="Read"></ReadButton>
                     <IconButton icon="navicon" label={`${manga.chapters_amount} Chapters`}></IconButton>
-                    <IconButton icon="heart-o" label="Favorite"></IconButton>
+                    <FavoriteButton manga={manga} label="Favorite"></FavoriteButton>
                 </div>
             </section>
             <section className="two">

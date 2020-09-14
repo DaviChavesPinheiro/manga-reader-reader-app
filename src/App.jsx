@@ -13,7 +13,7 @@ import ReaderPage from "./template/ReaderPage";
 
 import IconButton from './components/IconButton'
 import MoreButton from "./components/NavBar/MoreButton";
-import PlayButton from "./components/NavBar/PlayButton";
+import ReadButton from "./components/NavBar/ReadButton";
 import SearchButton from "./components/NavBar/SearchButton";
 import HomePageButton from "./components/NavBar/HomePageButton";
 import FavoriteButton from "./components/NavBar/FavoriteButton";
@@ -44,7 +44,7 @@ const App = props => {
                 <SearchButton target="search" label="Search"></SearchButton>
                 <HomePageButton target="home" label="Home"></HomePageButton>
                 <MangaPageButton target="manga" label="Manga"></MangaPageButton>
-                <PlayButton target="play" label="Read"></PlayButton>
+                <ReadButton target="read" label="Read"></ReadButton>
                 <FavoriteButton manga={props.mangaSelected} target="favorite" label="Favorite"></FavoriteButton>
                 <FavoritePageButton target="favoritePages" label="Favorites"></FavoritePageButton>
                 <MoreButton target="more" label="More"></MoreButton>

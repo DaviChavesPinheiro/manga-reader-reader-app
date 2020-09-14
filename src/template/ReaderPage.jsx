@@ -30,7 +30,7 @@ const ReaderPage = props => {
             if (chapter && chapter.pages) {
                 setPages(chapter.pages)
             }
-            props.setDisplayLabel(chapter ? chapter.title : '')
+            props.setDisplayLabel(`${res.data.title} - ${chapter ? chapter.title : ''}`)
             props.selectManga({ ...res.data, chapters: [] })
         })
     }

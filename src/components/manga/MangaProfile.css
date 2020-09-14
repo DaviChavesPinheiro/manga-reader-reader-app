@@ -17,7 +17,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 60vh;
+  height: 60vmax;
 }
 
 .one .banner-container {
@@ -40,7 +40,13 @@
   justify-content: flex-end;
   align-items: center;
 
-  
+}
+.one .main-info h1, .one .main-info span{
+  width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
 }
 
 .one .main-info .img-container{
