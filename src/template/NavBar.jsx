@@ -15,9 +15,9 @@ const NavBar = props => {
             const currentScrollpos = window.pageYOffset
 
             if (prevScrollpos < currentScrollpos) {
-                navBarRef.current.style.bottom = "-70px"
+                navBarRef.current.classList.add("hide")
             } else {
-                navBarRef.current.style.bottom = "0px"
+                navBarRef.current.classList.remove("hide")
             }
 
             prevScrollpos = currentScrollpos

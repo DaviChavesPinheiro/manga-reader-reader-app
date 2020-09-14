@@ -3,9 +3,13 @@
 
     left: 0;
     right: 0;
-
-    /* transition: bottom 0.3s; */
     bottom: 0px;
+    top: auto;
+
+    transition: bottom 0.3s;
+}
+.nav-bar.hide{
+    bottom: -70px;
 }
 
 .nav-bar .display {
