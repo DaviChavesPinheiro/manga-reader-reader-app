@@ -4,14 +4,16 @@ import { bindActionCreators } from "redux";
 import { selectManga } from "../store/actions/mangaActions";
 import { showTabs, setDisplayLabel, setHideOnScrool } from "../store/actions/navBarActions";
 import axios from "axios";
-import LazyLoad from 'react-lazyload';
 import "./Home.css";
 
 
+import If from "../operator/If";
 
-import MangaCard from '../components/MangaCard'
+import HomeHeader from "../components/home/header/HomeHeader";
+import AllMangasPage from "../components/home/AllMangasPage";
 const Home = props => {
     const [mangas, setMangas] = useState([])
+    const [activeHeaderTab, setActiveHeaderTab] = useState('All')
 
     useEffect(() => {
         props.showTabs('search', 'favoritePages', 'more')
@@ -25,18 +27,16 @@ const Home = props => {
         })
     }, [])
 
+    function setHeaderTab(tabTarget) {
+        setActiveHeaderTab(tabTarget)
+    }
+
     return (
         <div className="home">
-            <header></header>
-            <div className="manga-list-container">
-                <ul className="manga-list">
-                    {mangas.map((manga, index) => (
-                        <LazyLoad key={manga._id} height={900}>
-                            <MangaCard manga={manga} rank={index + 1}></MangaCard>
-                        </LazyLoad>
-                    ))}
-                </ul>
-            </div>
+            <HomeHeader setActiveTab={setHeaderTab} activeTab={activeHeaderTab}></HomeHeader>
+            <If test={activeHeaderTab === 'All'}>
+                <AllMangasPage mangas={mangas}></AllMangasPage>
+            </If>
         </div>
     )
 }
