@@ -1,6 +1,47 @@
 .search-bar-container {
-    max-width: 500px;
-    width: 90%;
-    position: absolute;
-    right: 0px;
+  position: fixed;
+
+  left: 0px;
+  padding-right: 5px;
+  z-index: 10;
+
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+
+  
+  background: #1e1e1e;
+  display: none;
+}
+.search-bar-container.active {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-bar-container .search-bar{
+  display: flex;
+}
+
+.search-bar-container input[type="text"] {
+  height: 42px;
+  border-radius: 4px;
+  border: 1px solid #979797;
+  background-color: #1e1e1e;
+  color: #bebebe;
+  -webkit-transition: width 1s ease-in-out;
+  -moz-transition: width 1s ease-in-out;
+  -o-transition: width 1s ease-in-out;
+  transition: width 1s ease-in-out;
+  width: 10px;
+}
+
+.search-bar-container.active input[type="text"] {
+  width: calc(100vw - 55px);
+  outline: none;
+}
+
+.search-bar-container .manga-list-container ul {
+  margin: 0px;
+  padding: 5px 5px;
+  list-style: none;
+  color: #bebebe;
 }
