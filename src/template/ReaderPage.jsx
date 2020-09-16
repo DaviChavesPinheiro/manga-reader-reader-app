@@ -51,7 +51,9 @@ const ReaderPage = props => {
         axios.get(`https://charlotte-services.herokuapp.com/mangas/${idManga}/chapters/${index}`).then(res => {
             const chapter = res.data.chapters[0]
             if (chapter && chapter.pages) {
-                setChapters([...chapters, {index: index, pages: chapter.pages}])
+                let chaptersToAdd = [...chapters]
+                if(chaptersToAdd.length > 1) chaptersToAdd.shift()
+                setChapters([...chaptersToAdd, {index: index, pages: chapter.pages}])
             }
             props.setDisplayLabel(`${res.data.title} - ${chapter ? chapter.title : ''}`)
             props.selectManga({ ...res.data, chapters: [] })
