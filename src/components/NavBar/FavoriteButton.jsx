@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import useFavoriteManga from "../../hooks/useFavoriteManga";
 
@@ -17,7 +17,9 @@ const FavoriteButton = props => {
     return (
         <If test={visible}>
             <div className="favorite-button" onClick={toggleFavoriteManga}>
-                <IconButton icon={isFavoritedManga(props.manga._id) ? "heart" : "heart-o"} label={isFavoritedManga(props.manga._id) ? props.label + 'd' :  props.label}></IconButton>
+                <IconButton icon={isFavoritedManga(props.manga._id) ? "heart" : "heart-o"}
+                 label={isFavoritedManga(props.manga._id) ? props.label + 'd' :  props.label}
+                 color={isFavoritedManga(props.manga._id) ? "red" : undefined}></IconButton>
             </div>
         </If>
     )

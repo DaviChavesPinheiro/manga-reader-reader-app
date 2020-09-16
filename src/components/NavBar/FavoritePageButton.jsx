@@ -12,7 +12,7 @@ const FavoritePageButton = props => {
         <If test={visible}>
             <Link to="/mangas/favorites">
                 <div className="favorite-page-button">
-                    <IconButton icon="heart-o" label={props.label}></IconButton>
+                    <IconButton icon="heart" label={props.label} color="#c5c5c5"></IconButton>
                 </div>
             </Link>
         </If>
