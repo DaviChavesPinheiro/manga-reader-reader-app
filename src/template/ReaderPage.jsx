@@ -72,13 +72,19 @@ const ReaderPage = props => {
         });
     }
 
+    function onLoad(event) {
+        console.log(event.target.nextSibling)
+        event.target.nextSibling.remove()
+    }
+
     return (
         <div className="reader-page">
             {chapters.map((chapter) => (
                 <div className="reader-pages-container" key={chapter.index} id={`chapter-${chapter.index}`}>
                     {chapter.pages.map((page) => (
                         <LazyLoad key={page} height={900}>
-                            <img src={page}></img>
+                            <img src={page} onLoad={onLoad}></img>
+                            <i className="fa fa-circle-o-notch loader"></i>
                         </LazyLoad>
                     ))}
                     <div className="next-chapter-area" ref={nextChapterRef}>
