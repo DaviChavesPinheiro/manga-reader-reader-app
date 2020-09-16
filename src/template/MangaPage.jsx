@@ -15,12 +15,15 @@ const MangaPage = props => {
         props.showTabs('search', 'home', 'read')
         props.setDisplayLabel(props.mangaSelected.title)
         props.setHideOnScrool(false)
+    }, [])
 
+
+    useEffect(() => {
         axios.get(`https://charlotte-services.herokuapp.com/mangas/${idManga}`).then(res => {
             props.selectManga(res.data)
             props.setDisplayLabel(res.data.title)
         })
-    }, [])
+    }, [idManga])
 
     return (
         <div className="manga-page">

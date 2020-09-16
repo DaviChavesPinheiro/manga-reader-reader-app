@@ -1,5 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Link } from "react-router-dom";
+import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+import { setVisibility } from "../store/actions/searchBarActions";
+import { selectManga } from "../store/actions/mangaActions";
 import "./SearchBar.css";
 import axios from "axios";
 
@@ -21,6 +25,11 @@ const SearchBar = props => {
         })
     }, [])
 
+    function onSelectManga(manga) {
+        props.setVisibility(!props.show)
+        props.selectManga(manga)
+    }
+
     return (
         <div className={`search-bar-container ${props.show ? 'active' : ''}`}>
             <div className="search-bar">
@@ -31,7 +40,7 @@ const SearchBar = props => {
                 <div className="manga-list-container">
                     <ul>
                         {mangas.map(manga => (
-                            <li key={manga._id}>{manga.title}</li>
+                            <Link to={`/manga/${manga._id}`} onClick={() => onSelectManga(manga)} key={manga._id}><li>{manga.title}</li></Link>
                         ))}
                     </ul>
                 </div>
@@ -42,4 +51,6 @@ const SearchBar = props => {
 
 const mapStateToProps = state => ({ show: state.searchBar.show })
 
-export default connect(mapStateToProps)(SearchBar);
+const mapDispatchToProps = dispatch => bindActionCreators({selectManga, setVisibility}, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

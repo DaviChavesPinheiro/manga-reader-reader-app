@@ -11,6 +11,9 @@
   
   background: #1e1e1e;
   display: none;
+
+  max-height: calc(100vh - 70px);
+  overflow: scroll;
 }
 .search-bar-container.active {
   display: flex;
@@ -39,9 +42,20 @@
   outline: none;
 }
 
+.search-bar-container .manga-list-container {
+  padding: 5px 5px 5px 0px;
+}
+
 .search-bar-container .manga-list-container ul {
   margin: 0px;
-  padding: 5px 5px;
+  padding: 5px 10px;
   list-style: none;
-  color: #bebebe;
 }
+.search-bar-container .manga-list-container li {
+  padding: 8px 0px;
+  font-size: 1.2em;
+  color: #FEFEFE;
+  border-bottom: 1px solid #646464;
+}
+
+

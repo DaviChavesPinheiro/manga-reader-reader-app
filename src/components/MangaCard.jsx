@@ -8,7 +8,7 @@ import "./MangaCard.css";
 
 const MangaCard = props => {
     const manga = props.manga
-    function onClick(event) {
+    function onClick() {
         props.selectManga(manga)
     }
     
