@@ -9,11 +9,11 @@ import If from '../operator/If'
 const SearchBar = props => {
     const [mangas, setMangas] = useState([])
     const inputRef = useRef()
-    
+
     useEffect(() => {
         inputRef.current.addEventListener("keydown", ({ key }) => {
             if (key === "Enter") {
-                axios.get(`https://charlotte-services.herokuapp.com/mangas/?find=${inputRef.current.value}`).then(res => {
+                axios.get(`https://charlotte-services.herokuapp.com/mangas/?find=${inputRef.current.value}&&select=title`).then(res => {
                     setMangas(res.data)
                     console.log(res.data)
                 })
