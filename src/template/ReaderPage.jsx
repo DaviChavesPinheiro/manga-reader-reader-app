@@ -15,34 +15,30 @@ import If from "../operator/If";
 const ReaderPage = props => {
     const { idManga, idChapter } = useParams()
     const [chapters, setChapters] = useState([])
-    const [pages, setPages] = useState([])
     const [chapterIndex, setChapterIndex] = useState(parseInt(idChapter))
-    const nextChapterRef = useRef()
-
-
+    let observer = new IntersectionObserver(onIntersectionObserver, {
+        threshold: 0.25
+    });
     useEffect(() => {
         props.showTabs('search', 'home', 'manga', 'favorite')
         props.setHideOnScrool(true)
 
         loadChapter(chapterIndex)
 
-        let observer = new IntersectionObserver(onArriveOnEnd, {
-            threshold: 0.25
-        });
-        // observer.observe(nextChapterRef.current)
-
         if (window.history.scrollRestoration) {
             window.history.scrollRestoration = 'manual';
         }
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
-
     }, [])
+
+    useEffect(() => {
+        if(chapters.length == 0) return
+        observer.observe(document.querySelector(`#chapter-${chapters[chapters.length - 1].index} .next-chapter-area`))
+    }, [chapters])
 
 
     function goToChapter(index) {
-        // document.body.scrollTop = 0;
-        // document.documentElement.scrollTop = 0;
 
         window.history.pushState('', '', `/#/manga/${idManga}/chapters/${index}`);
 
@@ -55,7 +51,6 @@ const ReaderPage = props => {
         axios.get(`https://charlotte-services.herokuapp.com/mangas/${idManga}/chapters/${index}`).then(res => {
             const chapter = res.data.chapters[0]
             if (chapter && chapter.pages) {
-                setPages(chapter.pages)
                 setChapters([...chapters, {index: index, pages: chapter.pages}])
             }
             props.setDisplayLabel(`${res.data.title} - ${chapter ? chapter.title : ''}`)
@@ -63,17 +58,16 @@ const ReaderPage = props => {
         })
     }
 
-    function onArriveOnEnd(entries, observer) {
+    function onIntersectionObserver(entries, observer) {
         entries.forEach(entry => {
             if (!entry.isIntersecting) return
             console.log(entry)
-
+            goToChapter(chapterIndex + 1)
             observer.unobserve(entry.target)
         });
     }
 
     function onLoad(event) {
-        console.log(event.target.nextSibling)
         event.target.nextSibling.remove()
     }
 
@@ -87,11 +81,8 @@ const ReaderPage = props => {
                             <i className="fa fa-circle-o-notch loader"></i>
                         </LazyLoad>
                     ))}
-                    <div className="next-chapter-area" ref={nextChapterRef}>
+                    <div className="next-chapter-area">
                         <h3>End Of Chapter №{chapter.index + 1}</h3>
-                        <If test={chapters[chapter.index + 1] === undefined}>
-                            <button onClick={() => goToChapter(chapter.index + 1)}>Load Next Chapter</button>
-                        </If>
                     </div>
                 </div>
             ))}

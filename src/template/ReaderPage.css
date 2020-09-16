@@ -19,7 +19,7 @@
     color: #c5c5c5;
     animation: spin 2s linear infinite;
     font-size: 2em;
-    margin: 10px 0px;
+    margin: 100px 0px;
 }
 
 @keyframes spin {
