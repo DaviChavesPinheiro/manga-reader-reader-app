@@ -1,32 +1,59 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
 import LazyLoad from 'react-lazyload';
 import MangaCard from '../MangaCard'
 
 const AllMangasPage = props => {
-    const [mangas, setMangas] = useState([])
-
+    const [pages, setPages] = useState([])
+    const [pageIndex, setPageIndex] = useState(1)
+    let observer = new IntersectionObserver(onIntersectionObserver, {
+        threshold: 0.05
+    });
     useEffect(() => {
-        if (props.show === true && mangas.length == 0) {
-            axios.get(`https://charlotte-services.herokuapp.com/mangas/?sort=-score`).then(res => {
-                setMangas(res.data)
-                // if (Object.keys(props.selected).length === 0)
-                //     props.selectManga(res.data[0])
-                console.log("MANGA ALL GETTED", props.show)
-            })
+        if (props.show === true) {
+            loadPage(pageIndex)
         }
-    }, [props.show])
+    }, [])
+    useEffect(() => {
+        if(pages.length == 0) return
+        observer.observe(document.querySelector(`#page-${pages[pages.length - 1].index} .end-area`))
+    }, [pages])
+
+    function onIntersectionObserver(entries, observer) {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return
+            console.log(entry)
+            loadPage(pageIndex + 1)
+            setPageIndex(pageIndex + 1)
+            observer.unobserve(entry.target)
+        });
+    }
+
+    function loadPage(page) {
+        console.log("loadmangas", page)
+        axios.get(`https://charlotte-services.herokuapp.com/mangas/?sort=-score&&page=${page}`).then(res => {
+            if(res.data && res.data.length > 0){
+                setPages([...pages, {index: page, mangas: res.data}])
+            }
+            
+        })
+    }
 
     return (
         <div className={`all manga-list-container ${props.show ? '' : 'hidden'}`}>
-            <ul className="manga-list">
-                {mangas.map((manga, index) => (
-                    <LazyLoad key={manga._id} height={900}>
-                        <MangaCard manga={manga} rank={index + 1}></MangaCard>
-                    </LazyLoad>
-                ))}
-            </ul>
+            {pages.map(page => (
+                <ul className="manga-list" key={page.index} id={`page-${page.index}`}>
+                    {page.mangas.map((manga, index) => (
+                        <LazyLoad key={manga._id} height={900}>
+                            <MangaCard manga={manga} rank={index + 1}></MangaCard>
+                        </LazyLoad>
+                    ))}
+                    <div className="end-area">
+                        {/* <button onClick={() => loadMangas(page + 1)}>Load Next Mangas</button> */}
+                    </div>
+                </ul>
+            ))}
         </div>
     )
 }
