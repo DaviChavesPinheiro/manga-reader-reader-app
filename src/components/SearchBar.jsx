@@ -25,6 +25,10 @@ const SearchBar = props => {
         })
     }, [])
 
+    useEffect(() => {
+        inputRef.current.focus()
+    }, [props.show])
+
     function onSelectManga(manga) {
         props.setVisibility(!props.show)
         props.selectManga(manga)

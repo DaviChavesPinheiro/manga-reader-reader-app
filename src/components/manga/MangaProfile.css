@@ -90,6 +90,11 @@
   font-size: 1.1em;
   color: #9E9E9E;
 }
+.two h2{
+  color: #FEFEFE;
+  font-size: 1.2em;
+  margin-bottom: 5px;
+}
 .three {
   padding: 10px 10px;
   font-size: 1.1em;

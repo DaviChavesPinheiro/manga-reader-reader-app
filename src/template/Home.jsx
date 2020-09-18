@@ -15,7 +15,7 @@ const Home = props => {
     const [activeHeaderTab, setActiveHeaderTab] = useState('All')
 
     useEffect(() => {
-        props.showTabs('search', 'favoritePages', 'more')
+        props.showTabs('search', 'favoritePages', 'recentPages', 'more')
         props.setDisplayLabel('Home')
         props.setHideOnScrool(false)
 

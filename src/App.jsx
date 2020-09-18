@@ -7,6 +7,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Home from "./template/Home";
 import MangaPage from "./template/MangaPage";
 import FavoritePage from "./template/FavoritePage";
+import RecentPage from "./template/RecentPage";
 import NavBar from "./template/NavBar";
 import Content from "./template/Content";
 import ReaderPage from "./template/ReaderPage";
@@ -18,6 +19,7 @@ import SearchButton from "./components/NavBar/SearchButton";
 import HomePageButton from "./components/NavBar/HomePageButton";
 import FavoriteButton from "./components/NavBar/FavoriteButton";
 import MangaPageButton from "./components/NavBar/MangaPageButton";
+import RecentPageButton from "./components/NavBar/RecentPageButton";
 import FavoritePageButton from "./components/NavBar/FavoritePageButton";
 
 const App = props => {
@@ -35,6 +37,7 @@ const App = props => {
             <Content>
                 <Switch>
                     <Route path="/mangas/favorites" component={FavoritePage}></Route>
+                    <Route path="/mangas/recent" component={RecentPage}></Route>
                     <Route path="/manga/:idManga/chapters/:idChapter" component={ReaderPage}></Route>
                     <Route path="/manga/:idManga" component={MangaPage}></Route>
                     <Route path="/" component={Home}></Route>
@@ -47,6 +50,7 @@ const App = props => {
                 <ReadButton target="read" label="Read"></ReadButton>
                 <FavoriteButton manga={props.mangaSelected} target="favorite" label="Favorite"></FavoriteButton>
                 <FavoritePageButton target="favoritePages" label="Favorites"></FavoritePageButton>
+                <RecentPageButton target="recentPages" label="Recent"></RecentPageButton>
                 <MoreButton target="more" label="More"></MoreButton>
             </NavBar>
         </div>

@@ -5,14 +5,14 @@ import { connect } from "react-redux";
 import IconButton from "../IconButton";
 import If from "../../operator/If";
 
-const FavoritePageButton = props => {
+const RecentPageButton = props => {
     const visible = props.tabsVisible[props.target] === true
 
     return (
         <If test={visible}>
-            <Link to="/mangas/favorites">
-                <div className="favorite-page-button">
-                    <IconButton icon="heart" label={props.label} color="#c5c5c5"></IconButton>
+            <Link to="/mangas/recent">
+                <div className="recent-page-button">
+                    <IconButton icon="history" label={props.label}></IconButton>
                 </div>
             </Link>
         </If>
@@ -21,4 +21,4 @@ const FavoritePageButton = props => {
 
 const mapStateToProps = state => ({ tabsVisible: state.navBar.tabsVisible })
 
-export default connect(mapStateToProps)(FavoritePageButton);
+export default connect(mapStateToProps)(RecentPageButton);

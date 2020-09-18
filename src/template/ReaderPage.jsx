@@ -40,7 +40,8 @@ const ReaderPage = props => {
         const chaptersReaded = {}
         if(chapters.length)
             chaptersReaded[chapters[chapters.length - 1].title] = true
-        saveManga({_id: idManga, chaptersReaded})
+        // console.log("chapterIndex", chapterIndex)
+        saveManga({_id: idManga, chaptersReaded, lastChapter: chapterIndex})
     }, [chapters])
 
 

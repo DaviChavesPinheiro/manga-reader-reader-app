@@ -6,30 +6,20 @@ export default function useMangaInfo() {
     const saveManga = (m) => {
         const newManga = {
             _id: m._id,
-            chaptersReaded: m.chaptersReaded || {}
+            chaptersReaded: m.chaptersReaded || {},
+            lastChapter: m.lastChapter || 0
         }
         
-        console.log(mangasInfo)
+        // console.log(mangasInfo)
         const manga = mangasInfo[m._id] || {_id: m._id, chaptersReaded: {}}
-        // console.log("mangasInfo", mangasInfo[m._id].chaptersReaded)
-        console.log("manga", manga.chaptersReaded)
+
+        // console.log("manga", manga.chaptersReaded)
         manga.chaptersReaded = {...manga.chaptersReaded, ...newManga.chaptersReaded}
+        manga.lastChapter = m.lastChapter || 0
+        manga.lastViewedDate = m.lastViewedDate || Date.now()
         mangasInfo[manga._id] = manga
         setMangasInfo(mangasInfo)
-        // setMangasInfo(prevMangas => ({...prevMangas, manga}));
-
-        // if(!mangasInfo[m._id]){
-        //     const mangaToAdd = {}
-        //     mangaToAdd[m._id] = newManga
-        //     setMangasInfo(prevMangas => ({...prevMangas, ...mangaToAdd}));
-        // } else {
-        //     setMangasInfo(mangasInfo.map(manga => {
-        //         if(manga._id === newManga._id){
-        //             manga = {...newManga, chaptersReaded: {...manga.chaptersReaded, ...newManga.chaptersReaded}}
-        //         }
-        //         return manga
-        //     }))
-        // }
+        
     }
 
     return {

@@ -12,10 +12,8 @@ import useMangaInfo from "../../hooks/useMangaInfo";
 const MangaProfile = props => {
     const manga = props.manga
     const {mangasInfo} = useMangaInfo()
-    console.log(mangasInfo)
 
     function isChapterAlreadyReaded(chapterTitle) {
-        // console.log(mangasInfo[manga._id], chapterTitle)
         return mangasInfo && mangasInfo[manga._id] && mangasInfo[manga._id]['chaptersReaded'] && mangasInfo[manga._id]["chaptersReaded"][chapterTitle]
     }
     return (
@@ -41,7 +39,8 @@ const MangaProfile = props => {
             <section className="two">
                 <If test={manga.description !== undefined}>
                     <div className="description">
-                        <p>Description: {manga.description}</p>
+                        <h2>Description</h2>
+                        <p>{manga.description}</p>
                     </div>
                 </If>
 
