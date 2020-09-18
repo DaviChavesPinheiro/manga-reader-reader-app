@@ -6,10 +6,18 @@ import If from "../../operator/If";
 import IconButton from '../IconButton'
 import FavoriteButton from '../NavBar/FavoriteButton'
 import ReadButton from '../NavBar/ReadButton'
+import useMangaInfo from "../../hooks/useMangaInfo";
 
 
 const MangaProfile = props => {
     const manga = props.manga
+    const {mangasInfo} = useMangaInfo()
+    console.log(mangasInfo)
+
+    function isChapterAlreadyReaded(chapterTitle) {
+        // console.log(mangasInfo[manga._id], chapterTitle)
+        return mangasInfo && mangasInfo[manga._id] && mangasInfo[manga._id]['chaptersReaded'] && mangasInfo[manga._id]["chaptersReaded"][chapterTitle]
+    }
     return (
         <div className="manga-profile">
 
@@ -39,16 +47,19 @@ const MangaProfile = props => {
 
             </section>
             <section className="three">
-            <If test={manga.chapters !== undefined}>
-                <div className="chapters-list">
-                    <h2>Chapters</h2>
-                    <ul>
-                        {manga.chapters ? manga.chapters.map((chapter, index) => (
-                            <Link key={index} to={`/manga/${manga._id}/chapters/${index}`}><li>{chapter.title}</li></Link>
-                        )) : null}
-                    </ul>
-                </div>
-            </If>
+                <If test={manga.chapters !== undefined}>
+                    <div className="chapters-list">
+                        <h2>Chapters</h2>
+                        <ul>
+                            {manga.chapters ? manga.chapters.map((chapter, index) => (
+                                <li key={index} className={`${isChapterAlreadyReaded(chapter.title) ? 'readed' : ''}`}>
+                                    <Link to={`/manga/${manga._id}/chapters/${index}`}>{chapter.title}</Link>
+                                    <button><i className={`fa fa-check`}></i></button>
+                                </li>
+                            )) : null}
+                        </ul>
+                    </div>
+                </If>
             </section>
         </div>
     )

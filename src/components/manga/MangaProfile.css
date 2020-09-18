@@ -105,7 +105,26 @@
 }
 .three li{
   padding: 0.5em 0px;
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
 }
-.three a{
+.three li a{
   color: #FEFEFE;
+  flex: 1;
 }
+.three li.readed a{
+  color: #707070;
+  flex: 1;
+}
+
+.three li i{
+  color: transparent;
+  font-size: 1.1em;
+}
+.three li.readed i{
+  color: #9E9E9E;
+}
+
+
+

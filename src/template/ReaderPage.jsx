@@ -10,12 +10,14 @@ import "./ReaderPage.css";
 
 import LazyLoad from 'react-lazyload';
 import If from "../operator/If";
+import useMangaInfo from "../hooks/useMangaInfo";
 
 
 const ReaderPage = props => {
     const { idManga, idChapter } = useParams()
     const [chapters, setChapters] = useState([])
     const [chapterIndex, setChapterIndex] = useState(parseInt(idChapter))
+    const { saveManga } = useMangaInfo()
     let observer = new IntersectionObserver(onIntersectionObserver, {
         threshold: 0.25
     });
@@ -33,8 +35,12 @@ const ReaderPage = props => {
     }, [])
 
     useEffect(() => {
-        if(chapters.length == 0) return
+        if (chapters.length == 0) return
         observer.observe(document.querySelector(`#chapter-${chapters[chapters.length - 1].index} .next-chapter-area`))
+        const chaptersReaded = {}
+        if(chapters.length)
+            chaptersReaded[chapters[chapters.length - 1].title] = true
+        saveManga({_id: idManga, chaptersReaded})
     }, [chapters])
 
 
@@ -52,8 +58,11 @@ const ReaderPage = props => {
             const chapter = res.data.chapters[0]
             if (chapter && chapter.pages) {
                 let chaptersToAdd = [...chapters]
-                if(chaptersToAdd.length > 1) chaptersToAdd.shift()
-                setChapters([...chaptersToAdd, {index: index, pages: chapter.pages}])
+                if (chaptersToAdd.length > 1) chaptersToAdd.shift()
+                setChapters([...chaptersToAdd, {title: chapter.title, index: index, pages: chapter.pages }])
+                // const chaptersReaded = {}
+                // chaptersReaded[chapter.title] = true
+                // saveManga({...res.data, chaptersReaded})
             }
             props.setDisplayLabel(`${res.data.title} - ${chapter ? chapter.title : ''}`)
             props.selectManga({ ...res.data, chapters: [] })
