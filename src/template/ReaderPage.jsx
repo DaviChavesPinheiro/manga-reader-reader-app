@@ -11,6 +11,7 @@ import "./ReaderPage.css";
 import LazyLoad from 'react-lazyload';
 import If from "../operator/If";
 import useMangaInfo from "../hooks/useMangaInfo";
+import Loading from "../components/utils/Loading";
 
 
 const ReaderPage = props => {
@@ -61,9 +62,7 @@ const ReaderPage = props => {
                 let chaptersToAdd = [...chapters]
                 if (chaptersToAdd.length > 1) chaptersToAdd.shift()
                 setChapters([...chaptersToAdd, {title: chapter.title, index: index, pages: chapter.pages }])
-                // const chaptersReaded = {}
-                // chaptersReaded[chapter.title] = true
-                // saveManga({...res.data, chaptersReaded})
+    
             }
             props.setDisplayLabel(`${res.data.title} - ${chapter ? chapter.title : ''}`)
             props.selectManga({ ...res.data, chapters: [] })
@@ -73,7 +72,7 @@ const ReaderPage = props => {
     function onIntersectionObserver(entries, observer) {
         entries.forEach(entry => {
             if (!entry.isIntersecting) return
-            console.log(entry)
+            // console.log(entry)
             goToChapter(chapterIndex + 1)
             observer.unobserve(entry.target)
         });
@@ -90,7 +89,7 @@ const ReaderPage = props => {
                     {chapter.pages.map((page) => (
                         <LazyLoad key={page} height={900} offset={500}>
                             <img src={page} onLoad={onLoad}></img>
-                            <i className="fa fa-circle-o-notch loader"></i>
+                            <Loading></Loading>
                         </LazyLoad>
                     ))}
                     <div className="next-chapter-area">

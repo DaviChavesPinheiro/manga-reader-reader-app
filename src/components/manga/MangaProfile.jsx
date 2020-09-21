@@ -7,6 +7,7 @@ import IconButton from '../IconButton'
 import FavoriteButton from '../NavBar/FavoriteButton'
 import ReadButton from '../NavBar/ReadButton'
 import useMangaInfo from "../../hooks/useMangaInfo";
+import Loading from "../utils/Loading";
 
 
 const MangaProfile = props => {
@@ -43,6 +44,9 @@ const MangaProfile = props => {
                         <p>{manga.description}</p>
                     </div>
                 </If>
+                <If test={manga.description === undefined}>
+                    <Loading></Loading>
+                </If>
 
             </section>
             <section className="three">
@@ -58,6 +62,9 @@ const MangaProfile = props => {
                             )) : null}
                         </ul>
                     </div>
+                </If>
+                <If test={manga.chapters === undefined}>
+                    <Loading></Loading>
                 </If>
             </section>
         </div>

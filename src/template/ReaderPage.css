@@ -15,12 +15,6 @@
     max-width: 100%;
 }
 
-.reader-pages-container .loader {
-    color: #c5c5c5;
-    animation: spin 2s linear infinite;
-    font-size: 2em;
-    margin: 100px 0px;
-}
 
 @keyframes spin {
   0% { transform: rotate(0deg); }

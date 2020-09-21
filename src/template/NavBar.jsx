@@ -9,7 +9,6 @@ const NavBar = props => {
     const navBarRef = useRef()
     useEffect(() => {
         const hideOnScroll = () => {
-            console.log(prevScrollpos, window.pageYOffset, yUpScrollAmount)
             if(!props.hideOnScroll) return
 
             const currentScrollpos = window.pageYOffset
