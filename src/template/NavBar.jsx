@@ -4,23 +4,28 @@ import Display from "../components/NavBar/Display";
 import "./NavBar.css";
 
 const NavBar = props => {
-    // Colocar o hideOnScroll so no readerPage
     var prevScrollpos = window.pageYOffset
-    
+    var yUpScrollAmount = 0
     const navBarRef = useRef()
     useEffect(() => {
         const hideOnScroll = () => {
+            console.log(prevScrollpos, window.pageYOffset, yUpScrollAmount)
             if(!props.hideOnScroll) return
 
             const currentScrollpos = window.pageYOffset
 
-            if (prevScrollpos < currentScrollpos) {
+            if (currentScrollpos > prevScrollpos) {
                 navBarRef.current.classList.add("hide")
+                yUpScrollAmount = 0
             } else {
-                navBarRef.current.classList.remove("hide")
+                yUpScrollAmount += prevScrollpos - currentScrollpos
+                if(yUpScrollAmount >= 150){
+                    navBarRef.current.classList.remove("hide")
+                }
             }
 
             prevScrollpos = currentScrollpos
+                
         }
         window.addEventListener("scroll", hideOnScroll)
 

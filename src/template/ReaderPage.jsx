@@ -88,7 +88,7 @@ const ReaderPage = props => {
             {chapters.map((chapter) => (
                 <div className="reader-pages-container" key={chapter.index} id={`chapter-${chapter.index}`}>
                     {chapter.pages.map((page) => (
-                        <LazyLoad key={page} height={900}>
+                        <LazyLoad key={page} height={900} offset={500}>
                             <img src={page} onLoad={onLoad}></img>
                             <i className="fa fa-circle-o-notch loader"></i>
                         </LazyLoad>
