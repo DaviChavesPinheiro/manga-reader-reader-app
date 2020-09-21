@@ -8,6 +8,8 @@ import "./FavoritePage.css";
 
 
 import MangaCard from "../components/MangaCard";
+import If from "../operator/If";
+import Loading from "../components/utils/Loading";
 
 const FavoritePage = props => {
     const { favoritedMangas } = useFavoriteManga()
@@ -22,13 +24,16 @@ const FavoritePage = props => {
                 setFavoritedsMangasList(favMangas)
                 props.setDisplayLabel(`${favMangas.length} Favorites`)
             })
-        } 
+        }
     }, [])
 
     return (
         <div className="favorite-page">
             <h1>Favorites</h1>
             <div className="manga-list-wrapper">
+                <If test={!favoritedMangasList.length}>
+                    <Loading></Loading>
+                </If>
                 <ul className="manga-list">
                     {favoritedMangasList.map(manga => <MangaCard key={manga._id} manga={manga}></MangaCard>)}
                 </ul>
@@ -37,6 +42,6 @@ const FavoritePage = props => {
     )
 }
 
-const mapDispatchToPros = dispatch => bindActionCreators({showTabs, setDisplayLabel, setHideOnScrool}, dispatch)
+const mapDispatchToPros = dispatch => bindActionCreators({ showTabs, setDisplayLabel, setHideOnScrool }, dispatch)
 
 export default connect(null, mapDispatchToPros)(FavoritePage);

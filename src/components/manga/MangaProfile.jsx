@@ -57,7 +57,6 @@ const MangaProfile = props => {
                             {manga.chapters ? manga.chapters.map((chapter, index) => (
                                 <li key={index} className={`${isChapterAlreadyReaded(chapter.title) ? 'readed' : ''}`}>
                                     <Link to={`/manga/${manga._id}/chapters/${index}`}>{chapter.title}</Link>
-                                    <button><i className={`fa fa-check`}></i></button>
                                 </li>
                             )) : null}
                         </ul>

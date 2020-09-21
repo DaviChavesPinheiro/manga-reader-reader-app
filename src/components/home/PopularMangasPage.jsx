@@ -3,6 +3,8 @@ import axios from "axios";
 
 import LazyLoad from 'react-lazyload';
 import MangaCard from '../MangaCard'
+import If from "../../operator/If";
+import Loading from "../utils/Loading";
 
 const PopularMangasPage = props => {
     const [mangas, setMangas] = useState([])
@@ -19,6 +21,9 @@ const PopularMangasPage = props => {
 
     return (
         <div className={`popular manga-list-container ${props.show ? '' : 'hidden'}`}>
+            <If test={!mangas.length}>
+                <Loading></Loading>
+            </If>
             <ul className="manga-list">
                 {mangas.map((manga, index) => (
                     <LazyLoad key={manga._id} height={900}>

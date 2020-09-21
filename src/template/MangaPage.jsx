@@ -15,6 +15,12 @@ const MangaPage = props => {
         props.showTabs('search', 'home', 'read')
         props.setDisplayLabel(props.mangaSelected.title)
         props.setHideOnScrool(false)
+        
+        if (window.history.scrollRestoration) {
+            window.history.scrollRestoration = 'manual';
+        }
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
     }, [])
 
 

@@ -36,6 +36,7 @@
   -o-transition: width 1s ease-in-out;
   transition: width 1s ease-in-out;
   width: 10px;
+  padding: 0px 7px;
 }
 
 .search-bar-container.active input[type="text"] {

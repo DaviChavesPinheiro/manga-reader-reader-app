@@ -20,7 +20,8 @@ const ReaderPage = props => {
     const [chapterIndex, setChapterIndex] = useState(parseInt(idChapter))
     const { saveManga } = useMangaInfo()
     let observer = new IntersectionObserver(onIntersectionObserver, {
-        threshold: 0.25
+        threshold: 0.25,
+        rootMargin: "2000px"
     });
     useEffect(() => {
         props.showTabs('search', 'home', 'manga', 'favorite')
@@ -59,10 +60,7 @@ const ReaderPage = props => {
         axios.get(`https://charlotte-services.herokuapp.com/mangas/${idManga}/chapters/${index}`).then(res => {
             const chapter = res.data.chapters[0]
             if (chapter && chapter.pages) {
-                let chaptersToAdd = [...chapters]
-                if (chaptersToAdd.length > 1) chaptersToAdd.shift()
-                setChapters([...chaptersToAdd, {title: chapter.title, index: index, pages: chapter.pages }])
-    
+                setChapters([...chapters.slice(chapter.length - 1), {title: chapter.title, index: index, pages: chapter.pages }])
             }
             props.setDisplayLabel(`${res.data.title} - ${chapter ? chapter.title : ''}`)
             props.selectManga({ ...res.data, chapters: [] })
@@ -72,7 +70,7 @@ const ReaderPage = props => {
     function onIntersectionObserver(entries, observer) {
         entries.forEach(entry => {
             if (!entry.isIntersecting) return
-            // console.log(entry)
+            console.log(entry)
             goToChapter(chapterIndex + 1)
             observer.unobserve(entry.target)
         });
@@ -84,6 +82,9 @@ const ReaderPage = props => {
 
     return (
         <div className="reader-page">
+            <If test={!chapters.length}>
+                <Loading></Loading>
+            </If>
             {chapters.map((chapter) => (
                 <div className="reader-pages-container" key={chapter.index} id={`chapter-${chapter.index}`}>
                     {chapter.pages.map((page) => (
@@ -93,7 +94,7 @@ const ReaderPage = props => {
                         </LazyLoad>
                     ))}
                     <div className="next-chapter-area">
-                        <h3>End Of Chapter №{chapter.index + 1}</h3>
+                        <h3>End Of {chapter.title || "This Chapter"}</h3>
                     </div>
                 </div>
             ))}

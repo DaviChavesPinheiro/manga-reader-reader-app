@@ -7,6 +7,8 @@ import axios from 'axios'
 import "./RecentPage.css";
 
 import MangaCardHorizontal from "../components/MangaCardHorizontal";
+import If from "../operator/If";
+import Loading from "../components/utils/Loading";
 
 const RecentPage = props => {
     const { mangasInfo } = useMangaInfo()
@@ -75,8 +77,11 @@ const RecentPage = props => {
         <div className="recent-page">
             <h1>Recent</h1>
             <div className="manga-list-wrapper">
+                <If test={!recentMangasList.length}>
+                    <Loading></Loading>
+                </If>
                 <ul className="manga-list">
-                    {recentMangasList.map(manga => <MangaCardHorizontal key={manga._id} manga={{...manga, lastViewedDate: timeSince(manga.lastViewedDate)}}></MangaCardHorizontal>)}
+                    {recentMangasList.map(manga => <MangaCardHorizontal key={manga._id} manga={{ ...manga, lastViewedDate: timeSince(manga.lastViewedDate) }}></MangaCardHorizontal>)}
                 </ul>
             </div>
         </div>
