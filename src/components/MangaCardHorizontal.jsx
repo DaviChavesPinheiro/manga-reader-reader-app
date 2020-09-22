@@ -11,14 +11,14 @@ const MangaCardHorizontal = props => {
     function onClick() {
         props.selectManga(manga)
     }
-    
+
     return (
         <Link to={`/manga/${manga._id}`} onClick={onClick}>
             <div className="manga-card-horizontal">
                 <img src={manga.image_url} alt="Manga" />
                 <div className="info">
                     <h3 className="title">{manga.title}</h3>
-                    <span className="sub-info">Chapters: {manga.chapters_amount} | Score: {manga.score}</span>
+                    <span className="sub-info">{manga.recentChapter ? manga.recentChapter.title : ''}</span>
                     <span className="sub-info">{manga.lastViewedDate}</span>
                 </div>
             </div>

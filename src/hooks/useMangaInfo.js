@@ -6,8 +6,7 @@ export default function useMangaInfo() {
     const saveManga = (m) => {
         const newManga = {
             _id: m._id,
-            chaptersReaded: m.chaptersReaded || {},
-            lastChapter: m.lastChapter || 0
+            chaptersReaded: m.chaptersReaded || {}
         }
         
         // console.log(mangasInfo)
@@ -15,7 +14,8 @@ export default function useMangaInfo() {
 
         // console.log("manga", manga.chaptersReaded)
         manga.chaptersReaded = {...manga.chaptersReaded, ...newManga.chaptersReaded}
-        manga.lastChapter = m.lastChapter || 0
+        if(m.recentChapter)
+            manga.recentChapter = m.recentChapter
         manga.lastViewedDate = m.lastViewedDate || Date.now()
         mangasInfo[manga._id] = manga
         setMangasInfo(mangasInfo)

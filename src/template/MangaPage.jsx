@@ -8,12 +8,13 @@ import { showTabs, setDisplayLabel, setHideOnScrool } from "../store/actions/nav
 import "./MangaPage.css";
 
 import MangaProfile from "../components/manga/MangaProfile";
+import useMangaInfo from "../hooks/useMangaInfo";
 
 const MangaPage = props => {
     const { idManga } = useParams()
+    const {mangasInfo} = useMangaInfo()
     useEffect(() => {
         props.showTabs('search', 'home', 'recentPages', 'favoritePages' , 'read')
-        props.setDisplayLabel(props.mangaSelected.title)
         props.setHideOnScrool(false)
         
         if (window.history.scrollRestoration) {
@@ -27,9 +28,16 @@ const MangaPage = props => {
     useEffect(() => {
         axios.get(`https://charlotte-services.herokuapp.com/mangas/${idManga}`).then(res => {
             props.selectManga(res.data)
-            props.setDisplayLabel(res.data.title)
+            props.setDisplayLabel(`${res.data.title} ${getRecentChapterReaded(idManga) ? '- '+ getRecentChapterReaded(idManga) : ''}`)
         })
     }, [idManga])
+
+    function getRecentChapterReaded(id) {
+        const manga = Object.values(mangasInfo).find(manga => manga._id === id)
+        if(!manga) return ''
+
+        return manga.recentChapter ? manga.recentChapter.title : ''
+    }
 
     return (
         <div className="manga-page">

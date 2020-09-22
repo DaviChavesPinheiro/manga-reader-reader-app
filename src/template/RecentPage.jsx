@@ -25,6 +25,7 @@ const RecentPage = props => {
                 let recMangas = Array.isArray(res.data) ? res.data : [res.data]
                 recMangas.map(manga => {
                     manga.lastViewedDate = mangasInfo[manga._id].lastViewedDate || 0
+                    manga.recentChapter = mangasInfo[manga._id].recentChapter || {}
                     return manga
                 })
                 recMangas.sort(sortRecentManga)
