@@ -8,12 +8,19 @@ import useMangaInfo from "../../hooks/useMangaInfo";
 
 const ReadButton = props => {
     const {mangasInfo} = useMangaInfo()
-    const [lastChapter, setLastChapter] = useState(mangasInfo[props.selected._id] ? mangasInfo[props.selected._id].lastChapter : 0) 
+    const [lastChapter, setLastChapter] = useState(getRecentChapterReaded(props.selected._id)) 
     const visible = props.tabsVisible[props.target] === true
 
     useEffect(() => {
-        setLastChapter(mangasInfo[props.selected._id] ? mangasInfo[props.selected._id].lastChapter : 0)
+        setLastChapter(getRecentChapterReaded(props.selected._id))
     }, [mangasInfo[props.selected._id]])
+
+    function getRecentChapterReaded(mangaId) {
+        const manga = mangasInfo[props.selected._id]
+        if(!manga) return 0
+
+        return manga.recentChapter ? manga.recentChapter.index : 0
+    }
     return (
         <If test={visible}>
             <Link to={`/manga/${props.selected._id}/chapters/${lastChapter}`}>
