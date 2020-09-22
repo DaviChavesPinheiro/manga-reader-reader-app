@@ -29,7 +29,7 @@ const MangaProfile = props => {
                         <img src={manga.image_url} alt="Manga" />
                     </div>
                     <h1>{manga.title}</h1>
-                    <span>{manga.score}</span>
+                    <span>{manga.authors || manga.score}</span>
                 </div>
                 <div className="buttons-container">
                     <ReadButton target="read" label="Read"></ReadButton>

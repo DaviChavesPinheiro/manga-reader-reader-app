@@ -12,7 +12,7 @@ import MangaProfile from "../components/manga/MangaProfile";
 const MangaPage = props => {
     const { idManga } = useParams()
     useEffect(() => {
-        props.showTabs('search', 'home', 'read')
+        props.showTabs('search', 'home', 'recentPages', 'favoritePages' , 'read')
         props.setDisplayLabel(props.mangaSelected.title)
         props.setHideOnScrool(false)
         

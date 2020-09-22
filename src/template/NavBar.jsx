@@ -18,7 +18,7 @@ const NavBar = props => {
                 yUpScrollAmount = 0
             } else {
                 yUpScrollAmount += prevScrollpos - currentScrollpos
-                if(yUpScrollAmount >= 150){
+                if(yUpScrollAmount >= 200){
                     navBarRef.current.classList.remove("hide")
                 }
             }

@@ -10,7 +10,8 @@ const AllMangasPage = props => {
     const [pages, setPages] = useState([])
     const [pageIndex, setPageIndex] = useState(1)
     let observer = new IntersectionObserver(onIntersectionObserver, {
-        threshold: 0.05
+        threshold: 0.05,
+        rootMargin: "1000px"
     });
     useEffect(() => {
         if (props.show === true) {

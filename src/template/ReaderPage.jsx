@@ -24,7 +24,7 @@ const ReaderPage = props => {
         rootMargin: "2000px"
     });
     useEffect(() => {
-        props.showTabs('search', 'home', 'manga', 'favorite')
+        props.showTabs('search', 'home', 'manga', 'recentPages', 'favoritePages')
         props.setHideOnScrool(true)
 
         loadChapter(chapterIndex)

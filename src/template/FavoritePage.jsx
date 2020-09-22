@@ -15,7 +15,7 @@ const FavoritePage = props => {
     const { favoritedMangas } = useFavoriteManga()
     const [favoritedMangasList, setFavoritedsMangasList] = useState([])
     useEffect(() => {
-        props.showTabs('search', 'home')
+        props.showTabs('search', 'home', 'recentPages')
         props.setHideOnScrool(false)
 
         if (favoritedMangas.length) {
