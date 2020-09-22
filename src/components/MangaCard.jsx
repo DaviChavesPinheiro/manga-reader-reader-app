@@ -18,7 +18,7 @@ const MangaCard = props => {
                 <img src={manga.image_url} alt="Manga"/>
                 <div className="info">
                     <h3 className="title">{manga.title}</h3>
-                    <span className="chapters-score">Chapters: {manga.chapters_amount} | Score: {manga.score}</span>
+                    <span className="chapters-score">Chapters: {manga.chapters_amount} | Score: {manga.score.toFixed(1)}</span>
                 </div>
             </div>
         </Link>
