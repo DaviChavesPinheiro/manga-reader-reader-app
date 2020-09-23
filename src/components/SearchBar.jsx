@@ -19,7 +19,6 @@ const SearchBar = props => {
             if (key === "Enter") {
                 axios.get(`https://charlotte-services.herokuapp.com/mangas/?find=${inputRef.current.value}&&select=title`).then(res => {
                     setMangas(res.data)
-                    console.log(res.data)
                 })
             }
         })

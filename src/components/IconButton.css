@@ -10,7 +10,7 @@
   align-items: center;
 
   background-color: transparent;
-  color: #c5c5c5;
+  color: var(--main-color-light-gray);
 }
 
 .icon-button i {

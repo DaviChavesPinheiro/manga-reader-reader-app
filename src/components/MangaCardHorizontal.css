@@ -6,7 +6,7 @@
     align-items: center;
     overflow: hidden;
     border-bottom: 1px solid #616161;
-    background-color: #1E1E1E;
+    background-color: var(--main-color-light-black);
 }
 
 .manga-card-horizontal img {
@@ -30,7 +30,7 @@
 }
 
 .manga-card-horizontal .title {
-    color: #FEFEFE;
+    color: var(--main-color-white);
     text-overflow: ellipsis;
     font-weight: 400;
     margin: 0px;
@@ -40,7 +40,7 @@
 }
 
 .manga-card-horizontal .sub-info {
-    color: #9E9E9E;
+    color: var(--main-color-gray);
     display: block;
 
     white-space: nowrap;

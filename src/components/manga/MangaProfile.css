@@ -6,7 +6,7 @@
 
 .manga-profile section {
   width: 100%;
-  background-color: #1E1E1E;
+  background-color: var(--main-color-light-black);
 
   display: flex;
   flex-direction: column;
@@ -63,19 +63,19 @@
   max-width: 130px;
   width: 33%;
 
-  border: 9px solid #1E1E1E;
+  border: 9px solid var(--main-color-light-black);
   
   border-radius: 5px;
 }
 
 .one .main-info h1{
-  color: #FEFEFE;
+  color: var(--main-color-white);
   margin: 0px;
   font-size: 1.5em;
   font-weight: 500;
 }
 .one .main-info span{
-  color: #9E9E9E;
+  color: var(--main-color-gray);
   font-weight: 500;
 }
 
@@ -88,10 +88,10 @@
 .two {
   padding: 10px 10px;
   font-size: 1.1em;
-  color: #9E9E9E;
+  color: var(--main-color-gray);
 }
 .two h2{
-  color: #FEFEFE;
+  color: var(--main-color-white);
   font-size: 1.2em;
   margin-bottom: 5px;
 }
@@ -100,7 +100,7 @@
   font-size: 1.1em;
 }
 .three h2{
-  color: #FEFEFE;
+  color: var(--main-color-white);
   font-size: 1.2em;
   padding-left: 0.5em;
 }
@@ -115,7 +115,7 @@
   align-items: center;
 }
 .three li a{
-  color: #FEFEFE;
+  color: var(--main-color-white);
   flex: 1;
 }
 .three li.readed a{
@@ -128,7 +128,7 @@
   font-size: 1.1em;
 }
 .three li.readed i{
-  color: #9E9E9E;
+  color: var(--main-color-gray);
 }
 
 

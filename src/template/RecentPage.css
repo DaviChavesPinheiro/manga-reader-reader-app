@@ -7,7 +7,7 @@
 }
 
 .recent-page h1{
-    color: #FEFEFE;
+    color: var(--main-color-white);
 }
 
 .recent-page .manga-list-wrapper{

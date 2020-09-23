@@ -7,7 +7,7 @@
 }
 
 .favorite-page h1{
-    color: #FEFEFE;
+    color: var(--main-color-white);
 }
 
 

@@ -24,16 +24,9 @@ import FavoritePageButton from "./components/NavBar/FavoritePageButton";
 
 const App = props => {
 
-    function onSearch(value) {
-        // axios.get(`https://charlotte-services.herokuapp.com/mangas/?title__regex=/${value}/i&&sort=rank`).then(res => {
-        //     console.log("Data: ", res.data)
-        // })
-        console.log("Search:", value)
-    }
-
     return (
         <div className="App">
-            <SearchBar onSearch={onSearch}></SearchBar>
+            <SearchBar></SearchBar>
             <Content>
                 <Switch>
                     <Route path="/mangas/favorites" component={FavoritePage}></Route>

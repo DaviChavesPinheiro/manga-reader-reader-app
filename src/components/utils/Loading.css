@@ -6,7 +6,7 @@
     width: auto;
 }
 .loader i{
-    color: #c5c5c5;
+    color: var(--main-color-light-gray);
     animation: spin 2s linear infinite;
     font-size: 2em;
 }
