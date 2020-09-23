@@ -69,9 +69,6 @@
   /* transition: opacity 0.2s; */
 }
 
-.menu-content input[type="range"]:hover {
-  /* opacity: 1; */
-}
 
 .menu-content input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;

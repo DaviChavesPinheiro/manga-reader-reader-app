@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { selectManga } from "../store/actions/mangaActions";
-import { setSettingsVisibility, setImageBrightness} from "../store/actions/readerActions";
+import { setSettingsVisibility, setImageBrightness } from "../store/actions/readerActions";
 import { showTabs, setDisplayLabel, setHideOnScrool } from "../store/actions/navBarActions";
 import axios from "axios";
 
@@ -20,34 +20,44 @@ const ReaderPage = props => {
     const { idManga, idChapter } = useParams()
     const [chapters, setChapters] = useState([])
     const [chapterIndex, setChapterIndex] = useState(parseInt(idChapter))
-    const { saveManga } = useMangaInfo()
-    let observer = new IntersectionObserver(onIntersectionObserver, {
+    const {mangasInfo, saveManga } = useMangaInfo()
+    let chapterObserver = new IntersectionObserver(onIntersectionChapterObserver, {
         threshold: 0.25,
         rootMargin: "2000px"
+    });
+    let pageObserver = new IntersectionObserver(onIntersectionPageObserver, {
+        threshold: 0.5,
     });
     useEffect(() => {
         props.showTabs('home', 'manga', 'recentPages', 'favoritePages', 'settingsReader')
         props.setHideOnScrool(true)
 
         const settings = JSON.parse(window.localStorage.getItem('settings')) || {}
-        console.log(settings)
         props.setImageBrightness(settings.imagesBrightness || 100)
 
         loadChapter(chapterIndex)
+
         if (window.history.scrollRestoration) {
             window.history.scrollRestoration = 'manual';
         }
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
+        
     }, [])
 
     useEffect(() => {
+        if(chapters.length === 1 && mangasInfo[idManga] && mangasInfo[idManga].recentChapter && mangasInfo[idManga].recentChapter.title === chapters[chapters.length - 1].title){
+            let recentPage = mangasInfo[idManga] && mangasInfo[idManga].recentChapter && mangasInfo[idManga].recentChapter.recentPage || 0
+            if(recentPage > 0)
+                recentPage -= 1
+            document.querySelector(`#chapter-${chapters[chapters.length - 1].index}`).children[recentPage].scrollIntoView()
+        }
+
         if (chapters.length == 0) return
-        observer.observe(document.querySelector(`#chapter-${chapters[chapters.length - 1].index} .next-chapter-area`))
+        chapterObserver.observe(document.querySelector(`#chapter-${chapters[chapters.length - 1].index} .next-chapter-area`))
+
         const chaptersReaded = {}
         if (chapters.length)
             chaptersReaded[chapters[chapters.length - 1].title] = true
-        // console.log("chapterIndex", chapterIndex)
+        
         saveManga({ _id: idManga, chaptersReaded, recentChapter: { title: chapters[chapters.length - 1].title, index: chapterIndex } })
     }, [chapters])
 
@@ -72,16 +82,26 @@ const ReaderPage = props => {
         })
     }
 
-    function onIntersectionObserver(entries, observer) {
+    function onIntersectionChapterObserver(entries, chapterObserver) {
         entries.forEach(entry => {
             if (!entry.isIntersecting) return
-            console.log(entry)
+            // console.log(entry)
             goToChapter(chapterIndex + 1)
-            observer.unobserve(entry.target)
+            chapterObserver.unobserve(entry.target)
+        });
+    }
+    function onIntersectionPageObserver(entries, pageObserver) {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return
+
+            const pageIndex = Array.from(entry.target.parentNode.parentNode.children).indexOf(entry.target.parentNode)
+
+            saveManga({ _id: idManga, recentChapter: { recentPage: pageIndex} })
         });
     }
 
     function onLoad(event) {
+        pageObserver.observe(event.target)
         event.target.nextSibling.remove()
     }
 
@@ -94,26 +114,27 @@ const ReaderPage = props => {
                 <div className="reader-pages-container" key={chapter.index} id={`chapter-${chapter.index}`}>
                     {chapter.pages.map((page) => (
                         <LazyLoad key={page} height={900} offset={500}>
-                            <img src={page} onLoad={onLoad} style={{filter: `brightness(${props.imageBrightness}%)`}}></img>
+                            <img src={page} onLoad={onLoad} style={{ filter: `brightness(${props.imageBrightness}%)` }}></img>
                             <Loading></Loading>
                         </LazyLoad>
                     ))}
                     <div className="next-chapter-area">
                         <h3>End Of {chapter.title || "This Chapter"}</h3>
                     </div>
-                    <Menu show={props.settingsVisibility} onClose={() => { props.setSettingsVisibility(false) }}>
-                        <div className="menu-content">
-                            <p>Images Brightness</p>
-                            <input type="range" min="1" max="100" value={props.imageBrightness} onChange={(e) => props.setImageBrightness(e.target.value)}></input>
-                        </div>
-                    </Menu>
+
                 </div>
             ))}
+            <Menu show={props.settingsVisibility} onClose={() => { props.setSettingsVisibility(false) }}>
+                <div className="menu-content">
+                    <p>Images Brightness</p>
+                    <input type="range" min="1" max="100" value={props.imageBrightness} onChange={(e) => props.setImageBrightness(e.target.value)}></input>
+                </div>
+            </Menu>
         </div>
     )
 }
 
-const mapStateToProps = state => ({ settingsVisibility: state.reader.settingsVisibility, imageBrightness: state.reader.imageBrightness})
+const mapStateToProps = state => ({ settingsVisibility: state.reader.settingsVisibility, imageBrightness: state.reader.imageBrightness })
 
 const mapDispatchToPros = dispatch => bindActionCreators({ selectManga, showTabs, setDisplayLabel, setHideOnScrool, setSettingsVisibility, setImageBrightness }, dispatch)
 

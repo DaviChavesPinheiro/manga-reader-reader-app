@@ -1,6 +1,7 @@
 .menu {
   height: 100%;
   width: 0px;
+  max-width: 90%;
   position: fixed;
   z-index: 11;
   top: 0;
@@ -12,7 +13,7 @@
 }
 
 .menu.show {
-  max-width: 90%;
+  
   width: 400px;
 }
 
