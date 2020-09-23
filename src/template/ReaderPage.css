@@ -1,44 +1,91 @@
-.reader-page{
-    background-color: #111111;
+.reader-page {
+  background-color: #111111;
 }
 
 .reader-pages-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    min-height: 500vh;
+  min-height: 500vh;
 }
 
 .reader-pages-container img {
-    max-width: 100%;
+  max-width: 100%;
 }
-
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-.reader-page .next-chapter-area{
-    height: 90vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #111111;
-    margin-top: auto;
+.reader-page .next-chapter-area {
+  height: 90vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #111111;
+  margin-top: auto;
 }
 
 .next-chapter-area h3 {
-    color: #fafafa;
+  color: #fafafa;
 }
 
 .next-chapter-area button {
-    background-color: rgba(255, 255, 255, 0.205);
-    padding: 5px 7px;
-    border: 1px solid gray;
-    color: #969696;
+  background-color: rgba(255, 255, 255, 0.205);
+  padding: 5px 7px;
+  border: 1px solid gray;
+  color: #969696;
+}
+
+.menu-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 15px;
+  color: var(--main-color-light-gray);
+}
+.menu-content p {
+  margin-bottom: 7px;
+}
+.menu-content input[type="range"] {
+  -webkit-appearance: none;
+  width: 200px;
+  height: 10px;
+  /* background: red; */
+  border-radius: 4px;
+  outline: none;
+  /* opacity: 0.7; */
+  /* -webkit-transition: 0.2s; */
+  /* transition: opacity 0.2s; */
+}
+
+.menu-content input[type="range"]:hover {
+  /* opacity: 1; */
+}
+
+.menu-content input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: var(--main-color-gray);
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.menu-content input[type="range"]::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  background: var(--main-color-gray);
+  cursor: pointer;
 }

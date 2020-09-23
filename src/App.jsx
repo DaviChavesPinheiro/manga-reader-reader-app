@@ -12,15 +12,14 @@ import NavBar from "./template/NavBar";
 import Content from "./template/Content";
 import ReaderPage from "./template/ReaderPage";
 
-import IconButton from './components/IconButton'
 import MoreButton from "./components/NavBar/MoreButton";
-import ReadButton from "./components/NavBar/ReadButton";
 import SearchButton from "./components/NavBar/SearchButton";
 import HomePageButton from "./components/NavBar/HomePageButton";
 import FavoriteButton from "./components/NavBar/FavoriteButton";
 import MangaPageButton from "./components/NavBar/MangaPageButton";
 import RecentPageButton from "./components/NavBar/RecentPageButton";
 import FavoritePageButton from "./components/NavBar/FavoritePageButton";
+import SettingReaderButton from "./components/NavBar/SettingsReaderButton";
 
 const App = props => {
 
@@ -44,6 +43,7 @@ const App = props => {
                 <FavoritePageButton target="favoritePages" label="Favorites"></FavoritePageButton>
                 <RecentPageButton target="recentPages" label="Recent"></RecentPageButton>
                 <MoreButton target="more" label="More"></MoreButton>
+                <SettingReaderButton target="settingsReader" label="Settings"></SettingReaderButton>
             </NavBar>
         </div>
     )

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { selectManga } from "../store/actions/mangaActions";
+import { setSettingsVisibility, setImageBrightness} from "../store/actions/readerActions";
 import { showTabs, setDisplayLabel, setHideOnScrool } from "../store/actions/navBarActions";
 import axios from "axios";
 
@@ -12,6 +13,7 @@ import LazyLoad from 'react-lazyload';
 import If from "../operator/If";
 import useMangaInfo from "../hooks/useMangaInfo";
 import Loading from "../components/utils/Loading";
+import Menu from "../components/utils/Menu";
 
 
 const ReaderPage = props => {
@@ -24,11 +26,14 @@ const ReaderPage = props => {
         rootMargin: "2000px"
     });
     useEffect(() => {
-        props.showTabs('search', 'home', 'manga', 'recentPages', 'favoritePages')
+        props.showTabs('home', 'manga', 'recentPages', 'favoritePages', 'settingsReader')
         props.setHideOnScrool(true)
 
-        loadChapter(chapterIndex)
+        const settings = JSON.parse(window.localStorage.getItem('settings')) || {}
+        console.log(settings)
+        props.setImageBrightness(settings.imagesBrightness || 100)
 
+        loadChapter(chapterIndex)
         if (window.history.scrollRestoration) {
             window.history.scrollRestoration = 'manual';
         }
@@ -40,10 +45,10 @@ const ReaderPage = props => {
         if (chapters.length == 0) return
         observer.observe(document.querySelector(`#chapter-${chapters[chapters.length - 1].index} .next-chapter-area`))
         const chaptersReaded = {}
-        if(chapters.length)
+        if (chapters.length)
             chaptersReaded[chapters[chapters.length - 1].title] = true
         // console.log("chapterIndex", chapterIndex)
-        saveManga({_id: idManga, chaptersReaded, recentChapter: {title: chapters[chapters.length - 1].title, index: chapterIndex}})
+        saveManga({ _id: idManga, chaptersReaded, recentChapter: { title: chapters[chapters.length - 1].title, index: chapterIndex } })
     }, [chapters])
 
 
@@ -60,7 +65,7 @@ const ReaderPage = props => {
         axios.get(`https://charlotte-services.herokuapp.com/mangas/${idManga}/chapters/${index}`).then(res => {
             const chapter = res.data.chapters[0]
             if (chapter && chapter.pages) {
-                setChapters([...chapters.slice(chapter.length - 1), {title: chapter.title, index: index, pages: chapter.pages }])
+                setChapters([...chapters.slice(chapter.length - 1), { title: chapter.title, index: index, pages: chapter.pages }])
             }
             props.setDisplayLabel(`${res.data.title} - ${chapter ? chapter.title : ''}`)
             props.selectManga({ ...res.data, chapters: [] })
@@ -89,21 +94,27 @@ const ReaderPage = props => {
                 <div className="reader-pages-container" key={chapter.index} id={`chapter-${chapter.index}`}>
                     {chapter.pages.map((page) => (
                         <LazyLoad key={page} height={900} offset={500}>
-                            <img src={page} onLoad={onLoad}></img>
+                            <img src={page} onLoad={onLoad} style={{filter: `brightness(${props.imageBrightness}%)`}}></img>
                             <Loading></Loading>
                         </LazyLoad>
                     ))}
                     <div className="next-chapter-area">
                         <h3>End Of {chapter.title || "This Chapter"}</h3>
                     </div>
+                    <Menu show={props.settingsVisibility} onClose={() => { props.setSettingsVisibility(false) }}>
+                        <div className="menu-content">
+                            <p>Images Brightness</p>
+                            <input type="range" min="1" max="100" value={props.imageBrightness} onChange={(e) => props.setImageBrightness(e.target.value)}></input>
+                        </div>
+                    </Menu>
                 </div>
             ))}
         </div>
     )
 }
 
-const mapStateToProps = state => ({ selected: state.manga.selected })
+const mapStateToProps = state => ({ settingsVisibility: state.reader.settingsVisibility, imageBrightness: state.reader.imageBrightness})
 
-const mapDispatchToPros = dispatch => bindActionCreators({ selectManga, showTabs, setDisplayLabel, setHideOnScrool }, dispatch)
+const mapDispatchToPros = dispatch => bindActionCreators({ selectManga, showTabs, setDisplayLabel, setHideOnScrool, setSettingsVisibility, setImageBrightness }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToPros)(ReaderPage);
