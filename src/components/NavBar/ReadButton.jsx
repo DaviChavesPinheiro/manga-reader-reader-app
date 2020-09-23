@@ -16,7 +16,7 @@ const ReadButton = props => {
     }, [mangasInfo[props.selected._id]])
 
     function getRecentChapterReaded(mangaId) {
-        const manga = mangasInfo[props.selected._id]
+        const manga = mangasInfo[mangaId]
         if(!manga) return 0
 
         return manga.recentChapter ? manga.recentChapter.index : 0

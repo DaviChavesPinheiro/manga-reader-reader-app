@@ -21,12 +21,12 @@ ReactDOM.render(
 );
 
 
-if("serviceWorker" in navigator){
-  navigator.serviceWorker.register("service-worker.js").then(resgistration => {
-    console.log("Service Worker Registered!")
-    console.log(resgistration)
-  }).catch(error => {
-    console.log("Service Worker Failed!")
-    console.log(error)
-  })
-}
+// if("serviceWorker" in navigator){
+//   navigator.serviceWorker.register("service-worker.js").then(resgistration => {
+//     console.log("Service Worker Registered!")
+//     console.log(resgistration)
+//   }).catch(error => {
+//     console.log("Service Worker Failed!")
+//     console.log(error)
+//   })
+// }
