@@ -1,4 +1,7 @@
 .manga-card-horizontal {
+    position: relative;
+}
+.manga-card-horizontal a:first-child {
     width: 100vw;
     height: 130px;
 
@@ -9,7 +12,7 @@
     background-color: var(--main-color-light-black);
 }
 
-.manga-card-horizontal img {
+.manga-card-horizontal a img {
     width: 73px;
     height: 110px;
 
@@ -18,7 +21,7 @@
     object-fit: cover;
 }
 
-.manga-card-horizontal .info {
+.manga-card-horizontal a .info {
     flex: 1;
     height: 100%;
 
@@ -29,7 +32,7 @@
     flex-direction: column;
 }
 
-.manga-card-horizontal .title {
+.manga-card-horizontal a .title {
     color: var(--main-color-white);
     text-overflow: ellipsis;
     font-weight: 400;
@@ -39,11 +42,21 @@
     flex: 1;
 }
 
-.manga-card-horizontal .sub-info {
+.manga-card-horizontal a .sub-info {
     color: var(--main-color-gray);
     display: block;
 
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+
+.manga-card-horizontal button {
+   position: absolute;
+   padding: 10px 15px;
+   right: 0;
+   top: 0;
+   font-size: 1.2em;
+   color: var(--main-color-light-gray);
 }

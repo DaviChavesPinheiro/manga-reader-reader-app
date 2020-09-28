@@ -10,7 +10,7 @@ const PopularMangasPage = props => {
     const [mangas, setMangas] = useState([])
 
     useEffect(() => {
-        if (props.show === true && mangas.length == 0) {
+        if (props.show === true && mangas.length === 0) {
             axios.get(`https://charlotte-services.herokuapp.com/mangas/?sort=-members`).then(res => {
                 setMangas(res.data)
                 // if (Object.keys(props.selected).length === 0)

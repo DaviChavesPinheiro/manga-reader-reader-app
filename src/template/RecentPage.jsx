@@ -15,7 +15,7 @@ const RecentPage = props => {
     const [recentMangasList, setRecentMangasList] = useState([])
 
     useEffect(() => {
-        props.showTabs('search', 'home', 'favoritePages')
+        props.showTabs('search', 'favoritePages', 'home' , 'recentPages', 'more')
         props.setHideOnScrool(false)
 
         const recentMangas = getRecentMangasIds()

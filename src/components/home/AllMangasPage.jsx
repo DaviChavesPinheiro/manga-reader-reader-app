@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import LazyLoad from 'react-lazyload';
@@ -19,7 +19,7 @@ const AllMangasPage = props => {
         }
     }, [])
     useEffect(() => {
-        if(pages.length == 0) return
+        if(pages.length === 0) return
         observer.observe(document.querySelector(`#page-${pages[pages.length - 1].index} .end-area`))
     }, [pages])
 
@@ -37,6 +37,7 @@ const AllMangasPage = props => {
         console.log("loadmangas", page)
         axios.get(`https://charlotte-services.herokuapp.com/mangas/?sort=-score&&page=${page}`).then(res => {
             if(res.data && res.data.length > 0){
+                console.log(res.data)
                 setPages([...pages, {index: page, mangas: res.data}])
             }
             

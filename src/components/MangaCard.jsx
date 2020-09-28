@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { selectManga } from "../store/actions/mangaActions";

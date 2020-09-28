@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -105,6 +105,10 @@ const ReaderPage = props => {
         event.target.nextSibling.remove()
     }
 
+    function toggleNavBar(params) {
+        document.querySelector(".nav-bar").classList.toggle("hide")
+    }
+
     return (
         <div className="reader-page">
             <If test={!chapters.length}>
@@ -114,7 +118,7 @@ const ReaderPage = props => {
                 <div className="reader-pages-container" key={chapter.index} id={`chapter-${chapter.index}`}>
                     {chapter.pages.map((page) => (
                         <LazyLoad key={page} height={900} offset={500}>
-                            <img src={page} onLoad={onLoad} style={{ filter: `brightness(${props.imageBrightness}%)` }}></img>
+                            <img src={page} onLoad={onLoad} onClick={toggleNavBar} style={{ filter: `brightness(${props.imageBrightness}%)` }}></img>
                             <Loading></Loading>
                         </LazyLoad>
                     ))}

@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import Display from "../components/NavBar/Display";
 import "./NavBar.css";
 
 const NavBar = props => {
-    var prevScrollpos = window.pageYOffset
-    var yUpScrollAmount = 0
+    const prevScrollposRef = useRef(window.pageYOffset)
+    const yUpScrollAmountRef = useRef(0)
     const navBarRef = useRef()
     useEffect(() => {
         const hideOnScroll = () => {
@@ -13,17 +13,17 @@ const NavBar = props => {
 
             const currentScrollpos = window.pageYOffset
 
-            if (currentScrollpos > prevScrollpos) {
+            if (currentScrollpos > prevScrollposRef.current) {
                 navBarRef.current.classList.add("hide")
-                yUpScrollAmount = 0
+                yUpScrollAmountRef.current = 0
             } else {
-                yUpScrollAmount += prevScrollpos - currentScrollpos
-                if(yUpScrollAmount >= 200){
+                yUpScrollAmountRef.current += prevScrollposRef.current - currentScrollpos
+                if(yUpScrollAmountRef.current >= 200){
                     navBarRef.current.classList.remove("hide")
                 }
             }
 
-            prevScrollpos = currentScrollpos
+            prevScrollposRef.current = currentScrollpos
                 
         }
         window.addEventListener("scroll", hideOnScroll)

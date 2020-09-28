@@ -37,9 +37,9 @@ const App = props => {
             </Content>
             <NavBar>
                 <SearchButton target="search" label="Search"></SearchButton>
-                <HomePageButton target="home" label="Home"></HomePageButton>
                 <FavoriteButton manga={props.mangaSelected} target="favorite" label="Favorite"></FavoriteButton>
                 <FavoritePageButton target="favoritePages" label="Favorites"></FavoritePageButton>
+                <HomePageButton target="home" label="Home"></HomePageButton>
                 <MangaPageButton target="manga" label="Manga"></MangaPageButton>
                 <RecentPageButton target="recentPages" label="Recent"></RecentPageButton>
                 <MoreButton target="more" label="More"></MoreButton>

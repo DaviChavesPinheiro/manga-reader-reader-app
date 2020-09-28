@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { selectManga } from "../store/actions/mangaActions";
@@ -13,16 +12,19 @@ const MangaCardHorizontal = props => {
     }
 
     return (
-        <Link to={`/manga/${manga._id}`} onClick={onClick}>
-            <div className="manga-card-horizontal">
+        <div className="manga-card-horizontal">
+            <Link to={`/manga/${manga._id}/chapters/${manga.recentChapter.index || 0}`} onClick={onClick}>
                 <img src={manga.image_url} alt="Manga" />
                 <div className="info">
                     <h3 className="title">{manga.title}</h3>
                     <span className="sub-info">{manga.recentChapter ? manga.recentChapter.title : ''}</span>
                     <span className="sub-info">{manga.lastViewedDate}</span>
                 </div>
-            </div>
-        </Link>
+            </Link>
+            <Link to={`/manga/${manga._id}`} onClick={onClick}>
+                <button><i className="fa fa-ellipsis-v"></i></button>
+            </Link>
+        </div>
     )
 }
 
