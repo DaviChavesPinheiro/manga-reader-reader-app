@@ -14,7 +14,7 @@ const MangaPage = props => {
     const { idManga } = useParams()
     const {mangasInfo} = useMangaInfo()
     useEffect(() => {
-        props.showTabs('search', 'home', 'recentPages', 'favoritePages' , 'read')
+        props.showTabs('search', 'favoritePages', 'home' , 'recentPages', 'more')
         props.setHideOnScrool(false)
         
         if (window.history.scrollRestoration) {
