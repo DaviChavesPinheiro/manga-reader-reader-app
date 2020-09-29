@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import "./MangaProfile.css";
 
@@ -12,15 +12,27 @@ import Loading from "../utils/Loading";
 
 const MangaProfile = props => {
     const manga = props.manga
-    const {mangasInfo} = useMangaInfo()
+    const { mangasInfo } = useMangaInfo()
+    const chaptersListRef = useRef()
+    const expandListButton = useRef()
 
     function isChapterAlreadyReaded(chapterTitle) {
         return mangasInfo && mangasInfo[manga._id] && mangasInfo[manga._id]['chaptersReaded'] && mangasInfo[manga._id]["chaptersReaded"][chapterTitle]
     }
+
+    function expandChaptersList(expand) {
+        if(expand){
+            chaptersListRef.current.classList.remove("shrinked")
+            expandListButton.current.classList.add("hidden")
+        } else {
+            chaptersListRef.current.classList.add("shrinked")
+            expandListButton.current.classList.remove("hidden")
+        }
+    }
     return (
         <div className="manga-profile">
 
-            <section className="one">
+            <section className="main">
                 <div className="banner-container">
                     <img src={manga.image_url} alt="Manga" />
                 </div>
@@ -37,7 +49,7 @@ const MangaProfile = props => {
                     <FavoriteButton manga={manga} label="Favorite"></FavoriteButton>
                 </div>
             </section>
-            <section className="two">
+            <section className="description">
                 <If test={manga.description !== undefined}>
                     <div className="description">
                         <h2>Description</h2>
@@ -49,11 +61,11 @@ const MangaProfile = props => {
                 </If>
 
             </section>
-            <section className="three">
+            <section className="chapters">
                 <If test={manga.chapters !== undefined}>
                     <div className="chapters-list">
                         <h2>Chapters</h2>
-                        <ul>
+                        <ul ref={chaptersListRef} className="shrinked">
                             {manga.chapters ? manga.chapters.map((chapter, index) => (
                                 <li key={index} className={`${isChapterAlreadyReaded(chapter.title) ? 'readed' : ''}`}>
                                     <Link to={`/manga/${manga._id}/chapters/${index}`}>{chapter.title}</Link>
@@ -61,6 +73,7 @@ const MangaProfile = props => {
                             )) : null}
                         </ul>
                     </div>
+                    <button ref={expandListButton} onClick={() => expandChaptersList(true)}>VIEW ALL {manga.chapters ? manga.chapters.length : 0} CHAPTERS</button>
                 </If>
                 <If test={manga.chapters === undefined}>
                     <Loading></Loading>

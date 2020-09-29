@@ -13,26 +13,26 @@
   margin-bottom: 15px;
 }
 
-.manga-profile .one {
+.manga-profile section.main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 60vmax;
 }
 
-.one .banner-container {
+section.main .banner-container {
   width: 100%;
   height: 33%;
   overflow: hidden;
 }
-.one .banner-container img {
+section.main .banner-container img {
   width: 100%;
 
   filter: blur(4px);
   -webkit-filter: blur(4px);
 }
 
-.one .main-info{
+section.main .main-info{
   height: 50%;
 
   display: flex;
@@ -41,7 +41,7 @@
   align-items: center;
 
 }
-.one .main-info h1, .one .main-info span{
+section.main .main-info h1, section.main .main-info span{
   width: 90%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -49,14 +49,14 @@
   text-align: center;
 }
 
-.one .main-info .img-container{
+section.main .main-info .img-container{
   height: 70%;
   width: 100%;
   position: relative;
   display: flex;
   justify-content: center;
 }
-.one .main-info img{
+section.main .main-info img{
   box-sizing: content-box;
   position: absolute;
   top: -60px;
@@ -68,68 +68,79 @@
   border-radius: 5px;
 }
 
-.one .main-info h1{
+section.main .main-info h1{
   color: var(--main-color-white);
   margin: 0px;
   font-size: 1.5em;
   font-weight: 500;
 }
-.one .main-info span{
+section.main .main-info span{
   color: var(--main-color-gray);
   font-weight: 500;
 }
 
-.one .buttons-container {
+section.main .buttons-container {
   margin: 10px 0px;
   display: flex;
   justify-content: space-around;
 }
 
-.two {
+section.description {
   padding: 10px 10px;
   font-size: 1.1em;
   color: var(--main-color-gray);
 }
-.two h2{
+section.description h2{
   color: var(--main-color-white);
   font-size: 1.2em;
   margin-bottom: 5px;
 }
-.three {
+section.chapters {
   padding: 10px 10px;
   font-size: 1.1em;
 }
-.three h2{
+section.chapters h2{
   color: var(--main-color-white);
   font-size: 1.2em;
   padding-left: 0.5em;
 }
-.three ul{
+section.chapters ul{
   list-style: none;
   padding-left: 1em;
 }
-.three li{
+
+section.chapters ul.shrinked li:nth-child(n+6){
+  display: none;
+}
+
+section.chapters li{
   padding: 0.5em 0px;
   display: flex;
   justify-content: stretch;
   align-items: center;
 }
-.three li a{
+section.chapters li a{
   color: var(--main-color-white);
   flex: 1;
 }
-.three li.readed a{
+section.chapters li.readed a{
   color: #707070;
   flex: 1;
 }
 
-.three li i{
+section.chapters li i{
   color: transparent;
   font-size: 1.1em;
 }
-.three li.readed i{
+section.chapters li.readed i{
   color: var(--main-color-gray);
 }
 
-
+section.chapters button {
+  color: var(--main-color-white);
+  background-color: #c5c5c533;
+  width: 100%;
+  padding: 6px 0px;
+  margin: 0 auto;
+}
 
