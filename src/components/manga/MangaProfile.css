@@ -13,6 +13,11 @@
   margin-bottom: 15px;
 }
 
+.manga-profile section h2{
+  color: var(--main-color-white);
+  font-size: 1.2em;
+}
+
 .manga-profile section.main {
   display: flex;
   flex-direction: column;
@@ -91,8 +96,6 @@ section.description {
   color: var(--main-color-gray);
 }
 section.description h2{
-  color: var(--main-color-white);
-  font-size: 1.2em;
   margin-bottom: 5px;
 }
 section.chapters {
@@ -100,8 +103,6 @@ section.chapters {
   font-size: 1.1em;
 }
 section.chapters h2{
-  color: var(--main-color-white);
-  font-size: 1.2em;
   padding-left: 0.5em;
 }
 section.chapters ul{
@@ -142,5 +143,17 @@ section.chapters button {
   width: 100%;
   padding: 6px 0px;
   margin: 0 auto;
+}
+
+section.recommendations {
+  padding: 10px 0px;
+}
+section.recommendations h2{
+  padding: 0px 10px;
+}
+section.recommendations ul{
+  width: 100%;
+  list-style: none;
+  padding: 0px;
 }
 

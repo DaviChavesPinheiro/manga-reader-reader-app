@@ -1,0 +1,51 @@
+.recommendation-card {
+    position: relative;
+}
+.recommendation-card a:first-child {
+    width: 100%;
+    height: 130px;
+
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-bottom: 1px solid #616161;
+    background-color: var(--main-color-light-black);
+}
+
+.recommendation-card a img {
+    width: 73px;
+    height: 110px;
+
+    margin: 0px 15px;
+    border-radius: 2px;
+    object-fit: cover;
+}
+
+.recommendation-card a .info {
+    flex: 1;
+    height: 100%;
+
+    padding: 15px 0px;
+    font-weight: 400;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.recommendation-card a .title {
+    color: var(--main-color-white);
+    text-overflow: ellipsis;
+    font-weight: 400;
+    margin: 0px;
+    font-size: 1.2em;
+    flex: 1;
+}
+
+.recommendation-card a .sub-info {
+    color: var(--main-color-gray);
+    display: block;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

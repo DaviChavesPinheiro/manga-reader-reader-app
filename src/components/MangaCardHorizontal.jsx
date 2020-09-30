@@ -28,8 +28,7 @@ const MangaCardHorizontal = props => {
     )
 }
 
-const mapStateTopProps = state => ({ selected: state.manga.selected })
 
 const mapDispatchToProps = dispatch => bindActionCreators({ selectManga }, dispatch)
 
-export default connect(mapStateTopProps, mapDispatchToProps)(MangaCardHorizontal);
+export default connect(null, mapDispatchToProps)(MangaCardHorizontal);

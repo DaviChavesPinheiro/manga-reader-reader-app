@@ -16,20 +16,20 @@ const MangaPage = props => {
     useEffect(() => {
         props.showTabs('search', 'favoritePages', 'home' , 'recentPages', 'more', 'read')
         props.setHideOnScrool(false)
-        
-        if (window.history.scrollRestoration) {
-            window.history.scrollRestoration = 'manual';
-        }
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
     }, [])
 
 
     useEffect(() => {
         axios.get(`https://charlotte-services.herokuapp.com/mangas/${idManga}`).then(res => {
+            console.log(res.data)
             props.selectManga(res.data)
             props.setDisplayLabel(`${res.data.title} ${getRecentChapterReaded(idManga) ? '- '+ getRecentChapterReaded(idManga) : ''}`)
         })
+        if (window.history.scrollRestoration) {
+            window.history.scrollRestoration = 'manual';
+        }
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
     }, [idManga])
 
     function getRecentChapterReaded(id) {

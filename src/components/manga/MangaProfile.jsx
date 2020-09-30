@@ -8,6 +8,7 @@ import FavoriteButton from '../NavBar/FavoriteButton'
 import ReadButton from '../NavBar/ReadButton'
 import useMangaInfo from "../../hooks/useMangaInfo";
 import Loading from "../utils/Loading";
+import RecommendationCard from "./RecommendationCard";
 
 
 const MangaProfile = props => {
@@ -21,13 +22,17 @@ const MangaProfile = props => {
     }
 
     function expandChaptersList(expand) {
-        if(expand){
+        if (expand) {
             chaptersListRef.current.classList.remove("shrinked")
             expandListButton.current.classList.add("hidden")
         } else {
             chaptersListRef.current.classList.add("shrinked")
             expandListButton.current.classList.remove("hidden")
         }
+    }
+
+    function getAuthors(authors) {
+        return authors ? authors.map(author => author.name).join(" & ") : undefined
     }
     return (
         <div className="manga-profile">
@@ -41,7 +46,7 @@ const MangaProfile = props => {
                         <img src={manga.image_url} alt="Manga" />
                     </div>
                     <h1>{manga.title}</h1>
-                    <span>{manga.authors || manga.score}</span>
+                    <span>{getAuthors(manga.authors) || manga.score}</span>
                 </div>
                 <div className="buttons-container">
                     <ReadButton target="read" label="Read"></ReadButton>
@@ -76,6 +81,21 @@ const MangaProfile = props => {
                     <button ref={expandListButton} onClick={() => expandChaptersList(true)}>VIEW ALL {manga.chapters ? manga.chapters.length : 0} CHAPTERS</button>
                 </If>
                 <If test={manga.chapters === undefined}>
+                    <Loading></Loading>
+                </If>
+            </section>
+            <section className="recommendations">
+                <If test={manga.recommendations !== undefined}>
+                    <h2>Recommendations</h2>
+                    <ul>
+                        {manga.recommendations ? manga.recommendations.map((recommendation, index) => (
+                            <li key={recommendation.mal_id}>
+                                <RecommendationCard manga={{...recommendation, _id: recommendation.mal_id}}></RecommendationCard>
+                            </li>
+                        )) : null}
+                    </ul>
+                </If>
+                <If test={manga.recommendations === undefined}>
                     <Loading></Loading>
                 </If>
             </section>
