@@ -1,7 +1,7 @@
-.recommendation-card {
+.info-card {
     position: relative;
 }
-.recommendation-card a:first-child {
+.info-card a:first-child {
     width: 100%;
     height: 130px;
 
@@ -12,7 +12,7 @@
     background-color: var(--main-color-light-black);
 }
 
-.recommendation-card a img {
+.info-card a img {
     width: 73px;
     height: 110px;
 
@@ -21,7 +21,7 @@
     object-fit: cover;
 }
 
-.recommendation-card a .info {
+.info-card a .info {
     flex: 1;
     height: 100%;
 
@@ -32,7 +32,7 @@
     flex-direction: column;
 }
 
-.recommendation-card a .title {
+.info-card a .title {
     color: var(--main-color-white);
     text-overflow: ellipsis;
     font-weight: 400;
@@ -41,7 +41,7 @@
     flex: 1;
 }
 
-.recommendation-card a .sub-info {
+.info-card a .sub-info {
     color: var(--main-color-gray);
     display: block;
 

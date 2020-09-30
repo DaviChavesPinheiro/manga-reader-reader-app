@@ -137,7 +137,7 @@ section.chapters li.readed i{
   color: var(--main-color-gray);
 }
 
-section.chapters button {
+section button.show-more {
   color: var(--main-color-white);
   background-color: #c5c5c533;
   width: 100%;
@@ -145,15 +145,25 @@ section.chapters button {
   margin: 0 auto;
 }
 
-section.recommendations {
+section.recommendations, section.characters {
   padding: 10px 0px;
 }
-section.recommendations h2{
+section.recommendations h2, section.characters h2{
   padding: 0px 10px;
 }
-section.recommendations ul{
+section.recommendations ul, section.characters ul{
   width: 100%;
   list-style: none;
   padding: 0px;
 }
+
+section.characters ul.shrinked li:nth-child(n+4){
+  display: none;
+}
+
+section.characters button.show-more{
+  margin: 0px 10px;
+  width: calc(100% - 20px);
+}
+
 

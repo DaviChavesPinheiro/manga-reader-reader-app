@@ -8,14 +8,16 @@ import FavoriteButton from '../NavBar/FavoriteButton'
 import ReadButton from '../NavBar/ReadButton'
 import useMangaInfo from "../../hooks/useMangaInfo";
 import Loading from "../utils/Loading";
-import RecommendationCard from "./RecommendationCard";
+import InfoCard from "./InfoCard";
 
 
 const MangaProfile = props => {
     const manga = props.manga
     const { mangasInfo } = useMangaInfo()
     const chaptersListRef = useRef()
-    const expandListButton = useRef()
+    const chaptersExpandListButton = useRef()
+    const charactersListRef = useRef()
+    const charactersExpandListButton = useRef()
 
     function isChapterAlreadyReaded(chapterTitle) {
         return mangasInfo && mangasInfo[manga._id] && mangasInfo[manga._id]['chaptersReaded'] && mangasInfo[manga._id]["chaptersReaded"][chapterTitle]
@@ -24,10 +26,19 @@ const MangaProfile = props => {
     function expandChaptersList(expand) {
         if (expand) {
             chaptersListRef.current.classList.remove("shrinked")
-            expandListButton.current.classList.add("hidden")
+            chaptersExpandListButton.current.classList.add("hidden")
         } else {
             chaptersListRef.current.classList.add("shrinked")
-            expandListButton.current.classList.remove("hidden")
+            chaptersExpandListButton.current.classList.remove("hidden")
+        }
+    }
+    function expandCharactersList(expand) {
+        if (expand) {
+            charactersListRef.current.classList.remove("shrinked")
+            charactersExpandListButton.current.classList.add("hidden")
+        } else {
+            charactersListRef.current.classList.add("shrinked")
+            charactersExpandListButton.current.classList.remove("hidden")
         }
     }
 
@@ -78,9 +89,30 @@ const MangaProfile = props => {
                             )) : null}
                         </ul>
                     </div>
-                    <button ref={expandListButton} onClick={() => expandChaptersList(true)}>VIEW ALL {manga.chapters ? manga.chapters.length : 0} CHAPTERS</button>
+                    <button className="show-more" ref={chaptersExpandListButton} onClick={() => expandChaptersList(true)}>VIEW ALL {manga.chapters ? manga.chapters.length : 0} CHAPTERS</button>
                 </If>
                 <If test={manga.chapters === undefined}>
+                    <Loading></Loading>
+                </If>
+            </section>
+            <section className="characters">
+                <If test={manga.characters !== undefined}>
+                    <h2>Characters</h2>
+                    <ul ref={charactersListRef} className="shrinked">
+                        {manga.characters ? manga.characters.map((character, index) => (
+                            <li key={character.mal_id}>
+                                <InfoCard
+                                    manga={{ ...character, _id: character.mal_id }}
+                                    image={character.image_url}
+                                    title={character.name}
+                                    info={[`Role: ${character.role}`]}
+                                ></InfoCard>
+                            </li>
+                        )) : null}
+                    </ul>
+                    <button className="show-more" ref={charactersExpandListButton} onClick={() => expandCharactersList(true)}>VIEW ALL CHARACTERS</button>
+                </If>
+                <If test={manga.characters === undefined}>
                     <Loading></Loading>
                 </If>
             </section>
@@ -90,7 +122,12 @@ const MangaProfile = props => {
                     <ul>
                         {manga.recommendations ? manga.recommendations.map((recommendation, index) => (
                             <li key={recommendation.mal_id}>
-                                <RecommendationCard manga={{...recommendation, _id: recommendation.mal_id}}></RecommendationCard>
+                                <InfoCard
+                                    manga={{ ...recommendation, _id: recommendation.mal_id }}
+                                    image={recommendation.image_url}
+                                    title={recommendation.title}
+                                    info={[`Votes: ${recommendation.recommendation_count}`]}
+                                ></InfoCard>
                             </li>
                         )) : null}
                     </ul>
