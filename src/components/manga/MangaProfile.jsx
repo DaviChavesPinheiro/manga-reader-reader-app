@@ -57,7 +57,7 @@ const MangaProfile = props => {
                         <img src={manga.image_url} alt="Manga" />
                     </div>
                     <h1>{manga.title}</h1>
-                    <span>{getAuthors(manga.authors) || ''}</span>
+                    <span>{getAuthors(manga.authors) || '...'}</span>
                 </div>
                 <div className="buttons-container">
                     <ReadButton target="read" label="Read"></ReadButton>

@@ -5,7 +5,6 @@ import { HashRouter } from "react-router-dom";
 
 import App from './App'
 
-import './index.css';
 import 'antd/dist/antd.css';
 import 'font-awesome/css/font-awesome.min.css'
 

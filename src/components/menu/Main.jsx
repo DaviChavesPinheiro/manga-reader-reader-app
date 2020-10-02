@@ -13,9 +13,9 @@ const Main = props => {
         props.showPages(activityPages)
     }
 
-    function openReaderPage() {
-        if(props.menu.activityPages[props.menu.activityPages.length - 1] === 'reader') return
-        props.showPages([...props.menu.activityPages, 'reader'])
+    function addPage(page) {
+        if(props.menu.activityPages[props.menu.activityPages.length - 1] === page) return
+        props.showPages([...props.menu.activityPages, page])
     }
 
     return (
@@ -27,8 +27,8 @@ const Main = props => {
                 </header>
                 <section>
                     <h3>Configuration</h3>
-                    <button><i className="fa fa-lightbulb-o"></i>Theme</button>
-                    <button onClick={openReaderPage}><i className="fa fa-book"></i>Reader</button>
+                    <button onClick={() => addPage('theme')}><i className="fa fa-lightbulb-o"></i>Theme</button>
+                    <button onClick={() => addPage('reader')}><i className="fa fa-book"></i>Reader</button>
                 </section>
                 <section>
                     <h3>About Us</h3>
