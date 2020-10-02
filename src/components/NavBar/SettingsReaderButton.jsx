@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { setSettingsVisibility } from "../../store/actions/readerActions";
+import { setVisibility, showPages } from "../../store/actions/menuActions";
 
 import IconButton from "../IconButton";
 import If from "../../operator/If";
@@ -10,7 +10,10 @@ const SettingsReaderButton = props => {
     const visible = props.tabsVisible[props.target] === true
 
     function toggleMenu() {
-        props.setSettingsVisibility(!props.settingsVisibility)
+        if(!props.menu.visibility === true){
+            props.showPages(['reader'])
+        }
+        props.setVisibility(!props.menu.visibility)
     }
 
     return (
@@ -21,7 +24,7 @@ const SettingsReaderButton = props => {
         </If>
     )
 }
-const mapStateToProps = state => ({ tabsVisible: state.navBar.tabsVisible, settingsVisibility: state.reader.settingsVisibility })
-const mapDispatchToProps = dispatch => bindActionCreators({setSettingsVisibility}, dispatch)
+const mapStateToProps = state => ({ tabsVisible: state.navBar.tabsVisible, menu: state.menu})
+const mapDispatchToProps = dispatch => bindActionCreators({setVisibility, showPages}, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(SettingsReaderButton);

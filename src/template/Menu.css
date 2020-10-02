@@ -1,0 +1,104 @@
+.menu {
+  width: 0px;
+  max-width: 90%;
+  position: fixed;
+  z-index: 11;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: var(--main-color-black);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.menu.show {
+  width: 400px;
+}
+
+.menu-page {
+  width: 100%;
+  height: 100%;
+}
+
+.menu-page h2{
+  color: var(--main-color-white);
+  margin: 0px;
+  font-weight: 500;
+}
+.menu-page h3{
+  color: var(--main-color-gray);
+  font-size: 1em;
+  margin-bottom: 15px;
+}
+.menu-page button{
+  color: var(--main-color-white);
+  padding: 0px;
+}
+.menu-page i{
+  color: var(--main-color-white);
+}
+
+.menu-page header {
+  height: 60px;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  background-color: var(--main-color-light-black);
+}
+
+.menu-page header h2 {
+  flex: 1;
+  text-align: right;
+  margin-right: 20px;
+}
+
+.menu-page header button {
+  font-size: 2.4em;
+  margin-left: 15px;
+}
+
+.menu-page section{
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  padding: 15px;
+
+  border-bottom: 2px solid var(--main-color-light-black);
+}
+
+.menu-page section button{
+  font-size: 1.4em;
+  margin-bottom: 10px;
+}
+.menu-page section button i{
+  width: 40px;
+  padding-right: 20px;
+  text-align: center;
+}
+
+.menu-page .buttons-container {
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.menu-page button.styled {
+  flex: 1;
+  background-color: var(--main-color-light-black);
+  border: 1px solid var(--main-color-gray);
+  border-radius: 3px;
+  margin: 0px 10px;
+
+  font-size: 1.1em;
+  color: var(--main-color-gray);
+  padding: 3px 0px;
+}
+.menu-page button.styled.actived {
+  border: 1px solid var(--main-color-white);
+  color: var(--main-color-white);
+}

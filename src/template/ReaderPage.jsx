@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { selectManga } from "../store/actions/mangaActions";
-import { setSettingsVisibility, setImageBrightness } from "../store/actions/readerActions";
 import { showTabs, setDisplayLabel, setHideOnScrool } from "../store/actions/navBarActions";
 import axios from "axios";
 
@@ -13,14 +12,14 @@ import LazyLoad from 'react-lazyload';
 import If from "../operator/If";
 import useMangaInfo from "../hooks/useMangaInfo";
 import Loading from "../components/utils/Loading";
-import Menu from "../components/utils/Menu";
+// import Menu from "../components/utils/Menu";
 
 
 const ReaderPage = props => {
     const { idManga, idChapter } = useParams()
     const [chapters, setChapters] = useState([])
     const [chapterIndex, setChapterIndex] = useState(parseInt(idChapter))
-    const {mangasInfo, saveManga } = useMangaInfo()
+    const { mangasInfo, saveManga } = useMangaInfo()
     let chapterObserver = new IntersectionObserver(onIntersectionChapterObserver, {
         threshold: 0.25,
         rootMargin: "2000px"
@@ -33,20 +32,19 @@ const ReaderPage = props => {
         props.setHideOnScrool(true)
 
         const settings = JSON.parse(window.localStorage.getItem('settings')) || {}
-        props.setImageBrightness(settings.imagesBrightness || 100)
 
         loadChapter(chapterIndex)
 
         if (window.history.scrollRestoration) {
             window.history.scrollRestoration = 'manual';
         }
-        
+
     }, [])
 
     useEffect(() => {
-        if(chapters.length === 1 && mangasInfo[idManga] && mangasInfo[idManga].recentChapter && mangasInfo[idManga].recentChapter.title === chapters[chapters.length - 1].title){
+        if (chapters.length === 1 && mangasInfo[idManga] && mangasInfo[idManga].recentChapter && mangasInfo[idManga].recentChapter.title === chapters[chapters.length - 1].title) {
             let recentPage = mangasInfo[idManga] && mangasInfo[idManga].recentChapter && mangasInfo[idManga].recentChapter.recentPage || 0
-            if(recentPage > 0)
+            if (recentPage > 0)
                 recentPage -= 1
             document.querySelector(`#chapter-${chapters[chapters.length - 1].index}`).children[recentPage].scrollIntoView()
         }
@@ -57,7 +55,7 @@ const ReaderPage = props => {
         const chaptersReaded = {}
         if (chapters.length)
             chaptersReaded[chapters[chapters.length - 1].title] = true
-        
+
         saveManga({ _id: idManga, chaptersReaded, recentChapter: { title: chapters[chapters.length - 1].title, index: chapterIndex } })
     }, [chapters])
 
@@ -96,7 +94,7 @@ const ReaderPage = props => {
 
             const pageIndex = Array.from(entry.target.parentNode.parentNode.children).indexOf(entry.target.parentNode)
 
-            saveManga({ _id: idManga, recentChapter: { recentPage: pageIndex} })
+            saveManga({ _id: idManga, recentChapter: { recentPage: pageIndex } })
         });
     }
 
@@ -118,7 +116,11 @@ const ReaderPage = props => {
                 <div className="reader-pages-container" key={chapter.index} id={`chapter-${chapter.index}`}>
                     {chapter.pages.map((page) => (
                         <LazyLoad key={page} height={900} offset={500}>
-                            <img src={page} onLoad={onLoad} onClick={toggleNavBar} style={{ filter: `brightness(${props.imageBrightness}%)` }}></img>
+                            <img
+                                src={page}
+                                onLoad={onLoad}
+                                onClick={toggleNavBar}
+                                style={{ filter: `brightness(${props.reader.imageBrightness}%)`, maxWidth: `${props.reader.zoom}%`}}></img>
                             <Loading></Loading>
                         </LazyLoad>
                     ))}
@@ -128,18 +130,12 @@ const ReaderPage = props => {
 
                 </div>
             ))}
-            <Menu show={props.settingsVisibility} onClose={() => { props.setSettingsVisibility(false) }}>
-                <div className="menu-content">
-                    <p>Images Brightness</p>
-                    <input type="range" min="1" max="100" value={props.imageBrightness} onChange={(e) => props.setImageBrightness(e.target.value)}></input>
-                </div>
-            </Menu>
         </div>
     )
 }
 
-const mapStateToProps = state => ({ settingsVisibility: state.reader.settingsVisibility, imageBrightness: state.reader.imageBrightness })
+const mapStateToProps = state => ({ reader: state.reader })
 
-const mapDispatchToPros = dispatch => bindActionCreators({ selectManga, showTabs, setDisplayLabel, setHideOnScrool, setSettingsVisibility, setImageBrightness }, dispatch)
+const mapDispatchToPros = dispatch => bindActionCreators({ selectManga, showTabs, setDisplayLabel, setHideOnScrool }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToPros)(ReaderPage);

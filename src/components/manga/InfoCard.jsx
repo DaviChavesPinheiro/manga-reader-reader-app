@@ -8,8 +8,8 @@ import "./InfoCard.css";
 const InfoCard = props => {
     const manga = props.manga
     function onClick(event) {
-        event.preventDefault()
-        // props.selectManga(manga)
+        // event.preventDefault()
+        props.selectManga(manga)
     }
 
     return (

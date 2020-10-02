@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { showPages } from "./store/actions/menuActions";
+import { setImageBrightness, setImageZoom } from "./store/actions/readerActions";
 import SearchBar from "./components/SearchBar";
-import axios from "axios";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 import Home from "./template/Home";
@@ -20,8 +22,19 @@ import MangaPageButton from "./components/NavBar/MangaPageButton";
 import RecentPageButton from "./components/NavBar/RecentPageButton";
 import FavoritePageButton from "./components/NavBar/FavoritePageButton";
 import SettingReaderButton from "./components/NavBar/SettingsReaderButton";
+import Menu from "./template/Menu";
+import Main from "./components/menu/Main";
+import Reader from "./components/menu/Reader";
 
 const App = props => {
+
+    useEffect(() => {
+        props.showPages(['main'])
+
+        const settings = JSON.parse(window.localStorage.getItem('settings')) || {}
+        props.setImageBrightness(settings.imagesBrightness || 100)
+        props.setImageZoom(settings.imagesZoom || 100)
+    }, [])
 
     return (
         <div className="App">
@@ -45,10 +58,15 @@ const App = props => {
                 <MoreButton target="more" label="More"></MoreButton>
                 <SettingReaderButton target="settingsReader" label="Settings"></SettingReaderButton>
             </NavBar>
+            <Menu>
+                <Main target="main"></Main>
+                <Reader target="reader"></Reader>
+            </Menu>
         </div>
     )
 }
 
 const mapStateToProps = state => ({ mangaSelected: state.manga.selected })
+const mapDispatchToProps = dispatch => bindActionCreators({showPages, setImageBrightness, setImageZoom}, dispatch)
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

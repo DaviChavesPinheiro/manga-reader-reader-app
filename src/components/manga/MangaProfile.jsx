@@ -57,20 +57,18 @@ const MangaProfile = props => {
                         <img src={manga.image_url} alt="Manga" />
                     </div>
                     <h1>{manga.title}</h1>
-                    <span>{getAuthors(manga.authors) || manga.score}</span>
+                    <span>{getAuthors(manga.authors) || ''}</span>
                 </div>
                 <div className="buttons-container">
                     <ReadButton target="read" label="Read"></ReadButton>
-                    <IconButton icon="navicon" label={`${manga.chapters_amount} Chapters`}></IconButton>
+                    <IconButton icon="navicon" label={`${manga.chapters_amount || 0} Chapters`}></IconButton>
                     <FavoriteButton manga={manga} label="Favorite"></FavoriteButton>
                 </div>
             </section>
             <section className="description">
                 <If test={manga.description !== undefined}>
-                    <div className="description">
-                        <h2>Description</h2>
-                        <p>{manga.description}</p>
-                    </div>
+                    <h2>Description</h2>
+                    <p>{manga.description}</p>
                 </If>
                 <If test={manga.description === undefined}>
                     <Loading></Loading>
