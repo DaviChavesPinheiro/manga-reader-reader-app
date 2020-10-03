@@ -1,5 +1,26 @@
 import styled from "styled-components";
 
+export const Header = styled.header`
+    height: 60px;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    background-color: ${props => props.theme.colors.secondary_background};
+`
+
+export const Section = styled.section`
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 15px;
+
+    border-bottom: 2px solid ${props => props.theme.colors.secondary_background};
+`
+
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
@@ -8,6 +29,10 @@ export const Container = styled.div`
     width: 100%;
     max-width: 400px;
 `
+export const HorizontalContainer = styled(Container)`
+    flex-direction: row;
+`
+
 export const Close = styled.button`
     font-size: 2.4em;
     margin-left: 15px;
@@ -40,3 +65,4 @@ export const Item = styled.button`
         text-align: center;
     }
 `
+

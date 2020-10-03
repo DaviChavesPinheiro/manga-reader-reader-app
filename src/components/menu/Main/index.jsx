@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { showPages } from "../../store/actions/menuActions";
-import If from "../../operator/If";
+import { showPages } from "../../../store/actions/menuActions";
+import If from "../../../operator/If";
 
-import { MainTitle, Title, Close, Item } from "./style";
+import { MainTitle, Title, Close, Item, Header, Section } from "../style";
 
 const Main = props => {
     const visibility = props.menu.activityPages[props.menu.activityPages.length - 1] === props.target
@@ -23,20 +23,20 @@ const Main = props => {
     return (
         <If test={visibility}>
             <div className="menu-page main">
-                <header>
+                <Header>
                     <Close onClick={closePage}>&times;</Close>
                     <MainTitle>More</MainTitle>
-                </header>
-                <section>
+                </Header>
+                <Section>
                     <Title>Configuration</Title>
                     <Item onClick={() => addPage('theme')}><i className="fa fa-lightbulb-o"></i>Theme</Item>
                     <Item onClick={() => addPage('reader')}><i className="fa fa-book"></i>Reader</Item>
-                </section>
-                <section>
+                </Section>
+                <Section>
                     <Title>About Us</Title>
                     <Item><i className="fa fa-gamepad"></i>Discord</Item>
                     <Item><i className="fa fa-instagram"></i>Instagram</Item>
-                </section>
+                </Section>
             </div>
         </If>
     )

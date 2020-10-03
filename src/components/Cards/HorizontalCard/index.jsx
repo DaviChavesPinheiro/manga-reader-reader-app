@@ -25,7 +25,7 @@ const HorizontalCard = props => {
                 </div>
             </Link>
             <If test={props.secondary_link}>
-                <Link to={props.secondary_link} onClick={onClick} className="secondary-link">
+                <Link to={props.secondary_link || "/"} onClick={onClick} className="secondary-link">
                     <button><i className="fa fa-ellipsis-v"></i></button>
                 </Link>
             </If>

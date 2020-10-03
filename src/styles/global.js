@@ -7,6 +7,7 @@ export default createGlobalStyle`
         margin: 0px;
         padding: 0px;
         box-sizing: border-box;
+        transition: color 0.5s;
     }
 
     :root {

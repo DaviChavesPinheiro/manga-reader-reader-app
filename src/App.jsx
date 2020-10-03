@@ -24,14 +24,14 @@ import RecentPageButton from "./components/NavBar/RecentPageButton";
 import FavoritePageButton from "./components/NavBar/FavoritePageButton";
 import SettingReaderButton from "./components/NavBar/SettingsReaderButton";
 import Menu from "./template/Menu";
-import Main from "./components/menu/Main";
-import Reader from "./components/menu/Reader";
+import Main from "./components/menu/Main/index";
+import Reader from "./components/menu/Reader/index";
+import Theme from "./components/menu/Theme/index";
 
 import GlobalStyle from "./styles/global";
 import dark from "./styles/themes/dark";
 import light from "./styles/themes/light";
 import { ThemeProvider } from "styled-components";
-import Theme from "./components/menu/Theme";
 
 const App = props => {
 
