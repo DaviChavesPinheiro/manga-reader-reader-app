@@ -148,7 +148,7 @@ section button.show-more {
 section.recommendations, section.characters {
   padding: 10px 0px;
 }
-section.recommendations h2, section.characters h2{
+section.recommendations > h2, section.characters > h2{
   padding: 0px 10px;
 }
 section.recommendations ul, section.characters ul{

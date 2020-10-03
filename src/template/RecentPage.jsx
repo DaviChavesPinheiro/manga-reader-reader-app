@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import axios from 'axios'
 import "./RecentPage.css";
 
-import MangaCardHorizontal from "../components/MangaCardHorizontal";
+import HorizontalCard from "../components/Cards/HorizontalCard";
 import If from "../operator/If";
 import Loading from "../components/utils/Loading";
 
@@ -15,7 +15,7 @@ const RecentPage = props => {
     const [recentMangasList, setRecentMangasList] = useState([])
 
     useEffect(() => {
-        props.showTabs('search', 'favoritePages', 'home' , 'recentPages', 'more')
+        props.showTabs('search', 'favoritePages', 'home', 'recentPages', 'more')
         props.setHideOnScrool(false)
 
         const recentMangas = getRecentMangasIds()
@@ -82,7 +82,17 @@ const RecentPage = props => {
                     <Loading></Loading>
                 </If>
                 <ul className="manga-list">
-                    {recentMangasList.map(manga => <MangaCardHorizontal key={manga._id} manga={{ ...manga, lastViewedDate: timeSince(manga.lastViewedDate) }}></MangaCardHorizontal>)}
+                    {recentMangasList.map(manga => (
+                        <HorizontalCard key={manga._id}
+                            title={manga.title}
+                            image={manga.image_url}
+                            info={[manga.recentChapter ? manga.recentChapter.title : '', timeSince(manga.lastViewedDate)]}
+                            primary_link={`/manga/${manga._id}/chapters/${manga.recentChapter.index || 0}`}
+                            secondary_link={`/manga/${manga._id}`}
+                            manga={manga}
+                        >
+                        </HorizontalCard>
+                    ))}
                 </ul>
             </div>
         </div>

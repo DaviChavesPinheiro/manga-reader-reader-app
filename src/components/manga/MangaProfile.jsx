@@ -8,7 +8,7 @@ import FavoriteButton from '../NavBar/FavoriteButton'
 import ReadButton from '../NavBar/ReadButton'
 import useMangaInfo from "../../hooks/useMangaInfo";
 import Loading from "../utils/Loading";
-import InfoCard from "./InfoCard";
+import HorizontalCard from "../Cards/HorizontalCard";
 
 
 const MangaProfile = props => {
@@ -99,12 +99,13 @@ const MangaProfile = props => {
                     <ul ref={charactersListRef} className="shrinked">
                         {manga.characters ? manga.characters.map((character, index) => (
                             <li key={character.mal_id}>
-                                <InfoCard
+                                <HorizontalCard
                                     manga={{ ...character, _id: character.mal_id }}
                                     image={character.image_url}
                                     title={character.name}
                                     info={[`Role: ${character.role}`]}
-                                ></InfoCard>
+                                    primary_link={`/manga/${manga._id}`}
+                                ></HorizontalCard>
                             </li>
                         )) : null}
                     </ul>
@@ -120,12 +121,13 @@ const MangaProfile = props => {
                     <ul>
                         {manga.recommendations ? manga.recommendations.map((recommendation, index) => (
                             <li key={recommendation.mal_id}>
-                                <InfoCard
+                                <HorizontalCard
                                     manga={{ ...recommendation, _id: recommendation.mal_id }}
                                     image={recommendation.image_url}
                                     title={recommendation.title}
                                     info={[`Votes: ${recommendation.recommendation_count}`]}
-                                ></InfoCard>
+                                    primary_link={`/manga/${manga._id}`}
+                                ></HorizontalCard>
                             </li>
                         )) : null}
                     </ul>
