@@ -4,6 +4,8 @@ import { bindActionCreators } from "redux";
 import { showPages } from "../../store/actions/menuActions";
 import If from "../../operator/If";
 
+import { MainTitle, Title, Close, Item } from "./style";
+
 const Main = props => {
     const visibility = props.menu.activityPages[props.menu.activityPages.length - 1] === props.target
 
@@ -22,18 +24,18 @@ const Main = props => {
         <If test={visibility}>
             <div className="menu-page main">
                 <header>
-                    <button onClick={closePage}>&times;</button>
-                    <h2>More</h2>
+                    <Close onClick={closePage}>&times;</Close>
+                    <MainTitle>More</MainTitle>
                 </header>
                 <section>
-                    <h3>Configuration</h3>
-                    <button onClick={() => addPage('theme')}><i className="fa fa-lightbulb-o"></i>Theme</button>
-                    <button onClick={() => addPage('reader')}><i className="fa fa-book"></i>Reader</button>
+                    <Title>Configuration</Title>
+                    <Item onClick={() => addPage('theme')}><i className="fa fa-lightbulb-o"></i>Theme</Item>
+                    <Item onClick={() => addPage('reader')}><i className="fa fa-book"></i>Reader</Item>
                 </section>
                 <section>
-                    <h3>About Us</h3>
-                    <button><i className="fa fa-gamepad"></i>Discord</button>
-                    <button><i className="fa fa-instagram"></i>Instagram</button>
+                    <Title>About Us</Title>
+                    <Item><i className="fa fa-gamepad"></i>Discord</Item>
+                    <Item><i className="fa fa-instagram"></i>Instagram</Item>
                 </section>
             </div>
         </If>

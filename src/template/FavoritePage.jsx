@@ -7,7 +7,7 @@ import axios from 'axios'
 import "./FavoritePage.css";
 
 
-import MangaCard from "../components/MangaCard";
+import MangaCard from "../components/Cards/MangaCard";
 import If from "../operator/If";
 import Loading from "../components/utils/Loading";
 

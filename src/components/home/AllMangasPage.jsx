@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import LazyLoad from 'react-lazyload';
-import MangaCard from '../MangaCard'
+import MangaCard from '../Cards/MangaCard'
 import If from "../../operator/If";
 import Loading from "../utils/Loading";
+
+// import MangaCard2 from "../Cards/MangaCard";
 
 const AllMangasPage = props => {
     const [pages, setPages] = useState([])
@@ -52,8 +54,8 @@ const AllMangasPage = props => {
             {pages.map(page => (
                 <ul className="manga-list" key={page.index} id={`page-${page.index}`}>
                     {page.mangas.map((manga, index) => (
-                        <LazyLoad key={manga._id} height={900}>
-                            <MangaCard manga={manga} rank={index + 1}></MangaCard>
+                        <LazyLoad key={manga._id} height={210}>
+                            <MangaCard manga={manga}></MangaCard>
                         </LazyLoad>
                     ))}
                     <div className="end-area">

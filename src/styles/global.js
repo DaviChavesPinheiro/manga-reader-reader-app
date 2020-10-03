@@ -1,4 +1,6 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
+
+
 
 export default createGlobalStyle`
     *{
@@ -29,7 +31,7 @@ export default createGlobalStyle`
     .App {
         width: 100%;
         min-height: 100vh;
-        background-color: ${props => props.theme.colors.background};
+        background-color: ${props => props.theme.colors.primary_background};
     }
 
     .hidden {
@@ -60,3 +62,32 @@ export default createGlobalStyle`
     }
 
 `;
+
+export const Button = styled.button`
+    background-color: ${props => props.theme.colors.secondary_background};
+    border: 1px solid ${props => props.theme.colors.tertiary_color};
+    border-radius: 3px;
+    margin: 0px 10px;
+
+    font-size: 1.1em;
+    color: var(--main-color-gray);
+    padding: 3px 0px;
+
+    &.expanded {
+        width: calc(100% - 10px);
+    }
+    
+    &.flex {
+        flex: 1;
+    }
+
+    &.actived {
+        border: 1px solid ${props => props.theme.colors.primary_color};
+        color: ${props => props.theme.colors.primary_color};
+    }
+
+    :hover{
+        border: 1px solid ${props => props.theme.colors.primary_color};
+        color: ${props => props.theme.colors.primary_color};
+    }
+`

@@ -5,7 +5,8 @@ import { showPages } from "../../store/actions/menuActions";
 import { setImageBrightness, setImageZoom } from "../../store/actions/readerActions";
 
 import If from "../../operator/If";
-
+import { MainTitle, Title, Close } from "./style";
+import { Button } from "../../styles/global";
 const Reader = props => {
     const visibility = props.menu.activityPages[props.menu.activityPages.length - 1] === props.target
 
@@ -34,24 +35,24 @@ const Reader = props => {
         <If test={visibility}>
             <div className="menu-page reader">
                 <header>
-                    <button onClick={closePage}>&times;</button>
-                    <h2>Reader</h2>
+                    <Close onClick={closePage}>&times;</Close>
+                    <MainTitle>Reader</MainTitle>
                 </header>
                 <section>
-                    <h3>Brightness</h3>
+                    <Title>Brightness</Title>
                     <div className="buttons-container">
-                        <button onClick={(event) => setBright(event, 50)} className={`styled ${props.reader.imageBrightness === 50 ? 'actived' : ''}`}>50%</button>
-                        <button onClick={(event) => setBright(event, 75)} className={`styled ${props.reader.imageBrightness === 75 ? 'actived' : ''}`}>75%</button>
-                        <button onClick={(event) => setBright(event, 100)} className={`styled ${props.reader.imageBrightness === 100 ? 'actived' : ''}`}>100%</button>
+                        <Button onClick={(event) => setBright(event, 50)} className={`flex ${props.reader.imageBrightness === 50 ? 'actived' : ''}`}>50%</Button>
+                        <Button onClick={(event) => setBright(event, 75)} className={`flex ${props.reader.imageBrightness === 75 ? 'actived' : ''}`}>75%</Button>
+                        <Button onClick={(event) => setBright(event, 100)} className={`flex ${props.reader.imageBrightness === 100 ? 'actived' : ''}`}>100%</Button>
                     </div>
                 </section>
                 <section>
-                    <h3>Zoom</h3>
+                    <Title>Zoom</Title>
                     <div className="buttons-container">
-                        <button onClick={(event) => setZoom(event, 70)} className={`styled ${props.reader.zoom === 70 ? 'actived' : ''}`}>70%</button>
-                        <button onClick={(event) => setZoom(event, 80)} className={`styled ${props.reader.zoom === 80 ? 'actived' : ''}`}>80%</button>
-                        <button onClick={(event) => setZoom(event, 90)} className={`styled ${props.reader.zoom === 90 ? 'actived' : ''}`}>90%</button>
-                        <button onClick={(event) => setZoom(event, 100)} className={`styled ${props.reader.zoom === 100 ? 'actived' : ''}`}>100%</button>
+                        <Button onClick={(event) => setZoom(event, 70)} className={`flex ${props.reader.zoom === 70 ? 'actived' : ''}`}>70%</Button>
+                        <Button onClick={(event) => setZoom(event, 80)} className={`flex ${props.reader.zoom === 80 ? 'actived' : ''}`}>80%</Button>
+                        <Button onClick={(event) => setZoom(event, 90)} className={`flex ${props.reader.zoom === 90 ? 'actived' : ''}`}>90%</Button>
+                        <Button onClick={(event) => setZoom(event, 100)} className={`flex ${props.reader.zoom === 100 ? 'actived' : ''}`}>100%</Button>
                     </div>
                 </section>
                 

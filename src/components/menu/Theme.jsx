@@ -6,39 +6,47 @@ import { setTheme } from "../../store/actions/geralActions";
 
 import If from "../../operator/If";
 
+import { Container, MainTitle, Title, Close } from "./style";
+import { Button as GlobalButton } from "../../styles/global";
+
+import styled from "styled-components";
+
 const Theme = props => {
     const visibility = props.menu.activityPages[props.menu.activityPages.length - 1] === props.target
-
+    
     function closePage() {
         const activityPages = props.menu.activityPages
         activityPages.pop()
         props.showPages(activityPages)
     }
 
-    function setTheme(theme) {
-        props.setTheme(theme)
-    }
-   
+    const Button = styled(GlobalButton)`
+        margin-bottom: 20px;
+
+    `
 
     return (
         <If test={visibility}>
             <div className="menu-page reader">
                 <header>
-                    <button onClick={closePage}>&times;</button>
-                    <h2>Theme</h2>
+                    <Close onClick={closePage}>&times;</Close>
+                    <MainTitle>Theme</MainTitle>
                 </header>
                 <section>
-                    <h3>Themes</h3>
-                    <div className="buttons-container">
-                        <button onClick={() => setTheme('dark')} className="styled">Dark</button>
-                        <button onClick={() => setTheme('light')} className="styled">Light</button>
-                    </div>
+                    <Title>Themes</Title>
+                    <Container>
+                        <Button className={`expanded ${props.geral.theme === 'dark' ? 'actived' : ''}`} onClick={() => props.setTheme('dark')}>Dark</Button>
+                        <Button className={`expanded ${props.geral.theme === 'light' ? 'actived' : ''}`} onClick={() => props.setTheme('light')}>Light</Button>
+                        <Button className={`expanded ${props.geral.theme === 'blue' ? 'actived' : ''}`} onClick={() => props.setTheme('blue')}>Blue</Button>
+                        <Button className={`expanded ${props.geral.theme === 'pink' ? 'actived' : ''}`} onClick={() => props.setTheme('pink')}>Pink</Button>
+                        <Button className={`expanded ${props.geral.theme === 'dark-blue' ? 'actived' : ''}`} onClick={() => props.setTheme('dark-blue')}>Dark Blue</Button>
+                    </Container>
                 </section>
             </div>
         </If>
     )
 }
 
-const mapStateToProps = state => ({menu: state.menu, geral: state.geral })
-const mapDispatchToProps = dispatch => bindActionCreators({setTheme, showPages}, dispatch)
+const mapStateToProps = state => ({ menu: state.menu, geral: state.geral })
+const mapDispatchToProps = dispatch => bindActionCreators({ setTheme, showPages }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(Theme);

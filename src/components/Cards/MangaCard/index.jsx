@@ -1,9 +1,10 @@
 import React from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { selectManga } from "../store/actions/mangaActions";
+import { selectManga } from "../../../store/actions/mangaActions";
 import { Link } from "react-router-dom";
-import "./MangaCard.css";
+
+import { Card } from "./style";
 
 const MangaCard = props => {
     const manga = props.manga
@@ -13,13 +14,15 @@ const MangaCard = props => {
     
     return (
         <Link to={`/manga/${manga._id}`} onClick={onClick}>
-            <div className="manga-card">
-                <img src={manga.image_url} alt="Manga"/>
-                <div className="info">
-                    <h3 className="title">{manga.title}</h3>
-                    <span className="chapters-score">Chapters: {manga.chapters_amount} | Score: {manga.score.toFixed(1)}</span>
+            <Card>
+                <div className="img-container">
+                    <img src={manga.image_url} alt="Manga"/>
                 </div>
-            </div>
+                <div className="info">
+                    <h2>{manga.title}</h2>
+                    <span>Score: {manga.score.toFixed(2)}</span>
+                </div>
+            </Card>
         </Link>
     )
 }

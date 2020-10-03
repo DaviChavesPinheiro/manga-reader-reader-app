@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import LazyLoad from 'react-lazyload';
-import MangaCard from '../MangaCard'
+import MangaCard from '../Cards/MangaCard'
 import If from "../../operator/If";
 import Loading from "../utils/Loading";
 
@@ -26,8 +26,8 @@ const PopularMangasPage = props => {
             </If>
             <ul className="manga-list">
                 {mangas.map((manga, index) => (
-                    <LazyLoad key={manga._id} height={900}>
-                        <MangaCard manga={manga} rank={index + 1}></MangaCard>
+                    <LazyLoad key={manga._id} height={210}>
+                        <MangaCard manga={manga}></MangaCard>
                     </LazyLoad>
                 ))}
             </ul>
