@@ -11,18 +11,17 @@ import Home from "./template/Home";
 import MangaPage from "./template/MangaPage";
 import FavoritePage from "./template/FavoritePage";
 import RecentPage from "./template/RecentPage";
-import NavBar from "./template/NavBar";
+import NavBar from "./components/NavBar";
 import Content from "./template/Content";
 import ReaderPage from "./template/ReaderPage";
 
-import MoreButton from "./components/NavBar/MoreButton";
-import SearchButton from "./components/NavBar/SearchButton";
-import HomePageButton from "./components/NavBar/HomePageButton";
-import FavoriteButton from "./components/NavBar/FavoriteButton";
-import MangaPageButton from "./components/NavBar/MangaPageButton";
-import RecentPageButton from "./components/NavBar/RecentPageButton";
-import FavoritePageButton from "./components/NavBar/FavoritePageButton";
-import SettingReaderButton from "./components/NavBar/SettingsReaderButton";
+import MoreButton from "./components/Buttons/MoreButton";
+import SearchButton from "./components/Buttons/SearchButton";
+import HomePageButton from "./components/Buttons/HomePageButton";
+import MangaPageButton from "./components/Buttons/MangaPageButton";
+import RecentPageButton from "./components/Buttons/RecentPageButton";
+import FavoritePageButton from "./components/Buttons/FavoritePageButton";
+import SettingReaderButton from "./components/Buttons/SettingsReaderButton";
 import Menu from "./template/Menu";
 import Main from "./components/menu/Main/index";
 import Reader from "./components/menu/Reader/index";
@@ -69,14 +68,13 @@ const App = props => {
                     </Switch>
                 </Content>
                 <NavBar>
-                    <SearchButton target="search" label="Search"></SearchButton>
-                    <FavoriteButton manga={props.mangaSelected} target="favorite" label="Favorite"></FavoriteButton>
-                    <FavoritePageButton target="favoritePages" label="Favorites"></FavoritePageButton>
-                    <HomePageButton target="home" label="Home"></HomePageButton>
-                    <MangaPageButton target="manga" label="Manga"></MangaPageButton>
-                    <RecentPageButton target="recentPages" label="Recent"></RecentPageButton>
-                    <MoreButton target="more" label="More"></MoreButton>
-                    <SettingReaderButton target="settingsReader" label="Settings"></SettingReaderButton>
+                    <SearchButton target="search" label="Search" expanded={true}></SearchButton>
+                    <FavoritePageButton target="favoritePages" label="Favorites" expanded={true}></FavoritePageButton>
+                    <HomePageButton target="home" label="Home" expanded={true}></HomePageButton>
+                    <MangaPageButton target="manga" label="Manga" expanded={true}></MangaPageButton>
+                    <RecentPageButton target="recentPages" label="Recent" expanded={true}></RecentPageButton>
+                    <MoreButton target="more" label="More" expanded={true}></MoreButton>
+                    <SettingReaderButton target="settingsReader" label="Settings" expanded={true}></SettingReaderButton>
                 </NavBar>
                 <Menu>
                     <Main target="main"></Main>

@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { setVisibility, showPages } from "../../store/actions/menuActions";
-import IconButton from "../IconButton";
-import If from "../../operator/If";
+import { setVisibility, showPages } from "../../../store/actions/menuActions";
+import If from "../../../operator/If";
+import { IconButton } from "../style";
 
 const MoreButton = props => {
-    const visible = props.tabsVisible[props.target] === true
+    const visible = props.navBar.tabsVisible[props.target] === true
 
     function toggleMenu() {
         if(!props.menu.visibility === true){
@@ -16,12 +16,13 @@ const MoreButton = props => {
     }
     return (
         <If test={visible}>
-            <div className="more-button" onClick={toggleMenu}>
-                <IconButton icon="navicon" label={props.label}></IconButton>
-            </div>
+            <IconButton onClick={toggleMenu} className={props.expanded ? 'expanded' : ''}>
+                <i className="fa fa-navicon"></i>
+                <span>{props.label}</span>
+            </IconButton>
         </If>
     )
 }
-const mapStateToProps = state => ({ tabsVisible: state.navBar.tabsVisible, menu: state.menu })
+const mapStateToProps = state => ({ navBar: state.navBar, menu: state.menu })
 const mapDispatchToProps = dispatch => bindActionCreators({setVisibility, showPages}, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(MoreButton);

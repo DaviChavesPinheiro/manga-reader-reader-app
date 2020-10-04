@@ -7,7 +7,7 @@ import { selectManga } from "../store/actions/mangaActions";
 import "./SearchBar.css";
 import axios from "axios";
 
-import IconButton from "./IconButton";
+import { IconButton } from "./Buttons/style";
 import If from '../operator/If'
 
 const SearchBar = props => {
@@ -36,7 +36,9 @@ const SearchBar = props => {
     return (
         <div className={`search-bar-container ${props.show ? 'active' : ''}`}>
             <div className="search-bar">
-                <IconButton icon="search"></IconButton>
+                <IconButton style={{width: "50px"}} onClick={() => {}}>
+                    <i className="fa fa-search"></i>
+                </IconButton>
                 <input type="text" name="search" placeholder="Naruto, One Piece, Berserk..." ref={inputRef}></input>
             </div>
             <If test={mangas.length}>
@@ -54,6 +56,6 @@ const SearchBar = props => {
 
 const mapStateToProps = state => ({ show: state.searchBar.show })
 
-const mapDispatchToProps = dispatch => bindActionCreators({selectManga, setVisibility}, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ selectManga, setVisibility }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

@@ -23,6 +23,7 @@
 
 .search-bar-container .search-bar{
   display: flex;
+  align-items: center;
 }
 
 .search-bar-container input[type="text"] {

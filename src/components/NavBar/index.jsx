@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
-import Display from "../components/NavBar/Display";
-import "./NavBar.css";
+import Display from "./Display/index";
+
+import { Container } from "./style";
 
 const NavBar = props => {
     const prevScrollposRef = useRef(window.pageYOffset)
@@ -34,12 +35,12 @@ const NavBar = props => {
     }, [props.hideOnScroll])
 
     return (
-        <div className={`nav-bar`} ref={navBarRef}>
+        <Container className="nav-bar" ref={navBarRef}>
             <Display></Display>
             <div className="buttons-container">
                 {props.children}
             </div>
-        </div>
+        </Container>
     )
 }
 

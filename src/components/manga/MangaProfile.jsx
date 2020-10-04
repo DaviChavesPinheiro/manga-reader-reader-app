@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import "./MangaProfile.css";
 
 import If from "../../operator/If";
-import IconButton from '../IconButton'
-import FavoriteButton from '../NavBar/FavoriteButton'
-import ReadButton from '../NavBar/ReadButton'
+import { IconButton } from '../Buttons/style'
+import FavoriteButton from '../Buttons/FavoriteButton'
+import ReadButton from '../Buttons/ReadButton'
 import useMangaInfo from "../../hooks/useMangaInfo";
 import Loading from "../utils/Loading";
 import HorizontalCard from "../Cards/HorizontalCard";
@@ -60,9 +60,12 @@ const MangaProfile = props => {
                     <span>{getAuthors(manga.authors) || '...'}</span>
                 </div>
                 <div className="buttons-container">
-                    <ReadButton target="read" label="Read"></ReadButton>
-                    <IconButton icon="navicon" label={`${manga.chapters_amount || 0} Chapters`}></IconButton>
-                    <FavoriteButton manga={manga} label="Favorite"></FavoriteButton>
+                    <ReadButton target="read" label="Read" expanded={true}></ReadButton>
+                    <IconButton onClick={() => {}} className='expanded'>
+                        <i className="fa fa-navicon"></i>
+                        <span>{`${manga.chapters_amount || 0} Chapters`}</span>
+                    </IconButton>
+                    <FavoriteButton manga={manga} label="Favorite" expanded={true}></FavoriteButton>
                 </div>
             </section>
             <section className="description">

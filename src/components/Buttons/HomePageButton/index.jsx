@@ -1,19 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
-import IconButton from "../IconButton";
-import If from "../../operator/If";
+import If from "../../../operator/If";
+import { IconLink } from "../style";
 
 const HomePageButton = props => {
     const visible = props.tabsVisible[props.target] === true
     return (
         <If test={visible}>
-            <Link to="/">
-                <div className="home-page-button">
-                    <IconButton icon="home" label={props.label}></IconButton>
-                </div>
-            </Link>
+            <IconLink to="/" className={props.expanded ? 'expanded' : ''}>
+                <i className="fa fa-home"></i>
+                <span>{props.label}</span>
+            </IconLink>
         </If>
     )
 }
