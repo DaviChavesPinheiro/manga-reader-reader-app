@@ -4,9 +4,7 @@ import axios from "axios";
 import LazyLoad from 'react-lazyload';
 import MangaCard from '../Cards/MangaCard'
 import If from "../../operator/If";
-import Loading from "../utils/Loading";
-
-// import MangaCard2 from "../Cards/MangaCard";
+import Loading from "../utils/Loading/index";
 
 const AllMangasPage = props => {
     const [pages, setPages] = useState([])

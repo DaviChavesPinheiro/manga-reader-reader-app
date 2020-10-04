@@ -4,7 +4,7 @@ import axios from "axios";
 import LazyLoad from 'react-lazyload';
 import MangaCard from '../Cards/MangaCard'
 import If from "../../operator/If";
-import Loading from "../utils/Loading";
+import Loading from "../utils/Loading/index";
 
 const PopularMangasPage = props => {
     const [mangas, setMangas] = useState([])

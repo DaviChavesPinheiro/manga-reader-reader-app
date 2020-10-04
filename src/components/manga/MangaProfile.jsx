@@ -7,7 +7,7 @@ import { IconButton } from '../Buttons/style'
 import FavoriteButton from '../Buttons/FavoriteButton'
 import ReadButton from '../Buttons/ReadButton'
 import useMangaInfo from "../../hooks/useMangaInfo";
-import Loading from "../utils/Loading";
+import Loading from "../utils/Loading/index";
 import HorizontalCard from "../Cards/HorizontalCard";
 
 

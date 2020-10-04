@@ -8,7 +8,7 @@ import "./RecentPage.css";
 
 import HorizontalCard from "../components/Cards/HorizontalCard";
 import If from "../operator/If";
-import Loading from "../components/utils/Loading";
+import Loading from "../components/utils/Loading/index";
 
 const RecentPage = props => {
     const { mangasInfo } = useMangaInfo()

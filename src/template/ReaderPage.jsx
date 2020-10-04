@@ -11,7 +11,7 @@ import "./ReaderPage.css";
 import LazyLoad from 'react-lazyload';
 import If from "../operator/If";
 import useMangaInfo from "../hooks/useMangaInfo";
-import Loading from "../components/utils/Loading";
+import Loading from "../components/utils/Loading/index";
 // import Menu from "../components/utils/Menu";
 
 

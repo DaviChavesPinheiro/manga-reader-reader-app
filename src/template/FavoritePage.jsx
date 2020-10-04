@@ -9,7 +9,7 @@ import "./FavoritePage.css";
 
 import MangaCard from "../components/Cards/MangaCard";
 import If from "../operator/If";
-import Loading from "../components/utils/Loading";
+import Loading from "../components/utils/Loading/index";
 
 const FavoritePage = props => {
     const { favoritedMangas } = useFavoriteManga()
