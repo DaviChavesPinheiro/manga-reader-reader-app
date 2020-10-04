@@ -6,8 +6,7 @@ import { showTabs, setDisplayLabel, setHideOnScrool } from "../store/actions/nav
 import "./Home.css";
 
 
-
-import HomeHeader from "../components/home/header/HomeHeader";
+import Header from "../components/Header";
 import AllMangasPage from "../components/home/AllMangasPage";
 import ForYouMangasPage from "../components/home/ForYouMangasPage";
 import PopularMangasPage from "../components/home/PopularMangasPage";
@@ -27,7 +26,7 @@ const Home = props => {
 
     return (
         <div className="home">
-            <HomeHeader setActiveTab={setHeaderTab} activeTab={activeHeaderTab}></HomeHeader>
+            <Header title="Manga Nero" setActiveTab={setHeaderTab} activeTab={activeHeaderTab}></Header>
             <AllMangasPage show={activeHeaderTab === 'All'}></AllMangasPage>
             <ForYouMangasPage show={activeHeaderTab === 'For You'}></ForYouMangasPage>
             <PopularMangasPage show={activeHeaderTab === 'Popular'}></PopularMangasPage>
