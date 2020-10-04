@@ -7,7 +7,7 @@ import { selectManga } from "../store/actions/mangaActions";
 import { showTabs, setDisplayLabel, setHideOnScrool } from "../store/actions/navBarActions";
 import "./MangaPage.css";
 
-import MangaProfile from "../components/manga/MangaProfile";
+import MangaProfile from "../components/Pages/MangaProfile";
 import useMangaInfo from "../hooks/useMangaInfo";
 
 const unavailableManga = {
@@ -30,7 +30,7 @@ const MangaPage = props => {
                 props.selectManga(res.data)
                 props.setDisplayLabel(`${res.data.title} ${getRecentChapterReaded(idManga) ? '- '+ getRecentChapterReaded(idManga) : ''}`)
             } else {
-                props.selectManga({...unavailableManga, ...props.mangaSelected})
+                props.selectManga({...unavailableManga, ...props.manga.selected})
                 props.setDisplayLabel(`Soon...`)
             }
         })
@@ -50,13 +50,13 @@ const MangaPage = props => {
 
     return (
         <div className="manga-page">
-            <MangaProfile manga={props.mangaSelected}></MangaProfile>
+            <MangaProfile manga={props.manga.selected}></MangaProfile>
         </div>
     )
 }
 
 
-const mapStateToProps = state => ({ mangaSelected: state.manga.selected })
+const mapStateToProps = state => ({ manga: state.manga })
 const mapDispatchToProps = dispatch => bindActionCreators({selectManga, showTabs, setDisplayLabel, setHideOnScrool}, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(MangaPage);
