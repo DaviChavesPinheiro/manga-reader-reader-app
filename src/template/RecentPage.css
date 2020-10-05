@@ -17,6 +17,7 @@
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
+    padding-top: 10px;
 }
 
 .recent-page .manga-list {

@@ -10,6 +10,8 @@ import HorizontalCard from "../components/Cards/HorizontalCard";
 import If from "../operator/If";
 import Loading from "../components/utils/Loading/index";
 
+import Header from "../components/Header";
+
 const RecentPage = props => {
     const { mangasInfo } = useMangaInfo()
     const [recentMangasList, setRecentMangasList] = useState([])
@@ -76,7 +78,7 @@ const RecentPage = props => {
 
     return (
         <div className="recent-page">
-            <h1>Recent</h1>
+            <Header title= "Recent"></Header>
             <div className="manga-list-wrapper">
                 <If test={!recentMangasList.length}>
                     <Loading></Loading>

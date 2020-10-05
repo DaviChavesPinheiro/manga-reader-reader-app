@@ -11,6 +11,8 @@ import MangaCard from "../components/Cards/MangaCard";
 import If from "../operator/If";
 import Loading from "../components/utils/Loading/index";
 
+import Header from "../components/Header";
+
 const FavoritePage = props => {
     const { favoritedMangas } = useFavoriteManga()
     const [favoritedMangasList, setFavoritedsMangasList] = useState([])
@@ -29,7 +31,7 @@ const FavoritePage = props => {
 
     return (
         <div className="favorite-page">
-            <h1>Favorites</h1>
+            <Header title= "Favorites"></Header>
             <div className="manga-list-wrapper">
                 <If test={!favoritedMangasList.length}>
                     <Loading></Loading>
