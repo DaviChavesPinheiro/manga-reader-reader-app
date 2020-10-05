@@ -2,24 +2,22 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { setVisibility } from "../store/actions/searchBarActions";
-import { selectManga } from "../store/actions/mangaActions";
-import "./SearchBar.css";
+import { setVisibility } from "../../store/actions/searchBarActions";
+import { selectManga } from "../../store/actions/mangaActions";
 import axios from "axios";
 
-import { IconButton } from "./Buttons/style";
-import If from '../operator/If'
+import If from '../../operator/If'
+import { IconButton } from "../Buttons/style";
+import { FixedContainer, SearchBar, SearchInput, ListContainer } from "./style";
 
-const SearchBar = props => {
+const SearchBarComponent = props => {
     const [mangas, setMangas] = useState([])
     const inputRef = useRef()
 
     useEffect(() => {
         inputRef.current.addEventListener("keydown", ({ key }) => {
             if (key === "Enter") {
-                axios.get(`https://charlotte-services.herokuapp.com/mangas/?find=${inputRef.current.value}&&select=title`).then(res => {
-                    setMangas(res.data)
-                })
+                search()
             }
         })
     }, [])
@@ -33,24 +31,30 @@ const SearchBar = props => {
         props.selectManga(manga)
     }
 
+    function search() {
+        axios.get(`https://charlotte-services.herokuapp.com/mangas/?find=${inputRef.current.value}&&select=title`).then(res => {
+            setMangas(res.data)
+        })
+    }
+
     return (
-        <div className={`search-bar-container ${props.show ? 'active' : ''}`}>
-            <div className="search-bar">
-                <IconButton style={{width: "50px"}} onClick={() => {}}>
+        <FixedContainer className={props.show ? 'active' : ''}>
+            <SearchBar>
+                <IconButton onClick={search} style={{ width: "50px" }}>
                     <i className="fa fa-search"></i>
                 </IconButton>
-                <input type="text" name="search" placeholder="Naruto, One Piece, Berserk..." ref={inputRef}></input>
-            </div>
+                <SearchInput ref={inputRef}></SearchInput>
+            </SearchBar>
             <If test={mangas.length}>
-                <div className="manga-list-container">
+                <ListContainer>
                     <ul>
                         {mangas.map(manga => (
                             <Link to={`/manga/${manga._id}`} onClick={() => onSelectManga(manga)} key={manga._id}><li>{manga.title}</li></Link>
                         ))}
                     </ul>
-                </div>
+                </ListContainer>
             </If>
-        </div>
+        </FixedContainer>
     )
 }
 
@@ -58,4 +62,4 @@ const mapStateToProps = state => ({ show: state.searchBar.show })
 
 const mapDispatchToProps = dispatch => bindActionCreators({ selectManga, setVisibility }, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBarComponent);

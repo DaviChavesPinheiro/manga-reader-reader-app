@@ -4,7 +4,7 @@ import { bindActionCreators } from "redux";
 import { showPages } from "./store/actions/menuActions";
 import { setTheme } from "./store/actions/geralActions";
 import { setImageBrightness, setImageZoom } from "./store/actions/readerActions";
-import SearchBar from "./components/SearchBar";
+import SearchBar from "./components/Search";
 import { Switch, Route } from "react-router-dom";
 
 import Home from "./template/Home";

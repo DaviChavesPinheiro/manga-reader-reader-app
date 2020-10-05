@@ -106,7 +106,7 @@ const MangaProfile = props => {
                                     image={character.image_url}
                                     title={character.name}
                                     info={[`Role: ${character.role}`]}
-                                    primary_link={`/manga/${manga._id}`}
+                                    primary_link={`/manga/${character.mal_id}`}
                                 ></HorizontalCard>
                             </li>
                         )) : null}
@@ -130,7 +130,7 @@ const MangaProfile = props => {
                                     image={recommendation.image_url}
                                     title={recommendation.title}
                                     info={[`Votes: ${recommendation.recommendation_count}`]}
-                                    primary_link={`/manga/${manga._id}`}
+                                    primary_link={`/manga/${recommendation.mal_id}`}
                                 ></HorizontalCard>
                             </li>
                         )) : null}

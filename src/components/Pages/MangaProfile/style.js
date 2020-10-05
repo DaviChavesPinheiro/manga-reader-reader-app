@@ -181,7 +181,7 @@ export const Characters = styled(Section)`
 
 export const ShowMore = styled.button`
     color: ${props => props.theme.colors.primary_color};
-    background-color: ${props => props.theme.colors.tertiary_color};
+    background-color: ${props => props.theme.colors.secondary_color};
     width: 100%;
     padding: 6px 0px;
     margin: 0 auto;
