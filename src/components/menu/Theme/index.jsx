@@ -30,10 +30,10 @@ const Theme = props => {
             <div className="menu-page reader">
                 <Header>
                     <Close onClick={closePage}>&times;</Close>
-                    <MainTitle>Theme</MainTitle>
+                    <MainTitle>Tema</MainTitle>
                 </Header>
                 <Section>
-                    <Title>Themes</Title>
+                    <Title>Temas</Title>
                     <Container>
                         <Button className={`expanded ${props.geral.theme === 'dark' ? 'actived' : ''}`} onClick={() => props.setTheme('dark')}>Dark</Button>
                         <Button className={`expanded ${props.geral.theme === 'light' ? 'actived' : ''}`} onClick={() => props.setTheme('light')}>Light</Button>

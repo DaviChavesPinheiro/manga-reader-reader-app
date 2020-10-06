@@ -25,15 +25,15 @@ const Main = props => {
             <div className="menu-page main">
                 <Header>
                     <Close onClick={closePage}>&times;</Close>
-                    <MainTitle>More</MainTitle>
+                    <MainTitle>Mais</MainTitle>
                 </Header>
                 <Section>
-                    <Title>Configuration</Title>
-                    <Item onClick={() => addPage('theme')}><i className="fa fa-lightbulb-o"></i>Theme</Item>
-                    <Item onClick={() => addPage('reader')}><i className="fa fa-book"></i>Reader</Item>
+                    <Title>Configurações</Title>
+                    <Item onClick={() => addPage('theme')}><i className="fa fa-lightbulb-o"></i>Tema</Item>
+                    <Item onClick={() => addPage('reader')}><i className="fa fa-book"></i>Leitor</Item>
                 </Section>
                 <Section>
-                    <Title>About Us</Title>
+                    <Title>Sobre Nós</Title>
                     <Item><i className="fa fa-gamepad"></i>Discord</Item>
                     <Item><i className="fa fa-instagram"></i>Instagram</Item>
                 </Section>

@@ -68,13 +68,13 @@ const App = props => {
                     </Switch>
                 </Content>
                 <NavBar>
-                    <SearchButton target="search" label="Search" expanded={true}></SearchButton>
-                    <FavoritePageButton target="favoritePages" label="Favorites" expanded={true}></FavoritePageButton>
+                    <SearchButton target="search" label="Pesquisar" expanded={true}></SearchButton>
+                    <FavoritePageButton target="favoritePages" label="Favoritos" expanded={true}></FavoritePageButton>
                     <HomePageButton target="home" label="Home" expanded={true}></HomePageButton>
-                    <MangaPageButton target="manga" label="Manga" expanded={true}></MangaPageButton>
-                    <RecentPageButton target="recentPages" label="Recent" expanded={true}></RecentPageButton>
-                    <MoreButton target="more" label="More" expanded={true}></MoreButton>
-                    <SettingReaderButton target="settingsReader" label="Settings" expanded={true}></SettingReaderButton>
+                    <MangaPageButton target="manga" label="Mangá" expanded={true}></MangaPageButton>
+                    <RecentPageButton target="recentPages" label="Recente" expanded={true}></RecentPageButton>
+                    <MoreButton target="more" label="Mais" expanded={true}></MoreButton>
+                    <SettingReaderButton target="settingsReader" label="Configurações" expanded={true}></SettingReaderButton>
                 </NavBar>
                 <Menu>
                     <Main target="main"></Main>

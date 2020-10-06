@@ -12,8 +12,8 @@ const Header = props => {
             </HeaderContainer>
             <If test={props.activeTab !== undefined}>
                 <TabsContainer className="tabs-container">
-                    <Tab className={props.activeTab === 'All' ? 'active' : ''} onClick={() => props.setActiveTab('All')}>ALL</Tab>
-                    <Tab className={props.activeTab === 'For You' ? 'active' : ''} onClick={() => props.setActiveTab('For You')}>FOR YOU</Tab>
+                    <Tab className={props.activeTab === 'All' ? 'active' : ''} onClick={() => props.setActiveTab('All')}>TODOS</Tab>
+                    <Tab className={props.activeTab === 'For You' ? 'active' : ''} onClick={() => props.setActiveTab('For You')}>RECOMENDADO</Tab>
                     <Tab className={props.activeTab === 'Popular' ? 'active' : ''} onClick={() => props.setActiveTab('Popular')}>POPULAR</Tab>
                 </TabsContainer>
             </If>

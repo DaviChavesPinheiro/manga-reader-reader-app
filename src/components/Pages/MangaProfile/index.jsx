@@ -59,12 +59,12 @@ const MangaProfile = props => {
                     <span>{getAuthors(manga.authors) || '...'}</span>
                 </div>
                 <div className="buttons-container">
-                    <ReadButton target="read" label="Read" expanded={true}></ReadButton>
+                    <ReadButton target="read" label="Ler" expanded={true}></ReadButton>
                     <IconButton onClick={() => { }} className='expanded'>
                         <i className="fa fa-navicon"></i>
-                        <span>{`${manga.chapters_amount || 0} Chapters`}</span>
+                        <span>{`${manga.chapters_amount || 0} Capítulos`}</span>
                     </IconButton>
-                    <FavoriteButton manga={manga} label="Favorite" expanded={true}></FavoriteButton>
+                    <FavoriteButton manga={manga} label="Favoritar" expanded={true}></FavoriteButton>
                 </div>
             </Main>
             <Description>
@@ -80,7 +80,7 @@ const MangaProfile = props => {
             <Chapters>
                 <If test={manga.chapters !== undefined}>
                     <div className="chapters-list">
-                        <h2>Chapters</h2>
+                        <h2>Capítulos</h2>
                         <ul ref={chaptersListRef} className="shrinked">
                             {manga.chapters ? manga.chapters.map((chapter, index) => (
                                 <li key={index} className={`${isChapterAlreadyReaded(chapter.title) ? 'readed' : ''}`}>
@@ -89,7 +89,7 @@ const MangaProfile = props => {
                             )) : null}
                         </ul>
                     </div>
-                    <ShowMore ref={chaptersExpandListButton} onClick={() => expandChaptersList(true)}>VIEW ALL {manga.chapters ? manga.chapters.length : 0} CHAPTERS</ShowMore>
+                    <ShowMore ref={chaptersExpandListButton} onClick={() => expandChaptersList(true)}>VER TODOS OS {manga.chapters ? manga.chapters.length : 0} CAPÍTULOS</ShowMore>
                 </If>
                 <If test={manga.chapters === undefined}>
                     <Loading></Loading>
@@ -97,7 +97,7 @@ const MangaProfile = props => {
             </Chapters>
             <Characters>
                 <If test={manga.characters !== undefined}>
-                    <h2>Characters</h2>
+                    <h2>Personagens</h2>
                     <ul ref={charactersListRef} className="shrinked">
                         {manga.characters ? manga.characters.map((character, index) => (
                             <li key={character.mal_id}>
@@ -112,7 +112,7 @@ const MangaProfile = props => {
                         )) : null}
                     </ul>
                     <ShowMore className="show-more" ref={charactersExpandListButton} onClick={() => expandCharactersList(true)} style={{margin: "0px 10px", width: "calc(100% - 20px)"}}>
-                        VIEW ALL CHARACTERS
+                        VER TODOS OS PERSONAGENS
                     </ShowMore>
                 </If>
                 <If test={manga.characters === undefined}>
@@ -121,7 +121,7 @@ const MangaProfile = props => {
             </Characters>
             <Recommendations>
                 <If test={manga.recommendations !== undefined}>
-                    <h2>Recommendations</h2>
+                    <h2>Recomendações</h2>
                     <ul>
                         {manga.recommendations ? manga.recommendations.map((recommendation, index) => (
                             <li key={recommendation.mal_id}>

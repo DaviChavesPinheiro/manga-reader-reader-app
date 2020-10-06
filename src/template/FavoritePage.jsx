@@ -24,14 +24,14 @@ const FavoritePage = props => {
             axios.get(`https://charlotte-services.herokuapp.com/mangas/${favoritedMangas.toString()}/?select=-chapters,-description`).then(res => {
                 const favMangas = Array.isArray(res.data) ? res.data : [res.data]
                 setFavoritedsMangasList(favMangas)
-                props.setDisplayLabel(`${favMangas.length} Favorites`)
+                props.setDisplayLabel(`${favMangas.length} Favoritos`)
             })
         }
     }, [])
 
     return (
         <div className="favorite-page">
-            <Header title= "Favorites"></Header>
+            <Header title= "Favoritos"></Header>
             <div className="manga-list-wrapper">
                 <If test={!favoritedMangasList.length}>
                     <Loading></Loading>

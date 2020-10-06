@@ -18,7 +18,7 @@ const FavoriteButton = props => {
         <If test={visible}>
             <IconButton onClick={toggleFavoriteManga} className={props.expanded ? 'expanded' : ''} color={isFavoritedManga(props.manga._id) ? "red" : undefined}>
                 <i className={isFavoritedManga(props.manga._id) ? "fa fa-heart" : "fa fa-heart-o"}></i>
-                <span>{isFavoritedManga(props.manga._id) ? props.label + 'd' : props.label}</span>
+                <span>{isFavoritedManga(props.manga._id) ? "Favoritado" : "Favoritar"}</span>
             </IconButton>
         </If>
     )

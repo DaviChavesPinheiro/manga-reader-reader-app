@@ -36,10 +36,10 @@ const Reader = props => {
             <div className="menu-page reader">
                 <Header>
                     <Close onClick={closePage}>&times;</Close>
-                    <MainTitle>Reader</MainTitle>
+                    <MainTitle>Leitor</MainTitle>
                 </Header>
                 <Section>
-                    <Title>Brightness</Title>
+                    <Title>Brilho</Title>
                     <HorizontalContainer>
                         <Button onClick={(event) => setBright(event, 50)} className={`flex ${props.reader.imageBrightness === 50 ? 'actived' : ''}`}>50%</Button>
                         <Button onClick={(event) => setBright(event, 75)} className={`flex ${props.reader.imageBrightness === 75 ? 'actived' : ''}`}>75%</Button>
