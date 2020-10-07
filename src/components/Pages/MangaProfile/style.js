@@ -7,14 +7,14 @@ export const Container = styled.div`
 
 const Section = styled.section`
     width: 100%;
-    background-color: ${props => props.theme.colors.secondary_background};
+    background-color: ${props => props.theme.colors.gradient[1]};
 
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
 
     h2 {
-        color: ${props => props.theme.colors.primary_color};
+        color: ${props => props.theme.colors.gradient[12]};
         font-size: 1.2em;
     }
 `
@@ -55,14 +55,14 @@ export const Main = styled(Section)`
         }
 
         h1 {
-            color: ${props => props.theme.colors.primary_color};
+            color: ${props => props.theme.colors.gradient[12]};
             margin: 0px;
             font-size: 1.5em;
             font-weight: 500;
         }
 
         span {
-            color: ${props => props.theme.colors.tertiary_color};
+            color: ${props => props.theme.colors.text.tertiary};
             font-weight: 500;
         }
 
@@ -80,7 +80,7 @@ export const Main = styled(Section)`
                 max-width: 130px;
                 width: 33%;
 
-                border: 9px solid ${props => props.theme.colors.secondary_background};
+                border: 9px solid ${props => props.theme.colors.gradient[1]};
                 
                 border-radius: 5px;
             }
@@ -97,7 +97,7 @@ export const Main = styled(Section)`
 export const Description = styled(Section)`
     padding: 10px 10px;
     font-size: 1.1em;
-    color: ${props => props.theme.colors.tertiary_color};
+    color: ${props => props.theme.colors.gradient[8]};
 
     h2 {
         margin-bottom: 5px;
@@ -128,7 +128,7 @@ export const Chapters = styled(Section)`
         align-items: center;
 
         a {
-            color: ${props => props.theme.colors.primary_color};
+            color: ${props => props.theme.colors.gradient[12]};
             flex: 1;
         }
 
@@ -144,7 +144,7 @@ export const Chapters = styled(Section)`
             flex: 1;
         }
         i {
-            color: ${props => props.theme.colors.tertiary_color};
+            color: ${props => props.theme.colors.text.tertiary};
         }
     }
 `
@@ -180,8 +180,8 @@ export const Characters = styled(Section)`
 `
 
 export const ShowMore = styled.button`
-    color: ${props => props.theme.colors.primary_color};
-    background-color: ${props => props.theme.colors.secondary_color};
+    color: ${props => props.theme.colors.gradient[12]};
+    background-color: ${props => props.theme.colors.gradient[2]};
     width: 100%;
     padding: 6px 0px;
     margin: 0 auto;

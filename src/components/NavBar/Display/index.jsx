@@ -5,13 +5,13 @@ import styled from "styled-components";
 const Container = styled.div`
     height: 1.4em;
     font-size: 0.7em;
-    color: ${props => props.theme.colors.secondary_color};
+    color: ${props => props.theme.colors.text.secondary};
     display: flex;
     justify-content: center;
 
     text-overflow: ellipsis;
     overflow: hidden;
-    background-color: ${props => props.theme.colors.secondary_background};
+    background-color: ${props => props.theme.colors.gradient[1]};
 
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;

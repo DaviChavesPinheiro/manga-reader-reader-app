@@ -13,7 +13,7 @@ export const Card = styled.div`
 
     overflow: hidden;
     
-    background-color: ${props => props.theme.colors.secondary_background};
+    background-color: ${props => props.theme.colors.gradient[1]};
 
     .img-container{
         width: 100%;
@@ -40,7 +40,7 @@ export const Card = styled.div`
         justify-content: space-between;
 
         h2 {
-            color: ${props => props.theme.colors.primary_color};
+            color: ${props => props.theme.colors.gradient[12]};
             text-overflow: ellipsis;
             width: 100%;
             line-height: 1.4em;
@@ -52,7 +52,8 @@ export const Card = styled.div`
             
         }
         span {
-            color: ${props => props.theme.colors.tertiary_color};
+            color: ${props => props.theme.colors.gradient[5]};
+            font-size: 1em;
             width: 100%;
             white-space: nowrap;
             overflow: hidden;

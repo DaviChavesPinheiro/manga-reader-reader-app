@@ -7,8 +7,8 @@ export const HorizontalCardContainer = styled.div`
     height: 130px;
 
     overflow: hidden;
-    border-bottom: 1px solid ${props => props.theme.colors.secondary_color};
-    background-color: ${props => props.theme.colors.secondary_background};
+    border-bottom: 1px solid ${props => props.theme.colors.gradient[5]};
+    background-color: ${props => props.theme.colors.gradient[1]};
 
     position: relative;
 
@@ -43,7 +43,7 @@ export const HorizontalCardContainer = styled.div`
             flex-direction: column;
 
             h2{
-                color: ${props => props.theme.colors.primary_color};
+                color: ${props => props.theme.colors.gradient[12]};
                 font-weight: 400;
                 margin: 0px;
                 font-size: 1.2em;
@@ -55,7 +55,7 @@ export const HorizontalCardContainer = styled.div`
             }
 
             span {
-                color: ${props => props.theme.colors.tertiary_color};
+                color: ${props => props.theme.colors.text.tertiary};
                 display: block;
 
                 white-space: nowrap;
@@ -71,7 +71,7 @@ export const HorizontalCardContainer = styled.div`
         right: 0;
         top: 0;
         font-size: 1.2em;
-        color: ${props => props.theme.colors.secondary_color};
+        color: ${props => props.theme.colors.text.secondary};
     }
 
 `

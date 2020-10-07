@@ -28,7 +28,6 @@ const AllMangasPage = props => {
     function onIntersectionObserver(entries, observer) {
         entries.forEach(entry => {
             if (!entry.isIntersecting) return
-            console.log(entry)
             loadPage(pageIndex + 1)
             setPageIndex(pageIndex + 1)
             observer.unobserve(entry.target)
@@ -36,10 +35,8 @@ const AllMangasPage = props => {
     }
 
     function loadPage(page) {
-        console.log("loadmangas", page)
         axios.get(`https://charlotte-services.herokuapp.com/mangas/?sort=-score&&page=${page}`).then(res => {
             if(res.data && res.data.length > 0){
-                console.log(res.data)
                 setPages([...pages, {index: page, mangas: res.data}])
             }
             

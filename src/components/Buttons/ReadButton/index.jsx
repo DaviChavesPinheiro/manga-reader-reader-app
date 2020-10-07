@@ -12,7 +12,6 @@ const ReadButton = props => {
 
     useEffect(() => {
         setLastChapter(getRecentChapterReaded(props.manga.selected._id))
-        console.log("readbutton useEffect", getRecentChapterReaded(props.manga.selected._id))
     }, [mangasInfo[props.manga.selected._id]])
 
     function getRecentChapterReaded(mangaId) {

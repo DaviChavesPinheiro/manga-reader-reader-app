@@ -9,7 +9,7 @@ export const IconButton = styled.button`
     justify-content: center;
     align-items: center;
 
-    color: ${props => props.theme.colors.secondary_color};
+    color: ${props => props.theme.colors.text.secondary};
 
     &.expanded{
         flex: 1;
@@ -18,7 +18,7 @@ export const IconButton = styled.button`
     i{
         font-size: 1.5em;
         margin-top: 3px;
-        color: ${props => props.color || props.theme.colors.secondary_color};
+        color: ${props => props.color || props.theme.colors.text.secondary};
     }
 
     span{
@@ -36,19 +36,19 @@ export const IconLink = styled(Link)`
     justify-content: center;
     align-items: center;
 
-    color: ${props => props.theme.colors.secondary_color};
+    color: ${props => props.theme.colors.text.secondary};
 
     &.expanded{
         flex: 1;
     }
     &:hover{
-        color: ${props => props.theme.colors.secondary_color};
+        color: ${props => props.theme.colors.text.secondary};
     }
 
     i{
         font-size: 1.5em;
         margin-top: 3px;
-        color: ${props => props.color || props.theme.colors.secondary_color};
+        color: ${props => props.color || props.theme.colors.text.secondary};
     }
 
     span{

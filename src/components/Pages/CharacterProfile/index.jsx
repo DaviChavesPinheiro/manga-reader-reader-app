@@ -3,25 +3,18 @@ import { Link } from "react-router-dom";
 
 import If from "../../../operator/If";
 import { IconButton } from '../../Buttons/style'
-import FavoriteButton from '../../Buttons/FavoriteButton'
-import ReadButton from '../../Buttons/ReadButton'
-import useMangaInfo from "../../../hooks/useMangaInfo";
 import Loading from "../../utils/Loading/index";
 import HorizontalCard from "../../Cards/HorizontalCard";
 
-import { Container, Main, Description, Chapters, Characters, Recommendations, ShowMore } from "./style";
+import { Container, Main, Description, Chapters, Characters, Recommendations, ShowMore } from "../MangaProfile/style";
 
-const MangaProfile = props => {
-    const manga = props.manga
-    const { mangasInfo } = useMangaInfo()
+const CharacterProfile = props => {
+    const character = props.character
     const chaptersListRef = useRef()
     const chaptersExpandListButton = useRef()
     const charactersListRef = useRef()
     const charactersExpandListButton = useRef()
 
-    function isChapterAlreadyReaded(chapterTitle) {
-        return mangasInfo && mangasInfo[manga._id] && mangasInfo[manga._id]['chaptersReaded'] && mangasInfo[manga._id]["chaptersReaded"][chapterTitle]
-    }
 
     function expandChaptersList(expand) {
         if (expand) {
@@ -49,57 +42,48 @@ const MangaProfile = props => {
         <Container>
             <Main>
                 <div className="banner-container">
-                    <img src={manga.image_url} alt="Manga" />
+                    <img src={character.image_url} alt="Manga" />
                 </div>
                 <div className="main-info">
                     <div className="img-container">
-                        <img src={manga.image_url} alt="Manga" />
+                        <img src={character.image_url} alt="Manga" />
                     </div>
-                    <h1>{manga.title}</h1>
-                    <span>{getAuthors(manga.authors) || '...'}</span>
-                </div>
-                <div className="buttons-container">
-                    <ReadButton target="read" label="Ler" expanded={true}></ReadButton>
-                    <IconButton onClick={() => { }} className='expanded'>
-                        <i className="fa fa-navicon"></i>
-                        <span>{`${manga.chapters_amount || 0} Capítulos`}</span>
-                    </IconButton>
-                    <FavoriteButton manga={manga} label="Favoritar" expanded={true}></FavoriteButton>
+                    <h1 style={{marginBottom: "50px"}}>{character.error ? "Personagem não encontrado" : character.name}</h1>
+                    {/* <span>{getAuthors(character.authors) || '...'}</span> */}
                 </div>
             </Main>
             <Description>
-                <If test={manga.description !== undefined}>
+                <If test={character.about !== undefined}>
                     <h2>Descrição</h2>
-                    <p>{manga.description}</p>
+                    <p>{character.about}</p>
                 </If>
-                <If test={manga.description === undefined}>
+                <If test={character.about === undefined && character.error !== true}>
                     <Loading></Loading>
                 </If>
-
             </Description>
-            <Chapters>
-                <If test={manga.chapters !== undefined}>
+            {/* <Chapters>
+                <If test={character.chapters !== undefined}>
                     <div className="chapters-list">
                         <h2>Capítulos</h2>
                         <ul ref={chaptersListRef} className="shrinked">
-                            {manga.chapters ? manga.chapters.map((chapter, index) => (
+                            {character.chapters ? character.chapters.map((chapter, index) => (
                                 <li key={index} className={`${isChapterAlreadyReaded(chapter.title) ? 'readed' : ''}`}>
-                                    <Link to={`/manga/${manga._id}/chapters/${index}`}>{chapter.title}</Link>
+                                    <Link to={`/character/${character._id}/chapters/${index}`}>{chapter.title}</Link>
                                 </li>
                             )) : null}
                         </ul>
                     </div>
-                    <ShowMore ref={chaptersExpandListButton} onClick={() => expandChaptersList(true)}>VER TODOS OS {manga.chapters ? manga.chapters.length : 0} CAPÍTULOS</ShowMore>
+                    <ShowMore ref={chaptersExpandListButton} onClick={() => expandChaptersList(true)}>VER TODOS OS {character.chapters ? character.chapters.length : 0} CAPÍTULOS</ShowMore>
                 </If>
-                <If test={manga.chapters === undefined}>
+                <If test={character.chapters === undefined}>
                     <Loading></Loading>
                 </If>
             </Chapters>
             <Characters>
-                <If test={manga.characters !== undefined}>
+                <If test={character.characters !== undefined}>
                     <h2>Personagens</h2>
                     <ul ref={charactersListRef} className="shrinked">
-                        {manga.characters ? manga.characters.map((character, index) => (
+                        {character.characters ? character.characters.map((character, index) => (
                             <li key={character.mal_id}>
                                 <HorizontalCard
                                     image={character.image_url}
@@ -114,33 +98,33 @@ const MangaProfile = props => {
                         VER TODOS OS PERSONAGENS
                     </ShowMore>
                 </If>
-                <If test={manga.characters === undefined}>
+                <If test={character.characters === undefined}>
                     <Loading></Loading>
                 </If>
             </Characters>
             <Recommendations>
-                <If test={manga.recommendations !== undefined}>
+                <If test={character.recommendations !== undefined}>
                     <h2>Recomendações</h2>
                     <ul>
-                        {manga.recommendations ? manga.recommendations.map((recommendation, index) => (
+                        {character.recommendations ? character.recommendations.map((recommendation, index) => (
                             <li key={recommendation.mal_id}>
                                 <HorizontalCard
-                                    manga={{ ...recommendation, _id: recommendation.mal_id }}
+                                    character={{ ...recommendation, _id: recommendation.mal_id }}
                                     image={recommendation.image_url}
                                     title={recommendation.title}
                                     info={[`Votes: ${recommendation.recommendation_count}`]}
-                                    primary_link={`/manga/${recommendation.mal_id}`}
+                                    primary_link={`/character/${recommendation.mal_id}`}
                                 ></HorizontalCard>
                             </li>
                         )) : null}
                     </ul>
                 </If>
-                <If test={manga.recommendations === undefined}>
+                <If test={character.recommendations === undefined}>
                     <Loading></Loading>
                 </If>
-            </Recommendations>
+            </Recommendations> */}
         </Container>
     )
 }
 
-export default MangaProfile;
+export default CharacterProfile;

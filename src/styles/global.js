@@ -50,7 +50,7 @@ export default createGlobalStyle`
     .App {
         width: 100%;
         min-height: 100vh;
-        background-color: ${props => props.theme.colors.primary_background};
+        background-color: ${props => props.theme.colors.gradient[0]};
     }
 
     .hidden {
@@ -83,8 +83,8 @@ export default createGlobalStyle`
 `;
 
 export const Button = styled.button`
-    background-color: ${props => props.theme.colors.secondary_background};
-    border: 1px solid ${props => props.theme.colors.tertiary_color};
+    background-color: ${props => props.theme.colors.gradient[1]};
+    border: 1px solid ${props => props.theme.colors.text.tertiary};
     border-radius: 3px;
     margin: 0px 10px;
 
@@ -101,12 +101,12 @@ export const Button = styled.button`
     }
 
     &.actived {
-        border: 1px solid ${props => props.theme.colors.primary_color};
-        color: ${props => props.theme.colors.primary_color};
+        border: 1px solid ${props => props.theme.colors.gradient[12]};
+        color: ${props => props.theme.colors.gradient[12]};
     }
 
     :hover{
-        border: 1px solid ${props => props.theme.colors.primary_color};
-        color: ${props => props.theme.colors.primary_color};
+        border: 1px solid ${props => props.theme.colors.gradient[12]};
+        color: ${props => props.theme.colors.gradient[12]};
     }
 `

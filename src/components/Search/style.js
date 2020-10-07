@@ -14,7 +14,7 @@ export const FixedContainer = styled.div`
     overflow-y: scroll;
     overflow-x: hidden;
 
-    background: ${props => props.theme.colors.secondary_background};
+    background: ${props => props.theme.colors.gradient[1]};
 
     &.active {
         display: flex;
@@ -32,9 +32,9 @@ export const SearchBar = styled.div`
 export const SearchInput = styled.input.attrs({type: "text", placeholder: "Naruto, One Piece, Berserk..."})`
     height: 42px;
     border-radius: 4px;
-    border: 1px solid ${props => props.theme.colors.tertiary_color};
+    border: 1px solid ${props => props.theme.colors.text.tertiary};
     background-color: transparent;
-    color: ${props => props.theme.colors.primary_color};
+    color: ${props => props.theme.colors.gradient[12]};
 
     -webkit-transition: width 1s ease-in-out;
     -moz-transition: width 1s ease-in-out;
@@ -60,7 +60,7 @@ export const ListContainer = styled.div`
         li {
             padding: 8px 0px;
             font-size: 1.2em;
-            color: ${props => props.theme.colors.primary_color};
+            color: ${props => props.theme.colors.gradient[12]};
             border-bottom: 1px solid #646464;
         }
     }

@@ -83,7 +83,6 @@ const ReaderPage = props => {
     function onIntersectionChapterObserver(entries, chapterObserver) {
         entries.forEach(entry => {
             if (!entry.isIntersecting) return
-            // console.log(entry)
             goToChapter(chapterIndex + 1)
             chapterObserver.unobserve(entry.target)
         });

@@ -9,6 +9,7 @@ import { Switch, Route } from "react-router-dom";
 
 import Home from "./template/Home";
 import MangaPage from "./template/MangaPage";
+import CharacterPage from "./template/CharacterPage";
 import FavoritePage from "./template/FavoritePage";
 import RecentPage from "./template/RecentPage";
 import NavBar from "./components/NavBar";
@@ -64,6 +65,7 @@ const App = props => {
                         <Route path="/mangas/recent" component={RecentPage}></Route>
                         <Route path="/manga/:idManga/chapters/:idChapter" component={ReaderPage}></Route>
                         <Route path="/manga/:idManga" component={MangaPage}></Route>
+                        <Route path="/character/:idCharacter" component={CharacterPage}></Route>
                         <Route path="/" component={Home}></Route>
                     </Switch>
                 </Content>

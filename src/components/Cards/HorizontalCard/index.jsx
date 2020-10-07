@@ -10,6 +10,8 @@ import { HorizontalCardContainer } from "./style";
 const HorizontalCard = props => {
     const manga = props.manga
     function onClick() {
+        if(!manga) return
+        
         props.selectManga(manga)
     }
 

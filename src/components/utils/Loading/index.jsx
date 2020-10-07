@@ -9,7 +9,7 @@ const Container = styled.div`
     width: auto;
 
     i {
-        color: ${props => props.theme.colors.secondary_color};
+        color: ${props => props.theme.colors.text.secondary};
         animation: spin 2s linear infinite;
         font-size: 2em;
     }

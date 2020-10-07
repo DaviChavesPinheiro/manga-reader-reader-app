@@ -11,7 +11,6 @@ const ForYouMangasPage = props => {
     //             setMangas(res.data)
     //             // if (Object.keys(props.selected).length === 0)
     //             //     props.selectManga(res.data[0])
-    //             console.log("MANGA ALL GETTED", props.show)
     //         })
     //     }
     // }, [props.show])

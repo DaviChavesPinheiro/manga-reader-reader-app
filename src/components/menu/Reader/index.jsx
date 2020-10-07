@@ -41,8 +41,9 @@ const Reader = props => {
                 <Section>
                     <Title>Brilho</Title>
                     <HorizontalContainer>
-                        <Button onClick={(event) => setBright(event, 50)} className={`flex ${props.reader.imageBrightness === 50 ? 'actived' : ''}`}>50%</Button>
+                        <Button onClick={(event) => setBright(event, 60)} className={`flex ${props.reader.imageBrightness === 60 ? 'actived' : ''}`}>60%</Button>
                         <Button onClick={(event) => setBright(event, 75)} className={`flex ${props.reader.imageBrightness === 75 ? 'actived' : ''}`}>75%</Button>
+                        <Button onClick={(event) => setBright(event, 85)} className={`flex ${props.reader.imageBrightness === 85 ? 'actived' : ''}`}>85%</Button>
                         <Button onClick={(event) => setBright(event, 100)} className={`flex ${props.reader.imageBrightness === 100 ? 'actived' : ''}`}>100%</Button>
                     </HorizontalContainer>
                 </Section>

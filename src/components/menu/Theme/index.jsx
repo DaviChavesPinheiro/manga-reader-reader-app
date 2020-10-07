@@ -37,9 +37,6 @@ const Theme = props => {
                     <Container>
                         <Button className={`expanded ${props.geral.theme === 'dark' ? 'actived' : ''}`} onClick={() => props.setTheme('dark')}>Dark</Button>
                         <Button className={`expanded ${props.geral.theme === 'light' ? 'actived' : ''}`} onClick={() => props.setTheme('light')}>Light</Button>
-                        <Button className={`expanded ${props.geral.theme === 'blue' ? 'actived' : ''}`} onClick={() => props.setTheme('blue')}>Blue</Button>
-                        <Button className={`expanded ${props.geral.theme === 'pink' ? 'actived' : ''}`} onClick={() => props.setTheme('pink')}>Pink</Button>
-                        <Button className={`expanded ${props.geral.theme === 'dark-blue' ? 'actived' : ''}`} onClick={() => props.setTheme('dark-blue')}>Dark Blue</Button>
                     </Container>
                 </Section>
             </div>

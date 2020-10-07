@@ -12,7 +12,7 @@ const Container = styled.div`
     top: 0;
     bottom: 0;
     right: 0;
-    background-color: ${props => props.theme.colors.primary_background};
+    background-color: ${props => props.theme.colors.gradient[0]};
     overflow-x: hidden;
     transition: width 0.5s;
 
