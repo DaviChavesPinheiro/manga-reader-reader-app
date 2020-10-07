@@ -40,16 +40,15 @@ const CharacterProfile = props => {
     }
     return (
         <Container>
-            <Main>
+            <Main style={{height: "50vmax"}}>
                 <div className="banner-container">
                     <img src={character.image_url} alt="Manga" />
                 </div>
                 <div className="main-info">
                     <div className="img-container">
-                        <img src={character.image_url} alt="Manga" />
+                        <img style={{top: "-110px"}} src={character.image_url} alt="Manga" />
                     </div>
                     <h1 style={{marginBottom: "50px"}}>{character.error ? "Personagem não encontrado" : character.name}</h1>
-                    {/* <span>{getAuthors(character.authors) || '...'}</span> */}
                 </div>
             </Main>
             <Description>
@@ -61,68 +60,6 @@ const CharacterProfile = props => {
                     <Loading></Loading>
                 </If>
             </Description>
-            {/* <Chapters>
-                <If test={character.chapters !== undefined}>
-                    <div className="chapters-list">
-                        <h2>Capítulos</h2>
-                        <ul ref={chaptersListRef} className="shrinked">
-                            {character.chapters ? character.chapters.map((chapter, index) => (
-                                <li key={index} className={`${isChapterAlreadyReaded(chapter.title) ? 'readed' : ''}`}>
-                                    <Link to={`/character/${character._id}/chapters/${index}`}>{chapter.title}</Link>
-                                </li>
-                            )) : null}
-                        </ul>
-                    </div>
-                    <ShowMore ref={chaptersExpandListButton} onClick={() => expandChaptersList(true)}>VER TODOS OS {character.chapters ? character.chapters.length : 0} CAPÍTULOS</ShowMore>
-                </If>
-                <If test={character.chapters === undefined}>
-                    <Loading></Loading>
-                </If>
-            </Chapters>
-            <Characters>
-                <If test={character.characters !== undefined}>
-                    <h2>Personagens</h2>
-                    <ul ref={charactersListRef} className="shrinked">
-                        {character.characters ? character.characters.map((character, index) => (
-                            <li key={character.mal_id}>
-                                <HorizontalCard
-                                    image={character.image_url}
-                                    title={character.name}
-                                    info={[`Role: ${character.role}`]}
-                                    primary_link={`/character/${character.mal_id}`}
-                                ></HorizontalCard>
-                            </li>
-                        )) : null}
-                    </ul>
-                    <ShowMore className="show-more" ref={charactersExpandListButton} onClick={() => expandCharactersList(true)} style={{margin: "0px 10px", width: "calc(100% - 20px)"}}>
-                        VER TODOS OS PERSONAGENS
-                    </ShowMore>
-                </If>
-                <If test={character.characters === undefined}>
-                    <Loading></Loading>
-                </If>
-            </Characters>
-            <Recommendations>
-                <If test={character.recommendations !== undefined}>
-                    <h2>Recomendações</h2>
-                    <ul>
-                        {character.recommendations ? character.recommendations.map((recommendation, index) => (
-                            <li key={recommendation.mal_id}>
-                                <HorizontalCard
-                                    character={{ ...recommendation, _id: recommendation.mal_id }}
-                                    image={recommendation.image_url}
-                                    title={recommendation.title}
-                                    info={[`Votes: ${recommendation.recommendation_count}`]}
-                                    primary_link={`/character/${recommendation.mal_id}`}
-                                ></HorizontalCard>
-                            </li>
-                        )) : null}
-                    </ul>
-                </If>
-                <If test={character.recommendations === undefined}>
-                    <Loading></Loading>
-                </If>
-            </Recommendations> */}
         </Container>
     )
 }

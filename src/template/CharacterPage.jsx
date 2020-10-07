@@ -25,6 +25,7 @@ const CharacterPage = props => {
     useEffect(() => {
         axios.get(`https://api.jikan.moe/v3/character/${idCharacter}`).then(res => {
             const data = mapJikanCharacter(res.data)
+            console.log(data)
             setCharacter(data || {})
             props.setDisplayLabel(`${data ? data.name : ""}`)
         }).catch(error => {
