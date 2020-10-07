@@ -65,13 +65,14 @@ export default createGlobalStyle`
     }
 
     button:hover {
-        background: transparent;
+        
         box-shadow: 0px 0px 0px transparent;
         border: 0px solid transparent;
         text-shadow: 0px 0px 0px transparent;
     }
 
     button:active {
+        background: ${props => props.theme.colors.gradient[3]};
         outline: none;
         border: none;
     }

@@ -4,7 +4,7 @@ import { showTabs, setDisplayLabel, setHideOnScrool } from "../store/actions/nav
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import axios from 'axios'
-import "./RecentPage.css";
+import styled from "styled-components";
 
 import HorizontalCard from "../components/Cards/HorizontalCard";
 import If from "../operator/If";
@@ -12,9 +12,36 @@ import Loading from "../components/utils/Loading/index";
 
 import Header from "../components/Header";
 
+const Container = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;    
+`
+const ListContainer = styled.div`
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding-top: 10px;
+
+    .manga-list {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        padding: 0px;
+        margin: 0px;
+    }
+`
+
 const RecentPage = props => {
     const { mangasInfo } = useMangaInfo()
-    const [recentMangasList, setRecentMangasList] = useState([])
+    const [mangas, setMangas] = useState({ data: [], error: false, fetch: false })
 
     useEffect(() => {
         props.showTabs('search', 'favoritePages', 'home', 'recentPages', 'more')
@@ -31,9 +58,13 @@ const RecentPage = props => {
                     return manga
                 })
                 recMangas.sort(sortRecentManga)
-                setRecentMangasList(recMangas)
-                props.setDisplayLabel(`${recMangas.length} Mangas`)
+                setMangas({data: recMangas, error: false, fetch: true})
+                props.setDisplayLabel(`${recMangas.length} Mangás`)
+            }).catch(error => {
+                setMangas({ data: [], error: true, fetch: true })
             })
+        } else {
+            props.setDisplayLabel(`0 Mangás`)
         }
     }, [])
 
@@ -77,14 +108,14 @@ const RecentPage = props => {
     }
 
     return (
-        <div className="recent-page">
-            <Header title= "Recente"></Header>
-            <div className="manga-list-wrapper">
-                <If test={!recentMangasList.length}>
+        <Container>
+            <Header title="Recentes"></Header>
+            <ListContainer>
+                <If test={mangas.data.length > 0 && !mangas.fetch && !mangas.error}>
                     <Loading></Loading>
                 </If>
                 <ul className="manga-list">
-                    {recentMangasList.map(manga => (
+                    {mangas.data.map(manga => (
                         <HorizontalCard key={manga._id}
                             title={manga.title}
                             image={manga.image_url}
@@ -96,8 +127,8 @@ const RecentPage = props => {
                         </HorizontalCard>
                     ))}
                 </ul>
-            </div>
-        </div>
+            </ListContainer>
+        </Container>
     )
 }
 
