@@ -69,7 +69,7 @@ const MangaProfile = props => {
             </Main>
             <Description>
                 <If test={manga.description !== undefined}>
-                    <h2>Description</h2>
+                    <h2>Descrição</h2>
                     <p>{manga.description}</p>
                 </If>
                 <If test={manga.description === undefined}>
