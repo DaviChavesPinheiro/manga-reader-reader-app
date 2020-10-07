@@ -85,12 +85,12 @@ export default createGlobalStyle`
 
 export const Button = styled.button`
     background-color: ${props => props.theme.colors.gradient[1]};
-    border: 1px solid ${props => props.theme.colors.text.tertiary};
+    border: 1px solid ${props => props.theme.colors.gradient[6]};
     border-radius: 3px;
     margin: 0px 10px;
 
     font-size: 1.1em;
-    color: var(--main-color-gray);
+    color: ${props => props.theme.colors.gradient[6]};
     padding: 3px 0px;
 
     &.expanded {

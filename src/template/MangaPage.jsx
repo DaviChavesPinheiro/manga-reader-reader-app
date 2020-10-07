@@ -26,6 +26,7 @@ const MangaPage = props => {
     useEffect(() => {
         axios.get(`https://charlotte-services.herokuapp.com/mangas/${idManga}`).then(res => {
             if(res.data){
+                console.log(res.data)
                 props.selectManga(res.data)
                 props.setDisplayLabel(`${res.data.title} ${getRecentChapterReaded(idManga) ? '- '+ getRecentChapterReaded(idManga) : ''}`)
             } else {

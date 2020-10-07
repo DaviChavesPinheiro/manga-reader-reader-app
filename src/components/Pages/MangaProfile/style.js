@@ -149,6 +149,40 @@ export const Chapters = styled(Section)`
     }
 `
 
+export const Characters = styled(Section)`
+    padding: 10px 0px;
+    
+    > h2 {
+        padding: 0px 10px;
+    }
+    
+    ul {
+        width: 100%;
+        list-style: none;
+        padding: 0px;
+    }
+    ul.shrinked li:nth-child(n+4) {
+        display: none;
+    }
+`
+
+export const Genres = styled(Section)`
+    padding: 10px 0px;
+    
+    > h2 {
+        padding: 0px 10px;
+    }
+    
+    > div{
+        width: 100%;
+        padding: 0px 10px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+`
+
+
 export const Recommendations = styled(Section)`
     padding: 10px 0px;
 
@@ -162,22 +196,6 @@ export const Recommendations = styled(Section)`
         padding: 0px;
     }
 `
-export const Characters = styled(Section)`
-    padding: 10px 0px;
-
-    > h2 {
-        padding: 0px 10px;
-    }
-
-    ul {
-        width: 100%;
-        list-style: none;
-        padding: 0px;
-    }
-    ul.shrinked li:nth-child(n+4) {
-        display: none;
-    }
-`
 
 export const ShowMore = styled.button`
     color: ${props => props.theme.colors.gradient[12]};
@@ -187,5 +205,22 @@ export const ShowMore = styled.button`
     margin: 0 auto;
 `
 
+export const GenreLabel = styled.div`
+    
 
+    background-color: ${props => props.theme.colors.gradient[1]};
+    border: 1px solid ${props => props.theme.colors.gradient[6]};
+    border-radius: 3px;
+    margin: 5px;
+
+    font-size: 1em;
+    color: ${props => props.theme.colors.gradient[6]};
+    padding: 3px 10px;
+
+    &.actived {
+        border: 1px solid ${props => props.theme.colors.gradient[12]};
+        color: ${props => props.theme.colors.gradient[12]};
+    }
+
+`
 

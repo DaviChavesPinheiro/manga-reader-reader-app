@@ -9,7 +9,7 @@ import useMangaInfo from "../../../hooks/useMangaInfo";
 import Loading from "../../utils/Loading/index";
 import HorizontalCard from "../../Cards/HorizontalCard";
 
-import { Container, Main, Description, Chapters, Characters, Recommendations, ShowMore } from "./style";
+import { Container, Main, Description, Chapters, Characters, Genres, Recommendations, ShowMore, GenreLabel } from "./style";
 
 const MangaProfile = props => {
     const manga = props.manga
@@ -110,7 +110,7 @@ const MangaProfile = props => {
                             </li>
                         )) : null}
                     </ul>
-                    <ShowMore className="show-more" ref={charactersExpandListButton} onClick={() => expandCharactersList(true)} style={{margin: "0px 10px", width: "calc(100% - 20px)"}}>
+                    <ShowMore className="show-more" ref={charactersExpandListButton} onClick={() => expandCharactersList(true)} style={{ margin: "0px 10px", width: "calc(100% - 20px)" }}>
                         VER TODOS OS PERSONAGENS
                     </ShowMore>
                 </If>
@@ -118,6 +118,19 @@ const MangaProfile = props => {
                     <Loading></Loading>
                 </If>
             </Characters>
+            <Genres>
+                <If test={manga.genres !== undefined}>
+                    <h2>Gêneros</h2>
+                    <div>
+                        {manga.genres ? manga.genres.map((genre, index) => (
+                           <GenreLabel key={genre.mal_id}>{genre.name}</GenreLabel> 
+                        )) : null}
+                    </div>
+                </If>
+                <If test={manga.genres === undefined}>
+                    <Loading></Loading>
+                </If>
+            </Genres>
             <Recommendations>
                 <If test={manga.recommendations !== undefined}>
                     <h2>Recomendações</h2>
