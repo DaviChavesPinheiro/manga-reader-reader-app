@@ -6,6 +6,8 @@ import MangaCard from '../Cards/MangaCard'
 import If from "../../operator/If";
 import Loading from "../utils/Loading/index";
 
+import Divider from "../utils/Divider";
+
 const AllMangasPage = props => {
     const [pages, setPages] = useState([])
     const [pageIndex, setPageIndex] = useState(1)
@@ -57,7 +59,7 @@ const AllMangasPage = props => {
                         </LazyLoad>
                     ))}
                     <div className="end-area">
-                        {/* <button onClick={() => loadMangas(page + 1)}>Load Next Mangas</button> */}
+                        <Divider label={`${page.index}#`}></Divider>
                     </div>
                 </ul>
             ))}

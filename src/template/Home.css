@@ -29,7 +29,9 @@
 
 
 .manga-list-container .end-area{
-    height: 10vh;
     width: 100%;
+    padding: 10px 0px;
     margin-top: auto;
+    display: flex;
+    align-items: center;
 }
