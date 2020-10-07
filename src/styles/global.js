@@ -1,12 +1,26 @@
 import styled, { createGlobalStyle } from "styled-components";
-
-
+import RobotoMedium from "../fonts/Roboto-Medium.ttf";
+import RobotoRegular from "../fonts/Roboto-Regular.ttf";
+import RobotoLight from "../fonts/Roboto-Light.ttf";
 
 export default createGlobalStyle`
     *{
         margin: 0px;
         padding: 0px;
         box-sizing: border-box;
+    }
+
+    @font-face {
+        font-family: "Roboto-Medium";
+        src: url(${RobotoMedium});
+    }
+    @font-face {
+        font-family: "Roboto-Regular";
+        src: url(${RobotoRegular});
+    }
+    @font-face {
+        font-family: "Roboto-Light";
+        src: url(${RobotoLight});
     }
 
     :root {
@@ -18,11 +32,16 @@ export default createGlobalStyle`
     }
 
     body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-            "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-            sans-serif;
+        font-family: "Roboto-Regular", "Roboto", sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1,h2,h3,h4,h5,h6 {
+        font-family: "Roboto-Light";
+    }
+    span, button {
+        font-family: "Roboto-Medium";
     }
 
     html,
